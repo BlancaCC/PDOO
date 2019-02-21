@@ -1,0 +1,4 @@
+deepspace.TestP1
+deepspace.WeaponType
+deepspace.SuppliesPackage
+deepspace.GameCharacter

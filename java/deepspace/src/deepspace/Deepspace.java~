@@ -1,0 +1,65 @@
+/*
+ */
+package deepspace;
+
+
+            /// Representa los dos tipos de personajes del juego
+            enum GameCharacter { ENEMYSTARCHIP, SPACESTATION}
+
+            ///~~~~~~~~~~~~~~~~ Weapon Type ~~~~~~~~~~~
+
+            enum WeaponType { 
+                LASER(2.0), MISSILE(3.0), PLASMA(4.0); 
+
+                private float power; 
+
+                //constructor 
+                WeaponType ( float power){
+                    this.power = power; 
+                }
+
+                // Consultor
+                 float getPower(){
+                     return power; 
+                 }
+
+            } //enum WeaponType
+
+            // ~~~~~~~~~~~~~~~ CLASES ~~~~~~~~~~~~~
+
+            /**
+             * @brief Representa un paquete de suministros para una estación 
+             * espacial
+            */
+            class SuppliesPackage{
+
+                private float ammoPower; 
+                private float fuelUnits; 
+                private float shieldPower; 
+
+                //constructor por parámetros
+                SuppliesPackage( ammoPower, fuelUnits,  shieldPower
+                ){
+                    this.ammoPower = ammoPower;
+                    this.fuelUnits = fuelUnits; 
+                    this.shieldPower = shieldPower; 
+          shieldPowe
+                } //cosntructor por parámetros
+
+
+                //cosntructor por copia 
+                SuppliesPackage( SuppliesPackage otro){
+                    this.ammoPower = otro.ammoPower;
+                    this.fuelUnits = otro.fuelUnits; 
+                    this.shieldPower = otro.shieldPower; 
+                }// constructor por copia
+            } //class SuppliesPackage
+
+
+            /**
+             * @param args the command line arguments
+             */
+            public static void main(String[] args) {
+                // TODO code application logic here
+            }
+
