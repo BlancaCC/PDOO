@@ -4,11 +4,12 @@
   Práctica 1 
   
  */
-package deepspace;
-
+//COMENTO LO DE PAQUETE PARA IR PROBANDO,
+//package deepspace;
+//PREGUNTAR AL PROFESOR CÓMO SE HARÍA BIEN LA ESTRUCTURA
 
 /// Representa los dos tipos de personajes del juego
-enum GameCharacter { ENEMYSTARCHIP, SPACESTATION}
+enum GameCharacter { ENEMYSTARSHIP, SPACESTATION}
 
 ///~~~~~~~~~~~~~~~~ Weapon Type ~~~~~~~~~~~
 
@@ -69,9 +70,30 @@ class SuppliesPackage{
 /**
  * @brief Clase para probar cada una de las clases creada 
  */
-public class TestP1 {
+//Pongo esto así para probarlo, PREGUNTAR AL PROFESOR
+public class Deepspace {
+//public class TestP1 {
 
     public static void main(String[] args) {
+	
+	//__________  Datos enumerados ____________
+	// combarResultul
+	//CombatResult cr = ENEMYWINS;
+
+	// GameCharacter
+	GameCharacter gm = GameCharacter.ENEMYSTARSHIP; 
+	gm =  GameCharacter.SPACESTATION;
+
+	//Weapon type
+	System.out.println( "Probamos el tipo Weapon Type"); 
+	WeaponType wt = WeaponType.LASER;
+	System.out.println( "El valor de "+  wt +  " es " +  wt.getPower() );
+         wt = WeaponType.MISSILE;
+	 System.out.println( "El valor de "+  wt +  " es " +  wt.getPower() );
+	 wt = WeaponType.PLASMA;
+	 System.out.println( "El valor de "+  wt +  " es " +  wt.getPower() );
+
+	
     // _________ Clase SuppliesPackage __________
     
     //constructor por parámetros
@@ -82,11 +104,12 @@ public class TestP1 {
 
     System.out.println( "Probamos consultores de SuppliesPackage");
     System.out.println (" ammoPowe: " + sp.getAmmoPower()
-			+ "\nfuelUnits" + sp.getFuelUnits()
-			+ "\nshieldPower" + sp.getShieldPower() ); 
+			+ "\nfuelUnits: " + sp.getFuelUnits()
+			+ "\nshieldPower: " + sp.getShieldPower() ); 
 
 
     
     } //main 
 
 } // class TestP1 
+
