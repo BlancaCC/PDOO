@@ -3,12 +3,19 @@ module Deepspace
 
   module CombatResult
     # representa todos los resultados posibles de un combate entre una espación espacial y una nave enemiga
-    
+
     ENEMYWINS= :enemywins
     NOCOMBAT= :nocombat
     STATIONESCAPES= :estationescapes
     STATION= :estationwins
   end # enum CombatResult
+
+  module GameCharacter
+    # Representanta a los dos tipos de personajes del juego.
+
+    ENEMYSTARSHIP = :enemystarship
+    SPACESTATION = :spacestation
+  end # enum GameCharacter
 
   module ShotResult
     # Representa el resultado a los dos tipos e personajes de juego
@@ -36,7 +43,7 @@ module Deepspace
   end # module weapon
 
   ######## clases ############
-  # incluir de los fichero sueltos 
+  # incluir de los fichero sueltos
 
 
 end #module Deepspace

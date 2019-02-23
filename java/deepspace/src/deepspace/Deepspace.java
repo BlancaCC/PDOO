@@ -1,3 +1,5 @@
+package deepspace;
+
 /*
   @author Daniel Krell Calvo, Blanca Cano Camarero 
   @file Deepspace.java 
@@ -8,8 +10,14 @@
 //package deepspace;
 //PREGUNTAR AL PROFESOR CÓMO SE HARÍA BIEN LA ESTRUCTURA
 
+// Representa los resultados posibles de un combate entre una estación espacial y una nave enemiga
+enum CombatResult {ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS}
+
 /// Representa los dos tipos de personajes del juego
 enum GameCharacter { ENEMYSTARSHIP, SPACESTATION}
+
+// Representa el resultado de un disparo recibido por una nave enemiga o una estación espacial.
+enum ShotResult {DONOTRESIST, RESIST}
 
 ///~~~~~~~~~~~~~~~~ Weapon Type ~~~~~~~~~~~
 
@@ -31,6 +39,33 @@ enum WeaponType {
 } //enum WeaponType
 
 // ~~~~~~~~~~~~~~~ CLASES ~~~~~~~~~~~~~
+
+/**
+ * @brief representa el botín que se obtiene al vencer a una nave enemiga.
+ */
+class Loot {
+    
+    private int nSupplies;
+    private int nWeapons;
+    private int nShields;
+    private int nHangars;
+    private int nMedals;
+    
+    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals) {
+        nSupplies = Supplies;
+        nWeapons = Weapons;
+        nShields = Shields;
+        nHangars = Hangars;
+        nMedals = Medals;
+    }
+    
+    // consultores 
+    public int getNSupplies() { return nSupplies; }
+    public int getNWeapons() { return nWeapons; }
+    public int getNShields() { return nShields; }
+    public int getNHangars() { return nHangars; }
+    public int getNMedals() { return nMedals; }
+}
 
 /**
  * @brief Representa un paquete de suministros para una estación 

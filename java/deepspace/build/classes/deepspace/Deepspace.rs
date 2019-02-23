@@ -1,4 +1,14 @@
-deepspace.TestP1
-deepspace.WeaponType
-deepspace.SuppliesPackage
 deepspace.GameCharacter
+CombatResult
+Loot
+deepspace.CombatResult
+SuppliesPackage
+deepspace.WeaponType
+ShotResult
+deepspace.SuppliesPackage
+deepspace.ShotResult
+deepspace.Deepspace
+WeaponType
+GameCharacter
+deepspace.Loot
+Deepspace
