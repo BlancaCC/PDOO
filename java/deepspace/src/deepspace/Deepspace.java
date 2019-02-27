@@ -1,5 +1,7 @@
 package deepspace;
 
+import java.util.Random;
+
 /*
   @author Daniel Krell Calvo, Blanca Cano Camarero 
   @file Deepspace.java 
@@ -145,7 +147,35 @@ class Dice {
     
     private Random generator;
 
-
+    
+    Dice() {
+        NHANGARSPROB = 0.25f;
+        NSHIELDSPROB = 0.25f;
+        NWEAPONSPROB = 0.33f;
+        FIRSTSHOTPROB = 0.5f;
+        
+        generator = new Random();
+    }
+    
+    public int initWithNHangars() {
+        float p = new Random().nextFloat();
+        if(p <= NHANGARSPROB) {
+            return 0;
+        }
+        return 1;
+    }
+    
+    public int initWithNWeapons() {
+        float p = new Random().nextFloat();
+        if(p < NWEAPONSPROB) {
+            return 1;
+        }
+        if(p <= 2*NWEAPONSPROB) {
+            return 2;
+        }
+        return 3;
+    }
+}
 /**
  * @brief Clase para probar cada una de las clases creada 
  */
