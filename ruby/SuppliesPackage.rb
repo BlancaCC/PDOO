@@ -20,4 +20,4 @@ class SuppliesPackage
     new(otro.ammoPower, otro.fuelUnits, otro.shieldPower)
   end   # self.newCopy
 
-end
+  end
