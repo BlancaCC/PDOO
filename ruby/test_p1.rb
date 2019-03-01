@@ -28,8 +28,9 @@ sp = Deepspace::SuppliesPackage.new( 2,1,4)
 
 puts "Sus unidades de armamento son ", sp.ammoPower
 # prueba cosntructor de copia
-sp2 = Deepspace::SuppliesPackage.new(sp)
-print "Tras crear otro objeto con el contructor su fuel es " , ps2
+#NO FUNCIONA EL CONSTRUCTOR DE COPIA
+ #sp2 = Deepspace::SuppliesPackage.new(sp)
+print "Tras crear otro objeto con el contructor su fuel es " ,# ps2
 
 
 
