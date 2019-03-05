@@ -30,7 +30,7 @@ module Deepspace
     class Type
       # consultor power
       attr_reader :power # equivalente a devolver @power
-      
+
       def initialize ( _power)
         @power= _power
       end # initialize
@@ -46,7 +46,7 @@ module Deepspace
   # incluir de los fichero sueltos
   #eso dijo Blanca del pasado, pero leyendo la práctica pone que todo se haga detro del paquete (módulo en ruby Deepspace)
 
-  
+
 =begin
 @file SuppliesPackage.rb
 @brief La clase SuppliesPackage epresenta a un paquete de suministros para una
@@ -55,7 +55,7 @@ module Deepspace
 
 class SuppliesPackage
 
-=begin CONTRUCTOR CLÁSICO 
+=begin CONTRUCTOR CLÁSICO
   def initialize(ammoPower, fuelUnits, shieldPower)
     @ammoPower = ammoPower
     @fuelUnits = fuelUnits
@@ -93,7 +93,7 @@ class SuppliesPackage
       # aunque lo he comprobado con esta línea  puts arg[0].ammoPower.class
       mi_inicializador( arg[0].ammoPower, arg[0].fuelUnits, arg[0].shieldPower)
       puts "Supuesta mente debería hacerse construido por copia"
-     
+
     #constructor por parámetros
       #ATENCIÓN, NO HAY CONTROL DE ERROR DE OTROS CONSTRUCTORES
     elsif (arg.size >= 3 )
@@ -104,18 +104,48 @@ class SuppliesPackage
   # visualizadores rápidos
   attr_reader :ammoPower, :fuelUnits, :shieldPower
 
-end # class SupliesPackage 
+end # class SupliesPackage
+
+
+class Weapon
+
+  def initialize(name, type, uses)
+    @name = name
+    @type = type
+    @uses = uses
+  end
+
+  attr_reader :name, :type, :uses   #no pide el consultor name pero no sé como acceder a él en el construcotr de copia si no  PREGUNTAR
+
+  def self.newCopy(w)
+    new(w.name,w.type,w.uses)
+  end
+
+  def power
+    type.power
+  end
+
+  def useIt
+    if @uses > 0
+      @uses = @uses-1
+      return power
+    else
+      return 1.0
+    end
+  end
+
+end
 
 
 #____________________ Clase Dice _____________
 
 =begin
-        @brief determian las decisiones que dependen del azar de la clase 
-=end 
+        @brief determian las decisiones que dependen del azar de la clase
+=end
 class Dice
 
   def initialize
-    
+
     @NHANGARPROB = 0.25  # probabilidad número de hagares
     @NSHIELDSPROB = 0.25 # potenciadore escudos
     @NWEAPONSPROB = 0.33 # número armas que recibirá estación espaci
@@ -123,7 +153,7 @@ class Dice
 
     Random.new_seed # semilla del aleatorio
     # HE DECIDIO PONERLA AQUÍ PREGUNTAR DÓNDE ES MÁS CORRECTO
-    
+
   end #initialize
 
   # --- métodos ---
@@ -132,13 +162,13 @@ class Dice
         @return función que varía entre 0 o 1
 =end
   def initWithNHangar
-    
+
     if rand <= @NHANGARPRON # supongo que rand va [0,1]
       nhagar = 0
     else
       nhagar = 1
     end #if random
-    
+
     return nhagar
   end # initWithNHangar
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -148,7 +178,7 @@ class Dice
 =end
   def initWhithWeapons
     aleatorio = rand
-    
+
     if aleatorio <= @NWEAPONSPROB
       narmas = 0
     elsif aleatorio <= 2*@NWEAPONSPROB
@@ -158,14 +188,14 @@ class Dice
     end #if probabilidad número de armas
 
     return narmas
-    
+
   end # initWhithWeapons
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 =begin
-        @brief Determian número de potenciadores de escudo 
+        @brief Determian número de potenciadores de escudo
         al ser creada
 
-        @return 0 o 1 
+        @return 0 o 1
 =end
   def WithNshields
 
@@ -186,9 +216,9 @@ class Dice
 =end
 
   def whoStarts( nPlayers)
-    
+
     return rand( nPlayers)
-    
+
   end #whoStarts( nPlayers)
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -222,7 +252,7 @@ class Dice
       esquiva = false
     end # rando si esquiva
     return esquiva
-    
+
   end #  spaceStationMoves( speed)
 
    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
