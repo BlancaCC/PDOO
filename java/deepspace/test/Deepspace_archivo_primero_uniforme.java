@@ -1,4 +1,4 @@
-package deepspace;
+//package deepspace;
 
 import java.util.Random;
 
@@ -21,7 +21,8 @@ enum GameCharacter { ENEMYSTARSHIP, SPACESTATION}
 // Representa el resultado de un disparo recibido por una nave enemiga o una estación espacial.
 enum ShotResult {DONOTRESIST, RESIST}
 
-///~~~~~~~~~~~~~~~~ Weapon Type ~~~~~~~~~~~
+///~~~~~~~~~~~~~~~~ Weapon Type ~~~~~~
+
 
 enum WeaponType { 
     LASER(2.0f), MISSILE(3.0f), PLASMA(4.0f); // f para pasar de double a float
