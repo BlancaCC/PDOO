@@ -138,6 +138,56 @@ class ShieldBooster {
 }
 
 
+/**
+@brief representa las armas de las que puede dispones una estación para  potencia su energía al disparar 
+*/
+
+class Weapon
+{
+    private String name;
+    private WeaponType type; //no sé si hay que llamar al tipo de alguna manera
+    private int uses;
+
+    //___ constructores_____
+    //por parámetros
+    Weapon( String name,WeaponType type, int uses ){
+	this.name = name;
+	this.type = type;
+	this.uses = uses;
+    } //Weapon
+
+    //constructor por copia 
+    Weapon ( Weapon otro){
+	this.name = otro.name;
+	this.type = otro.type;
+	this.uses = otro.uses;
+    } //constructor de copia
+
+    //____ consultores _____
+
+    public WeaponTypes getType() { return type} 
+    public int getUses(){ return uses}
+
+    /**
+       return potencia del disparo indicada por el tipo de arma
+     */
+    //¿los tipos de instancia se declaraban así?
+    public float power() { return type.getPower() }
+
+    /**
+       @brief decrementa en una unidad el uso y encía su poder
+     */
+    public float useIt(){
+	float salida = 1.0; // salida por defecto
+
+	if ( uses > 0){
+	    uses -= 1;
+	    salida = type.getPower(); // ¿ debería llamar a power?
+	}
+	return salida; 
+    } //useIT
+} // clase weapon
+
 class Dice {
     
     private final float NHANGARSPROB;
