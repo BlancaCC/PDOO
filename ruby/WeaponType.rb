@@ -1,6 +1,9 @@
 module Deepspace
   module WeaponType
 
+    # @brief  Representa a los tipos de armas del juego.
+    #         cada valor posible del tipoenumerado tendrá asociado un valor
+    #         numérico concreto igual a la potencia de disparo de cada tipode arma.
     class Type
       # consultor power
       attr_reader :power # equivalente a devolver @power

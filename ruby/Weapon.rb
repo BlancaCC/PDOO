@@ -1,5 +1,7 @@
 module Deepspace
 
+  # @brief representa a las armas de las que puede disponer una estación
+  #        espacial para potenciar su energía al disparar
   class Weapon
 
     def initialize(name, type, uses)
@@ -8,7 +10,7 @@ module Deepspace
       @uses = uses
     end
 
-    attr_reader :name, :type, :uses   #no pide el consultor name pero no sé como acceder a él en el construcotr de copia si no  PREGUNTAR
+    attr_reader :name, :type, :uses
 
     def self.newCopy(w)
       new(w.name,w.type,w.uses)
@@ -27,5 +29,5 @@ module Deepspace
       end
     end
 
-  end
+  end #class Weapon
 end

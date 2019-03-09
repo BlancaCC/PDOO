@@ -1,4 +1,4 @@
-module Deepsace
+module Deepspace
   module GameCharacter
     # Representanta a los dos tipos de personajes del juego.
 

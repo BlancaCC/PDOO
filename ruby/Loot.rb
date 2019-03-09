@@ -17,6 +17,8 @@ module Deepspace
       @nMedals = medals
     end # initialize
 
+    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals
+
   end #Loot
 
 end

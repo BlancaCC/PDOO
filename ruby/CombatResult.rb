@@ -5,8 +5,8 @@ module Deepspace
 
     ENEMYWINS= :enemywins
     NOCOMBAT= :nocombat
-    STATIONESCAPES= :estationescapes
-    STATION= :estationwins
+    STATIONESCAPES= :stationescapes
+    STATIONWINS= :stationwins
   end # enum CombatResult
 
 end
