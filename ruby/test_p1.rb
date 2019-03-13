@@ -54,7 +54,6 @@ module Pruebas
       puts "  fuelUnits: #{sp.fuelUnits}"
       puts "  shieldPower: #{sp.shieldPower}"
       # prueba cosntructor de copia
-      #NO FUNCIONA EL CONSTRUCTOR DE COPIA
       sp2 = Deepspace::SuppliesPackage.newCopy(sp)
       puts "Tras crear otro objeto con el contructor de copia su fuel es #{sp2.fuelUnits} "
 
@@ -64,11 +63,31 @@ module Pruebas
       #print "  name: ", sb.name  #ERROR: no hay consultor publico
       puts "  boost: #{sb.boost}"
       puts "  uses: #{sb.uses}"
+
+      puts "______ prueba clase Shield booster ____"
       sb2 = Deepspace::ShieldBooster.newCopy(sb)
       puts "Tras crear otro objeto con el contructor de copia su boost es #{sb2.boost}"
       puts "Usamos el metodo useIt: #{sb2.useIt}"
       puts "  boost: #{sb2.boost}"
       puts "  uses: #{sb2.uses}"
+
+      puts "______ prueba clase Diseeeee ____"
+
+      dado = Deepspace::Dice.new()
+
+      #procedemos a probar las funciones aleatorias
+      hagar = {0 => 0,1 => 0}
+      shield = {0 => 0,1 => 0}
+      arma = {1 => 0,2 => 0 , 3 => 0}
+      empieza = {Deepspace::GameCharacter::ENEMYSTARSHIP =>0,
+                 Deepspace::GameCharacter::SPACESTATION =>0}
+      100.times do
+        hagar[dado.initWithNHangar()] += 1
+        shield[dado.initWhitShield()]+= 1
+        arma[dado.initWithWeapon()] += 1
+        empieza[dado.firstShot()]+=1
+      end
+  
 
     end
   end
