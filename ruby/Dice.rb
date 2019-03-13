@@ -1,3 +1,4 @@
+# coding: utf-8
 
 module Deepspace
 =begin
@@ -24,7 +25,7 @@ module Deepspace
 =end
     def initWithNHangar
 
-      if rand <= @NHANGARPRON # supongo que rand va [0,1]
+      if rand <= @NHANGARPROB # supongo que rand va [0,1]
         nhagar = 0
       else
         nhagar = 1
@@ -37,15 +38,15 @@ module Deepspace
       @brief Determinará númer de armas que recibirá una estación esàcial al ser creada
       @return 0,1,2
 =end
-    def initWhithWeapons
+    def initWithWeapons
       aleatorio = rand
 
       if aleatorio <= @NWEAPONSPROB
-        narmas = 0
-      elsif aleatorio <= 2*@NWEAPONSPROB
         narmas = 1
-      else
+      elsif aleatorio <= 2*@NWEAPONSPROB
         narmas = 2
+      else
+        narmas = 3
       end #if probabilidad número de armas
 
       return narmas
@@ -58,7 +59,7 @@ module Deepspace
 
           @return 0 o 1
 =end
-    def WithNshields
+    def initWithNshields
 
       if rand <= @NSHIELDSPROB
         nshields = 0
@@ -89,11 +90,11 @@ module Deepspace
   @return devuelve elemento del tipo del dato Enumerado GameCharacter
 =end
 
-    def GameCharacter
+    def firstShot
       if rand <= @FIRSTSHOTPROB
         primero = GameCharacter::SPACESTATION
       else
-        primero = GameCharacter::ENEMYSTARTSHIP
+        primero = GameCharacter::ENEMYSTARSHIP
       end # if quién empieza
       return primero
     end #GameCharacter

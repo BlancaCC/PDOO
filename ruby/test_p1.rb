@@ -74,7 +74,7 @@ module Pruebas
       puts "______ prueba clase Diseeeee ____"
 
       dado = Deepspace::Dice.new()
-
+      3.times do
       #procedemos a probar las funciones aleatorias
       hagar = {0 => 0,1 => 0}
       shield = {0 => 0,1 => 0}
@@ -82,13 +82,26 @@ module Pruebas
       empieza = {Deepspace::GameCharacter::ENEMYSTARSHIP =>0,
                  Deepspace::GameCharacter::SPACESTATION =>0}
       100.times do
+      #puts "El resultado de lanzar el dado es #{ dado.initWithNHangar()}"
         hagar[dado.initWithNHangar()] += 1
-        shield[dado.initWhitShield()]+= 1
-        arma[dado.initWithWeapon()] += 1
+        shield[dado.initWithNshields()]+= 1
+        arma[dado.initWithWeapons()]+= 1
         empieza[dado.firstShot()]+=1
       end
-  
 
+      puts "Procedo a mostrar los resultado de ejecutar 100 veces las instancias de dices "
+      puts " initsWithNhagars "
+      print hagar
+
+      puts "initsWithNshields"
+      print shield
+
+      puts "Weapons"
+      print arma
+
+      puts "empieza"
+      print empieza
+      end # bucle de tres tiempos
     end
   end
 end
