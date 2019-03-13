@@ -81,6 +81,77 @@ public class TestP1 {
 			+ "\nUso arma " + armilla.useIt()
 			+ "\nOTRO ABRACITO PA TIII " + armilla.useIt()); 
     
+    // __________ Clase weapon _______
+    Dice dado = new Dice();
+    
+    int [] frec = new int[] {0,0,0,0};
+    
+    for(int i=0;i<100;i++) {
+        int s = dado.initWithNHangars();
+        frec[s]++;
+    }
+    System.out.println("\nPrueba initWithNHangars");
+    System.out.println("Frecuencia 0: " + frec[0]/100f);
+    System.out.println("Frecuencia 1: " + frec[1]/100f);
+    
+    frec[1]=0;
+    frec[2]=0;
+    frec[3]=0;
+    for(int i=0;i<100;i++) {
+        int s = dado.initWithNWeapons();
+        frec[s]++;
+    }
+    System.out.println("\nPrueba initWithNWeapons");
+    System.out.println("Frecuencia 1: " + frec[1]/100f);
+    System.out.println("Frecuencia 2: " + frec[2]/100f);
+    System.out.println("Frecuencia 3: " + frec[3]/100f);
+    
+    frec[0]=0;
+    frec[1]=0;
+    for(int i=0;i<100;i++) {
+        int s = dado.initWithNShields();
+        frec[s]++;
+    }
+    System.out.println("\nPrueba initWithNShields");
+    System.out.println("Frecuencia 0: " + frec[0]/100f);
+    System.out.println("Frecuencia 1: " + frec[1]/100f);
+    
+    frec[0]=0;
+    frec[1]=0;
+    frec[2]=0;
+    frec[3]=0;
+    for(int i=0;i<100;i++) {
+        int s = dado.whoStarts(4);
+        frec[s]++;
+    }
+    System.out.println("\nPrueba whoStarts");
+    System.out.println("Frecuencia 0: " + frec[0]/100f);
+    System.out.println("Frecuencia 1: " + frec[1]/100f);
+    System.out.println("Frecuencia 2: " + frec[2]/100f);
+    System.out.println("Frecuencia 3: " + frec[3]/100f);
+    
+    frec[0]=0;
+    frec[1]=0;
+    for(int i=0;i<100;i++) {
+        GameCharacter s = dado.firstShot();
+        if(s==GameCharacter.ENEMYSTARSHIP)  frec[0]++;
+        else if(s==GameCharacter.SPACESTATION)  frec[1]++;
+    }
+    System.out.println("\nPrueba firstShot");
+    System.out.println("Frecuencia ENEMYSTARSHIP: " + frec[0]/100f);
+    System.out.println("Frecuencia SPACESTATION: " + frec[1]/100f);
+    
+    frec[0]=0;
+    frec[1]=0;
+    for(int i=0;i<100;i++) {
+        boolean s = dado.spaceStationMoves(0.618f);
+        if(s==false)  frec[0]++;
+        else if(s==true)  frec[1]++;
+    }
+    System.out.println("\nPrueba spaceStationMoves");
+    System.out.println("Frecuencia false: " + frec[0]/100f);
+    System.out.println("Frecuencia true: " + frec[1]/100f);
+    
     } //main 
 
 } // class TestP1 
