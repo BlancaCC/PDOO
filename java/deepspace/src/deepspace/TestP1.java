@@ -31,9 +31,9 @@ public class TestP1 {
 
 	 // _________ Clase Loot _________
 
-	 Loot loot = new Loop( 1,2,3,4,5);
+	 Loot loot = new Loot( 1,2,3,4,5);
 	 System.out.println( "Clase loor consultores \n" +
-			     "Supplies: " + getNSupplies() +
+			     "Supplies: " + loot.getNSupplies() +
 			     "\n"
 			     );
 	 
@@ -52,6 +52,34 @@ public class TestP1 {
 			+ "\nshieldPower: " + sp.getShieldPower() ); 
 
 
+    // ______ Clase shieldBooster ________
+
+    //constructor por parámetros
+    ShieldBooster shield = new ShieldBooster( "Escudillo", 13, 0);
+    //constructor por copia
+    ShieldBooster shield1 = new ShieldBooster( shield);
+
+    //consultores y función useIt
+    System.out.println("\nConsultor de la lanzadera: " + shield.getBoost()
+		       + "\nUsos lanzadera: " + shield.getUses()
+		       + "\nTras decrementar los usos, boost vale:" + shield.useIt());
+
+    // __________ Clase weapon _______
+
+    //constructor por parámetros
+    Weapon arma = new Weapon ( "Abracito de la muerte", WeaponType.PLASMA, 1);
+
+    //constructor por copia
+    Weapon armilla = new Weapon(arma);
+    //consultores
+    System.out.println( "Tipo de arma " + armilla.getType()
+			+ "\nUsos restantes " + armilla.getUses()
+			);
+
+    // métodos de instancia
+    System.out.println( " El poder de mi abracito es " + armilla.power()
+			+ "\nUso arma " + armilla.useIt()
+			+ "\nOTRO ABRACITO PA TIII " + armilla.useIt()); 
     
     } //main 
 
