@@ -30,7 +30,19 @@ class SuppliesPackage{
     public float getAmmoPower() { return ammoPower;  }
     public float getFuelUnits() { return fuelUnits; }
     public float getShieldPower() { return shieldPower; }
-   
+
+    //representación de la clase
+
+    public String toString(){
+
+    String representation = "ammoPower: " + Float.toString( ammoPower) + "\n" +
+	"fuelUnits: " +  fuelUnits + "\n" +
+	"shieldPower: " + shieldPower + "\n" ; 
+
+	    
+	return representation; 
+    }
+    
     
 } //class SuppliesPackage
 
