@@ -45,7 +45,24 @@ class Weapon {
 	
 	return use_power; 
     } //useI
-	
-    
+
+
+    /** 
+	@return @brief Representación en cadena de la instancia
+     */
+    public String toString(){
+
+    String representation = "name: " + name + "\n" +
+	"weapon type: " + type+ "\n" +
+	"uses: " +  uses + "\n"; 
+
+    return representation; 
+    }
+
+    /**
+       @brief El objeto que devuelve permite conectar el modelo de la interfaz de usuario con el modelo manteniendo cierto aislamiento entre ambos. 
+       @return Construye objeto ToUI a partir de la propia instancia
+     */
+    WeaponToUI WeaponToUIVersion(){ return new WeaponToUI(this); }
     
 } //weapon 

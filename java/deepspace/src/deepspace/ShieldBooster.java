@@ -8,7 +8,8 @@ class ShieldBooster {
     private String name;
     private float boost;
     private int uses;
-    
+
+    //__constructores
     ShieldBooster(String name, float boost, int uses) {
         this.name = name;
         this.boost = boost;
@@ -20,6 +21,7 @@ class ShieldBooster {
         boost = otro.boost;
         uses = otro.uses;
     }
+    //__ fin constructores 
     
     public float getBoost() { return boost; }
     public int getUses() { return uses; }
@@ -31,4 +33,19 @@ class ShieldBooster {
         }
         return 1.0f;
     }
+
+    /**
+       @brief Representación de la clase
+       @return Devuelve en un string la representación de la clase 
+     */
+    public String toString(){
+
+    String representation = "name: " + name + "\n"
+	+ "uses: " + uses + "\n"
+	+ "boost: " + boost + "\n" ;
+    
+	return representation; 
+    }
+    
+    ShieldToUI ShieldBoosterToUIVersion(){ return new ShieldToUI(this); }
 }
