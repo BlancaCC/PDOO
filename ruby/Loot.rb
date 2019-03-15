@@ -19,6 +19,14 @@ module Deepspace
 
     attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals
 
+    def to_s
+      "Atributos de la instancia de Loot: \n" +
+      "  nSupplies: #{nSupplies}\n" +
+      "  nWeapons: #{nWeapons}\n" +
+      "  nShields: #{nShields}\n" +
+      "  nHangars: #{nHangars}\n" +
+      "  nMedals: #{nMedals}\n"
+    end
   end #Loot
 
 end

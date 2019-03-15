@@ -29,5 +29,16 @@ module Deepspace
       end
     end
 
+    def to_s
+      "Atributos de la instancia de Weapon: \n" +
+      "  nSupplies: #{name}\n" +
+      "  nWeapons: #{type}\n" +
+      "  nShields: #{uses}\n"
+    end
+
+    def getUIversion
+      WeaponToUI.new(self)
+    end
+
   end #class Weapon
 end

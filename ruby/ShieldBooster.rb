@@ -25,6 +25,13 @@ module Deepspace
       end
     end
 
+    def to_s
+      "Atributos de la instancia de ShieldBooster: \n" +
+      "  boost: #{boost}\n" +
+      "  uses: #{uses}\n"
+    end
+
+
     #protected :name # Necesito el consultor para newCopy, pero el guion dice que
                     # solo se definan consultores publicos para @boost y @uses
 
