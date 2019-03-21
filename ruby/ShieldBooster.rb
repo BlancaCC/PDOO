@@ -1,3 +1,4 @@
+
 module Deepspace
 
   # @brief representa a los potenciadores de escudo que pueden tener las estaciones espaciales
@@ -31,6 +32,9 @@ module Deepspace
       "  uses: #{uses}\n"
     end
 
+    def ShieldToUIgetVersion
+       Deepspace::ShieldToUI.new self 
+    end
 
     #protected :name # Necesito el consultor para newCopy, pero el guion dice que
                     # solo se definan consultores publicos para @boost y @uses

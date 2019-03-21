@@ -1,4 +1,5 @@
 # coding: utf-8
+require_relative 'LootToUI'
 module Deepspace
 
 =begin
@@ -27,6 +28,11 @@ module Deepspace
       "  nHangars: #{nHangars}\n" +
       "  nMedals: #{nMedals}\n"
     end
+
+    #t
+    def LootToUIgetVersion
+      Deepspace::LootToUI.new self 
+    end #LootToUIgetVersion
   end #Loot
 
 end

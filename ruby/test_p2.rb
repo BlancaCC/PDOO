@@ -1,3 +1,14 @@
+# coding: utf-8
+
+
+#módulos ToUIgetVersion 
+require_relative 'LootToUI'
+require_relative 'EnemyToUI'
+require_relative 'DamageToUI'
+require_relative 'HangarToUI'
+require_relative 'ShieldToUI'
+
+## tipos de datos  y clase 
 require_relative 'CombatResult'
 require_relative 'Dice'
 require_relative 'GameCharacter'
@@ -8,6 +19,8 @@ require_relative 'ShieldBooster'
 require_relative 'Weapon'
 require_relative 'WeaponType'
 
+
+
 module Pruebas
 
   class TestP2
@@ -16,6 +29,10 @@ module Pruebas
       puts " _______ prueba clase Loot _________"
       l = Deepspace::Loot.new(2,3,5,7,11)
       puts l.to_s
+      ## mótdulo toUigetVersion 
+      lui = l.LootToUIgetVersion
+      puts lui.to_s
+      
 
 
       ### clase SupplesPackage
@@ -38,6 +55,8 @@ module Pruebas
       puts "Tras crear otro objeto con el contructor de copia su boost es #{sb2.boost}"
       puts "Usamos el metodo useIt: #{sb2.useIt}"
       puts sb2.to_s
+      sui = sb.ShieldToUIgetVersion
+      puts  sui.to_s
 
       puts "______ prueba clase Diseeeee ____"
 
@@ -69,6 +88,7 @@ module Pruebas
 
       puts "empieza"
       print empieza
+      puts ""
       end # bucle de tres tiempos
 
     end
