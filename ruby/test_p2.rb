@@ -18,6 +18,7 @@ require_relative 'SuppliesPackage'
 require_relative 'ShieldBooster'
 require_relative 'Weapon'
 require_relative 'WeaponType'
+require_relative 'Damage'
 
 
 
@@ -34,6 +35,9 @@ module Pruebas
       puts lui.to_s
       
 
+      puts "__________ Prueb clase Damage _______"
+      d_n = Deepspace::Damage.new_n 2,3
+      
 
       ### clase SupplesPackage
       puts " _______ prueba clase SuppliesPackages _________"
