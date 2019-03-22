@@ -7,6 +7,8 @@ require_relative 'EnemyToUI'
 require_relative 'DamageToUI'
 require_relative 'HangarToUI'
 require_relative 'ShieldToUI'
+require_relative 'WeaponToUI'
+require_relative 'EnemyToUI'
 
 ## tipos de datos  y clase 
 require_relative 'CombatResult'
@@ -19,6 +21,8 @@ require_relative 'ShieldBooster'
 require_relative 'Weapon'
 require_relative 'WeaponType'
 require_relative 'Damage'
+require_relative 'Hangar'
+require_relative 'EnemyStarShip'
 
 
 
@@ -31,7 +35,7 @@ module Pruebas
       l = Deepspace::Loot.new(2,3,5,7,11)
       puts l.to_s
       ## mótdulo toUigetVersion 
-      lui = l.LootToUIgetVersion
+      lui = l.getUIversion
       puts lui.to_s
       
 
@@ -43,7 +47,7 @@ module Pruebas
 
       puts d_w.to_s
 
-      puts d_n.getUIVersion.to_s
+      puts d_n.getUIversion.to_s
       
       
 
@@ -102,6 +106,30 @@ module Pruebas
       print empieza
       puts ""
       end # bucle de tres tiempos
+
+			puts "______ prueba clase Hangar ____"
+			h = Deepspace::Hangar.newCapacity(10)
+			6.times do |i|
+				h.addWeapon(Deepspace::Weapon.new("arma",Deepspace::WeaponType::LASER,i))
+			end
+			h.removeWeapon(3)
+			puts h.to_s
+			6.times do |i|
+				h.addShieldBooster(Deepspace::ShieldBooster.new("escudo",2*i+1,3+i))
+			end
+			h.removeShieldBooster(2)
+			puts h.to_s
+			h_cpy = Deepspace::Hangar.newCopy(h)
+			hToUI = h_cpy.getUIversion
+			puts hToUI.to_s
+
+
+			puts "______ prueba clase EnemyStarShip ____"
+			ess = Deepspace::EnemyStarShip.new("ship",3.14,2.71,l,d_n)
+			puts ess.to_s
+			ess_cpy = Deepspace::EnemyStarShip.newCopy(ess)
+			essToUI = ess_cpy.getUIversion
+			puts essToUI.to_s
 
     end
 

@@ -30,10 +30,18 @@ module Deepspace
     end
 
     def to_s
-      "Atributos de la instancia de Weapon: \n" +
-      "  nSupplies: #{name}\n" +
-      "  nWeapons: #{type}\n" +
-      "  nShields: #{uses}\n"
+      s = "Atributos de la instancia de Weapon: \n"
+      s += "  name: #{name}\n" 
+			s += "  type: "
+			if type == WeaponType::LASER
+				s += "LASER\n"
+      elsif type == WeaponType::MISSILE
+				s += "MISIL\n"
+			else
+				s += "PLASMA\n"
+			end
+      s += "  uses: #{uses}\n"
+			return s
     end
 
     def getUIversion

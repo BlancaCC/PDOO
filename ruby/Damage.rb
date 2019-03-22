@@ -40,7 +40,7 @@ Cada intacia indicca la pérdida:
      ### ________ métodos de la clase ______
 
     # método de copia de 
-    def  getUIVersion
+    def  getUIversion
       Deepspace::DamageToUI.new self
     end
 

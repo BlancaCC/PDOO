@@ -30,8 +30,8 @@ module Deepspace
     end
 
     #t
-    def LootToUIgetVersion
-      Deepspace::LootToUI.new self 
+    def getUIversion
+      LootToUI.new self 
     end #LootToUIgetVersion
   end #Loot
 
