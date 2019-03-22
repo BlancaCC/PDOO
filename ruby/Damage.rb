@@ -27,5 +27,65 @@ Cada intacia indicca la pérdida:
       new s,w,Array.new 
     end
 
+    #constructor armas concretas a eliminar y cantidad de escudos a eliminar
+    def self.new_weapons wl, s
+      new s, 0, wl
+    end
+
+    # constructor por copia
+    def self.new_copy d
+      new d.getNShields, d.getNWeapons, d.getWeapons
+    end
+
+     ### ________ métodos de la clase ______
+
+    # método de copia de 
+    def  getUIVersion
+      Deepspace::DamageToUI.new self
+    end
+
+    ## weapons, WeaponType
+    def arrayContainsType w, s
+    end
+    private :arrayContainsType
+
+    # weapons s ShieldBooster -> Damage
+    def adjust w, s
+    end
+
+    #weapon 
+    def discardWeapon w
+    end
+
+    def discardShieldBooster
+    end
+
+    def hasNoEffect
+    end
+    
+ 
+    ## _________ consultores ______
+    # QUITO ALGUNO DE ESTOS?
+    attr_reader :nWeapons, :weapons, :nShields
+=begin
+    def getNshield
+      @nShields
+    end
+
+    def getNWeapons
+      @nWeapons
+    end
+
+    def getWeapons
+      @weapons
+    end
+=end         
+   
+    
+
+    # _____ método de prueba
+    def to_s
+      "nshield: #{@nShield} \nnWeapons:#{@nWeapons}\n#{@weapons}\n"
+    end 
   end # class
 end # module Deespace 

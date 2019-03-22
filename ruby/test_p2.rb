@@ -37,6 +37,14 @@ module Pruebas
 
       puts "__________ Prueb clase Damage _______"
       d_n = Deepspace::Damage.new_n 2,3
+      puts d_n.to_s
+      d_w = Deepspace::Damage.new_weapons [Deepspace::WeaponType::LASER,
+                                          Deepspace::WeaponType::PLASMA] , 3
+
+      puts d_w.to_s
+
+      puts d_n.getUIVersion.to_s
+      
       
 
       ### clase SupplesPackage
