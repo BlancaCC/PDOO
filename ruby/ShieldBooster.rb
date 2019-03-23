@@ -26,22 +26,22 @@ module Deepspace
       end
     end
 
-		def getUIversion
-			ShieldToUI.new(self)
-		end
+    def getUIversion
+      ShieldToUI.new(self)
+    end
 
     def to_s
       "Atributos de la instancia de ShieldBooster: \n" +
-      "  boost: #{boost}\n" +
-      "  uses: #{uses}\n"
+        "  boost: #{boost}\n" +
+        "  uses: #{uses}\n"
     end
 
     def ShieldToUIgetVersion
-       Deepspace::ShieldToUI.new self 
+      Deepspace::ShieldToUI.new self 
     end
 
     #protected :name # Necesito el consultor para newCopy, pero el guion dice que
-                    # solo se definan consultores publicos para @boost y @uses
+    # solo se definan consultores publicos para @boost y @uses
 
   end #class ShieldBooster
 
