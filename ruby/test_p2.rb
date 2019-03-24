@@ -40,9 +40,9 @@ module Pruebas
       
 
       puts "__________ Prueb clase Damage _______"
-      d_n = Deepspace::Damage.new_n 2,3
+      d_n = Deepspace::Damage.newNumericWeapons 2,3
       puts d_n.to_s
-      d_w = Deepspace::Damage.new_weapons [Deepspace::WeaponType::LASER,
+      d_w = Deepspace::Damage.newSpecificWeapons [Deepspace::WeaponType::LASER,
                                           Deepspace::WeaponType::PLASMA] , 3
 
       puts d_w.to_s
@@ -108,7 +108,7 @@ module Pruebas
       end # bucle de tres tiempos
 
 			puts "______ prueba clase Hangar ____"
-			h = Deepspace::Hangar.newCapacity(10)
+			h = Deepspace::Hangar.new(10)
 			6.times do |i|
 				h.addWeapon(Deepspace::Weapon.new("arma",Deepspace::WeaponType::LASER,i))
 			end
@@ -120,6 +120,7 @@ module Pruebas
 			h.removeShieldBooster(2)
 			puts h.to_s
 			h_cpy = Deepspace::Hangar.newCopy(h)
+			puts h_cpy.to_s
 			hToUI = h_cpy.getUIversion
 			puts hToUI.to_s
 

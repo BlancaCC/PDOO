@@ -7,20 +7,23 @@ module Deepspace
 
   class Hangar
 
-    private def initialize(capacity, weapons, shieldBoosters)
+    def initialize(capacity)
       @maxElements = capacity #capacidad máxima del hangar
-      @weapons = weapons # contenedor con las armas del hangar
-      @shieldBoosters = shieldBoosters # contenedor con los escudos del hangar
-    end
-
-    def self.newCapacity(capacity)
-      new(capacity,Array.new,Array.new)
+      @weapons = Array.new # contenedor con las armas del hangar
+      @shieldBoosters = Array.new # contenedor con los escudos del hangar
     end
 
     attr_reader :maxElements, :weapons, :shieldBoosters
 
     def self.newCopy(h)
-      new(h.maxElements,h.weapons,h.shieldBoosters)
+      cpy = new(h.maxElements)
+			h.weapons.each{ |w|
+				cpy.weapons.push(w)
+			}
+			h.shieldBoosters.each{ |s|
+				cpy.shieldBoosters.push(s)
+			}
+			return cpy 
     end
 
     def getUIversion

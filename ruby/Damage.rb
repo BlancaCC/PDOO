@@ -14,7 +14,7 @@ Cada intacia indicca la pérdida:
     #### _____ constructores _____
     
     def initialize s, w, wl
-      @nShield = s # pontenciades de escudo perdio
+      @nShields = s # pontenciades de escudo perdio
       @nWeapons = w #perdida armas tipo indeterminado
       @weapons = wl # tipos de armas concretos que se pierden 
     end # initialize
@@ -23,17 +23,17 @@ Cada intacia indicca la pérdida:
 
     # por número de escudos y armas indeterminada
     # array con el tipo de armas indeterminado vacío
-    def self.new_n s, w
+    def self.newNumericWeapons s, w
       new s,w,Array.new 
     end
 
     #constructor armas concretas a eliminar y cantidad de escudos a eliminar
-    def self.new_weapons wl, s
+    def self.newSpecificWeapons wl, s
       new s, 0, wl
     end
 
     # constructor por copia
-    def self.new_copy d
+    def self.newCopy d
       new d.getNShields, d.getNWeapons, d.getWeapons
     end
 
@@ -85,7 +85,7 @@ Cada intacia indicca la pérdida:
 
     # _____ método de prueba
     def to_s
-      "nshield: #{@nShield} \nnWeapons:#{@nWeapons}\n#{@weapons}\n"
+      "nShields: #{@nShield} \nnWeapons:#{@nWeapons}\n#{@weapons}\n"
     end 
   end # class
 end # module Deespace 
