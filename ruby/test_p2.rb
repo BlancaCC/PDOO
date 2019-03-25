@@ -9,6 +9,7 @@ require_relative 'HangarToUI'
 require_relative 'ShieldToUI'
 require_relative 'WeaponToUI'
 require_relative 'EnemyToUI'
+require_relative 'GameUniverseToUI'
 
 ## tipos de datos  y clase 
 require_relative 'CombatResult'
@@ -23,6 +24,8 @@ require_relative 'WeaponType'
 require_relative 'Damage'
 require_relative 'Hangar'
 require_relative 'EnemyStarShip'
+require_relative 'GameUniverse'
+require_relative 'GameStateController'
 
 
 
@@ -132,10 +135,14 @@ module Pruebas
 			essToUI = ess_cpy.getUIversion
 			puts essToUI.to_s
 
-    end
+		puts "\n______ prueba clase GameUniverse____"
+		gu = Deepspace::GameUniverse.new
+		puts gu.to_s
 
-  end
+		end	#self.main
 
-end
+  end # class TestP2
+
+end #module Pruebas
 
 Pruebas::TestP2.main

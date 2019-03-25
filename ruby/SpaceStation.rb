@@ -25,8 +25,8 @@ module Deepspace
       @weapons = Array.new
       @shieldBooster = Array.new
 
-      #hagar del que depende 
-      @hagar = nil
+      #hangar del que depende 
+      @hangar = nil
 
       
     end #initialize
@@ -78,7 +78,7 @@ module Deepspace
       end #if 
     end # receiveHangar
 
-    def discarHangar
+    def discardHangar
       @hangar = nil
     end
 
@@ -98,7 +98,7 @@ module Deepspace
     # __ suministrar métdos desde hangar __
     def mountWeapon i
       if @hangar
-        weapon_aux = @hangar.removeweapon i
+        weapon_aux = @hangar.removeWeapon i
         if weapon_aux
           weapons << weapon_aux 
         end
