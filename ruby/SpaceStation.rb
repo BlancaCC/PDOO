@@ -6,7 +6,7 @@ module Deepspace
   class SpaceStation
 
     @@MAXFUEL=100 #declaraods como instancia de clase para poder ser consultados sin necesidad de construir consultores 
-    @@SHIELDLOSSPERUNTSHOT=0.2
+    @@SHIELDLOSSPERUNITSHOT=0.1
 
     # los arguments que reciben es un string y SuppliesPackage 
     def initialize n, supplies
@@ -23,7 +23,7 @@ module Deepspace
 
       # suministros en la estación 
       @weapons = Array.new
-      @shieldBooster = Array.new
+      @shieldBoosters = Array.new
 
       #hangar del que depende 
       @hangar = nil
@@ -31,6 +31,8 @@ module Deepspace
       
     end #initialize
 
+		attr_reader :ammoPower, :fuelUnits, :hangar, :name, :nMedals
+		attr_reader :pendingDamage, :shieldBoosters, :shieldPower, :weapons
 
     #___ métodos privado ___
     def assignFuelValue f
@@ -56,7 +58,7 @@ module Deepspace
     def receiveWeapon w
       conseguido = false 
       if @hangar
-        #la hangar.addWeapon  devuelve si ha modido añadirla o no 
+        #la hangar.addWeapon  devuelve si ha podido añadirla o no 
         conseguido = @hangar.addWeapon w
 
       end # if
@@ -67,7 +69,7 @@ module Deepspace
     def receiveShieldBooster s
       conseguido = false 
       if @hangar 
-        # addChieldBooster  devuelve si ha modido añadirla o no 
+        # addShieldBooster  devuelve si ha podido añadirla o no 
         conseguido = @hangar.addShieldBooster s
          
 
@@ -92,11 +94,17 @@ module Deepspace
       @shieldPower += s.shieldPower 
     end #receiveSupplies s
 
+		def receiveShot shot
+		end
+
     #Se calcula el parámetro adjust a la list ade armas y pontenciadores de al estaciín y se almacena el resutado en el al atributo correspondiente
     def setPendingDamage d
       @pendingDamage = d.adjust @weapons, @shieldPower
       
     end
+
+		def setLoot loot
+		end
 
     # __ suministrar métdos desde hangar __
     def mountWeapon i
@@ -115,7 +123,7 @@ module Deepspace
         # en caso de boorarse devuelve nil
         shieldBooster_aux = @hangar.removeShieldBooster i
         if shieldBooster_aux # no queremos añadir nil 
-          @shieldBooster << shieldBooster_aux
+          @shieldBoosters << shieldBooster_aux
         end
       end 
     end #muntShieldBooster 
@@ -133,6 +141,12 @@ module Deepspace
         @hangar.removeShieldBooster i
       end
     end
+		
+		def discardWeapon i
+		end
+		
+		def discardShieldBooster s
+		end
 
     # velocida estación espacial
     def getSpeed
@@ -167,20 +181,25 @@ module Deepspace
     def cleanUpMountedItems
       # eliminamos armas
       @weapons.each do |arma|
-        if arma.getUses == 0
+        if arma.uses == 0
           @weapons.delete arma
         end
       end
 
       #eliminamso escudos
-      @shieldBooster.each do |escudo|
-        if escudo.getUses == 0
-          @shieldBooster.delete escudo
+      @shieldBoosters.each do |escudo|
+        if escudo.uses == 0
+          @shieldBoosters.delete escudo
         end
       end
     end # cleanUpMountedItems
 
+		
+		def fire
+		end
 
+		def protection
+		end
     
       def to_s
 
@@ -196,16 +215,20 @@ Información de la estacion espacial:  #{@name}
        #{@pendingDamage.to_s}  
    ---weapons---  
      #{@weapons.each do |w|;w.to_s; end }  
+	 ---shieldBoosters---
+		#{@shieldBoosters.each do |s|;s.to_s;end}
+	---hangar---
+#{@hangar}---
 Información general de todas las estaciones espaciales:  
      MAXFUEL:  #{@@MAXFUEL}  
-     SHIELDLOSSPERUNTSHOT: #{@@SHIELDLOSSPERUNTSHOT}  
+     SHIELDLOSSPERUNITSHOT: #{@@SHIELDLOSSPERUNITSHOT}  
         """
         
-        #falta por imprimir hangar y shielBooster 
+        
 
       
       end # to stirng method
       
     
   end # SpaceStation 
-end #moduel deepspace
+end #module deepspace

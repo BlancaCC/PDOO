@@ -24,12 +24,12 @@ Cada intacia indicca la pérdida:
     # por número de escudos y armas indeterminada
     # array con el tipo de armas indeterminado vacío
     def self.newNumericWeapons s, w
-      new s,w,Array.new 
+      new s,w,nil
     end
 
     #constructor armas concretas a eliminar y cantidad de escudos a eliminar
     def self.newSpecificWeapons wl, s
-      new s, 0, wl
+      new s, -1, wl
     end
 
     # constructor por copia

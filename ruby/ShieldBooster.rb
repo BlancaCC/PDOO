@@ -48,9 +48,6 @@ module Deepspace
       Deepspace::ShieldToUI.new self 
     end
 
-    #protected :name # Necesito el consultor para newCopy, pero el guion dice que
-    # solo se definan consultores publicos para @boost y @uses
-
   end #class ShieldBooster
 
 end #module Deepspace
