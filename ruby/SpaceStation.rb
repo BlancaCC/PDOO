@@ -54,22 +54,25 @@ module Deepspace
 
     # si disponemos de Hangars devuelve el resultado de intentar añadir el arma al msimo, si no devuelve true
     def receiveWeapon w
+      conseguido = false 
       if @hangar
         #la hangar.addWeapon  devuelve si ha modido añadirla o no 
-        @hangar.addWeapon w
+        conseguido = @hangar.addWeapon w
 
       end # if
-      false 
+      conseguido 
     end #receiveWeapn
 
 
     def receiveShieldBooster s
+      conseguido = false 
       if @hangar 
         # addChieldBooster  devuelve si ha modido añadirla o no 
-        @hangar.addShieldBooster s
+        conseguido = @hangar.addShieldBooster s
+         
 
       end # if
-      false 
+      conseguido
     end #receiveShieldBooster s
 
     def receiveHangar h
@@ -133,7 +136,7 @@ module Deepspace
 
     # velocida estación espacial
     def getSpeed
-      @fuelUnits/@@MAXFUEL
+      @fuelUnits.to_f/@@MAXFUEL
     end
 
     # decremento de las unidades de combustible a causa de su movimiento
@@ -151,12 +154,12 @@ module Deepspace
 
     # estado valido: no daño o daño sin efecto 
     def validState
-      
+      validState = true
       if @pendingDamage and not @pendingDamage.hasNoEffect
-        false
-      else
-        true
+        validState = false
       end
+      validState
+      
     end 
 
 

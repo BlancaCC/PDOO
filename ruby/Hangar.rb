@@ -1,4 +1,5 @@
 # coding: iso-8859-1
+
 require_relative "WeaponType"
 require_relative "Weapon"
 require_relative "ShieldBooster"
@@ -17,13 +18,13 @@ module Deepspace
 
     def self.newCopy(h)
       cpy = new(h.maxElements)
-			h.weapons.each{ |w|
-				cpy.weapons.push(w)
-			}
-			h.shieldBoosters.each{ |s|
-				cpy.shieldBoosters.push(s)
-			}
-			return cpy 
+      h.weapons.each{ |w|
+	cpy.weapons.push(w)
+      }
+      h.shieldBoosters.each{ |s|
+	cpy.shieldBoosters.push(s)
+      }
+      return cpy 
     end
 
     def getUIversion

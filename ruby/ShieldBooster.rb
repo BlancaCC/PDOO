@@ -30,6 +30,14 @@ module Deepspace
       ShieldToUI.new(self)
     end
 
+    def getBoost
+      @boost
+    end
+
+    def getUses
+      @uses
+    end
+
     def to_s
       "Atributos de la instancia de ShieldBooster: \n" +
         "  boost: #{boost}\n" +
