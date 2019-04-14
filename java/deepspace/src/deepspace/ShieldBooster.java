@@ -47,5 +47,5 @@ class ShieldBooster {
 	return representation; 
     }
     
-    ShieldToUI ShieldBoosterToUIVersion(){ return new ShieldToUI(this); }
+    ShieldToUI getUIversion(){ return new ShieldToUI(this); }
 }

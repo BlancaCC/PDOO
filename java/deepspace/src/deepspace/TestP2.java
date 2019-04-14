@@ -10,7 +10,7 @@ public class TestP2{
 	System.out.println( "__________ShieldBooster __________");
 	ShieldBooster shield = new ShieldBooster( "Escudillo", 13, 0);
 	System.out.println( shield.toString());
-	ShieldToUI sui = shield.ShieldBoosterToUIVersion();
+	ShieldToUI sui = shield.getUIversion();
 	System.out.println( sui.toString() ); 
 	
 	
@@ -25,7 +25,7 @@ public class TestP2{
 	Weapon arma = new Weapon ( "Abracito de la muerte", WeaponType.PLASMA, 1);
 	System.out.println(arma.toString());
 
-	WeaponToUI wui = arma.WeaponToUIVersion();
+	WeaponToUI wui = arma.getUIversion();
 	System.out.println( "WeaponType: "+ wui.getType()+ "\n"+
 			   "Weapon power "+   wui.getPower()  + "\n"+
 	    "Weapon uses: "+ wui.getUses()+ "\n"); 

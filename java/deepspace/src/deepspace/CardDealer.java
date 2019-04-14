@@ -19,7 +19,7 @@ class CardDealer {
     CardDeck<ShieldBooster> shieldBoosters;
     CardDeck<Weapon> weapons;
     CardDeck<Hangar> hangars;
-    CardDeck<EnemyStarShip> enemies;
+   // CardDeck<EnemyStarShip> enemies;
     
     private CardDealer(){
         suppliesPackages=new CardDeck<>();
@@ -54,11 +54,11 @@ class CardDealer {
     public Hangar nextHangar() {
         return hangars.next();
     }
-    
+    /*
     public EnemyStarShip nextEnemy() {
         return enemies.next();
     }
-    
+    */
     
     
     
@@ -176,7 +176,7 @@ class CardDealer {
         Damage mediumSpecificDamage0;
         mediumSpecificDamage0=new Damage(new ArrayList<>(Arrays.asList(WeaponType.LASER,
                                                                         WeaponType.MISSILE)),2);  
-        
+        /*
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,10,badLoot,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",10,0,badLoot,lowDamage0));
@@ -204,7 +204,8 @@ class CardDealer {
         enemies.add(new EnemyStarShip("Enemigo difícil 0",200,100,goodLoot,hardSpecificDamage0));          
         enemies.add(new EnemyStarShip("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
-        enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));              
+        enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0)); 
+        */
     }
 }
 
