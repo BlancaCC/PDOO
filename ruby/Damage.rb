@@ -15,10 +15,11 @@ Cada intacia indicca la pérdida:
     
     def initialize s, w, wl
       @nShields = s # pontenciades de escudo perdio
-      @nWeapons = w #perdida armas tipo indeterminado
-      @weapons = wl # tipos de armas concretos que se pierden 
+      @nWeapons = w # perdida armas tipo indeterminado
+      @weapons = wl # list tipos de armas concretos que se pierde
     end # initialize
 
+    attr_reader :nShield, :nWeapons, :weapons
     private_class_method :new
 
     # por número de escudos y armas indeterminada
@@ -29,12 +30,14 @@ Cada intacia indicca la pérdida:
 
     #constructor armas concretas a eliminar y cantidad de escudos a eliminar
     def self.newSpecificWeapons wl, s
-      new s, -1, wl
+      #eliminamos tipos repetidos repetidos
+      wl = wl.uniq
+      new s,-1,wl
     end
 
     # constructor por copia
     def self.newCopy d
-      new d.getNShields, d.getNWeapons, d.getWeapons
+      new d.nShields, d.nWeapons, d.weapons
     end
 
      ### ________ métodos de la clase ______
@@ -44,48 +47,119 @@ Cada intacia indicca la pérdida:
       Deepspace::DamageToUI.new self
     end
 
-    ## weapons, WeaponType
-    def arrayContainsType w, s
-    end
-    private :arrayContainsType
+    ## ArrayList<weapons>, WeaponType
+    ## devuelve índice de la primera arma del array que coincida con el tipo, en su defecto -1
+    def self.arrayContainsType w, t
+      indice= -1
+      
+      indice_aux = 0
+      len = w.length
+      
+      while indice == -1 and indice_aux < len
+        if w[indice_aux].type == t
+          indice = indice_aux
+        else
+          indice_aux += 1
+        end #if
+      end #while
 
-    # weapons s ShieldBooster -> Damage
-    def adjust w, s
-    end
+      indice
+    end 
+   private_class_method :arrayContainsType
 
-    #weapon 
+   # weapons s ShieldBooster -> Damage
+   # le quitamos las armas y el número de escudos que esté en el paquete
+   def adjust w, s
+
+     # ajustamos escudos
+     len = s.length()
+     if @nShields > 
+       s = Array.new
+       @nShield = len # ajustamos el tamaño que quitamos
+     else
+       s = s.drop @nShields
+     end # ajuste de escudos
+
+
+     # ajustamso armas
+     # si se especifica tipo
+     if @nWeapons == -1       
+       @weapons.each |t| do
+         # si no está lo eliminamos del daño 
+         if arrayContainsType(w,t) == -1
+           @weapons.delete t
+         else
+           w = arr.reject { |w| w.type == t}
+         end #if
+       end #do weapons
+     else # si se va a eliminar por número
+       len = w.length()
+       if @nWeapons > len
+         @nWeapons = len
+         w = Array.new
+       else
+         w = w.drop @nWeapons
+       end # if 
+     end #if cantidad vs tipo
+     # devuelvo el propio objeto damage
+     self
+   end #adjust
+
+   
+
+    #intenta eliminar el tipo concreto de arma
+    # decrementa el contador de armas montadas, nunca es menor que 0
     def discardWeapon w
-    end
+      # si hay armas disponibles
+      if @weapons != nil 
+        
+        @weapons.each do |weapon|
+          if weapon == w then 
+            @weapons.delete(weapon)
+            #reducimos contador
+          end #if
+        end #do
+      elsif @nWeapons > 0
+        @nWeapons -= 1 
+      end #elsif 
 
+    end # discardWeapon 
+
+    # descarta un escudo, reducirá si el contador es mayor que 0
     def discardShieldBooster
-    end
+      if @nShields > 0
+        @nShields -= 1
+      end
+    end 
 
+    # duevuelve true si el daño representado tiene algún efecto
     def hasNoEffect
+      @nShields <= 0 and not (@nWeapons > 0 or @weapons != nil )
     end
     
  
     ## _________ consultores ______
-    # QUITO ALGUNO DE ESTOS?
+
     attr_reader :nWeapons, :weapons, :nShields
-=begin
-    def getNshield
-      @nShields
-    end
 
-    def getNWeapons
-      @nWeapons
-    end
-
-    def getWeapons
-      @weapons
-    end
-=end         
-   
     
 
     # _____ método de prueba
     def to_s
-      "nShields: #{@nShield} \nnWeapons:#{@nWeapons}\n#{@weapons}\n"
-    end 
+      s1 = "nShields: #{@nShields} \nnWeapons:#{@nWeapons}\nWeapons"
+      if @weapons == nil
+        s1 += ": nil\n"
+      else
+        s1 += " power: "
+        @weapons.each do |w|
+          s1 += "#{w.power} "
+        end
+        s1+= "\n"
+      end
+      
+      s1
+    end #to_s
+
+    
   end # class
 end # module Deespace 

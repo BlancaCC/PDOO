@@ -1,6 +1,7 @@
 #coding: utf-8
 
 module Deepspace
+  require_relative 'ShotResult'
   
   # Contiento todo lo referente a una estación espacial 
   class SpaceStation
@@ -94,8 +95,20 @@ module Deepspace
       @shieldPower += s.shieldPower 
     end #receiveSupplies s
 
-		def receiveShot shot
-		end
+    def receiveShot shot
+      resultado = nil
+      
+      if protection() >= shot
+        @shieldPower -= @@SHIELDLOSSPERUNIT*shot
+        @shieldPower = max(0.0, @shieldPower)
+
+        resultado = ShotResult::RESIST
+      else
+        @shieldPower = 0.0
+        resultado = DONOTRESIST
+      end
+      resultado
+    end
 
     #Se calcula el parámetro adjust a la list ade armas y pontenciadores de al estaciín y se almacena el resutado en el al atributo correspondiente
     def setPendingDamage d
@@ -194,12 +207,23 @@ module Deepspace
       end
     end # cleanUpMountedItems
 
-		
-		def fire
-		end
+    
+    def fire
+      factor = 1
+      @weapons.each do |w|
+        factor *= w.useIt()
+      end
+      @ammoPower*factor  
+    end
 
-		def protection
-		end
+    def protection
+
+      factor = 1
+      @ShieldBooster.each do |s|
+        factor *= s.useIt
+      end
+      factor*shieldPower
+    end
     
       def to_s
 
