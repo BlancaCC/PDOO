@@ -63,6 +63,6 @@ class Weapon {
        @brief El objeto que devuelve permite conectar el modelo de la interfaz de usuario con el modelo manteniendo cierto aislamiento entre ambos. 
        @return Construye objeto ToUI a partir de la propia instancia
      */
-    WeaponToUI WeaponToUIVersion(){ return new WeaponToUI(this); }
+    WeaponToUI getUIversion(){ return new WeaponToUI(this); }
     
 } //weapon 
