@@ -52,6 +52,7 @@ module Test
 
 
       #_____adjust____
+      puts "________ADJUST______"
       for i in 0..2
         weapons_array = Array.new
         weapons_array << Deepspace::Weapon.new("lasecillo",
@@ -68,7 +69,17 @@ module Test
         shield_array << Deepspace::ShieldBooster.new("escudo 1", 2.1, 1)
         shield_array << Deepspace::ShieldBooster.new("escudo 2", 9.1, 3)
 
-        if i == 0 # caso de prueba normal
+        if i == 0 # caso de prueba más escudos, borramos laser
+          puts "CASO 0: más escudos, borramos plasma"
+          weapons_types = Array.new 3 ,Deepspace::WeaponType::LASER
+          specific = Deepspace::Damage.newSpecificWeapons weapons_types, 9
+
+          puts "--El objeto ajustado--"
+          puts specific.adjust(weapons_array, shield_array).to_s
+          puts "--las armas y escudos tras ajustar--"
+          puts weapons_array
+          puts shield_array
+      
         elsif i==1
         else
         end #switch case

@@ -49,7 +49,7 @@ Cada intacia indicca la pérdida:
 
     ## ArrayList<weapons>, WeaponType
     ## devuelve índice de la primera arma del array que coincida con el tipo, en su defecto -1
-    def self.arrayContainsType w, t
+    def arrayContainsType w, t
       indice= -1
       
       indice_aux = 0
@@ -65,7 +65,7 @@ Cada intacia indicca la pérdida:
 
       indice
     end 
-   private_class_method :arrayContainsType
+   private :arrayContainsType
 
    # weapons s ShieldBooster -> Damage
    # le quitamos las armas y el número de escudos que esté en el paquete
@@ -73,23 +73,22 @@ Cada intacia indicca la pérdida:
 
      # ajustamos escudos
      len = s.length()
-     if @nShields > 
+     if @nShields > len
        s = Array.new
-       @nShield = len # ajustamos el tamaño que quitamos
+       @nShields = len # ajustamos el tamaño que quitamos
      else
        s = s.drop @nShields
      end # ajuste de escudos
 
-
-     # ajustamso armas
+     # ajustamos armas
      # si se especifica tipo
      if @nWeapons == -1       
-       @weapons.each |t| do
+       @weapons.each  do |t|
          # si no está lo eliminamos del daño 
          if arrayContainsType(w,t) == -1
            @weapons.delete t
          else
-           w = arr.reject { |w| w.type == t}
+           w = w.reject { |weapon| weapon.type == t}
          end #if
        end #do weapons
      else # si se va a eliminar por número
@@ -102,7 +101,7 @@ Cada intacia indicca la pérdida:
        end # if 
      end #if cantidad vs tipo
      # devuelvo el propio objeto damage
-     self
+     return Damage.newCopy self
    end #adjust
 
    
