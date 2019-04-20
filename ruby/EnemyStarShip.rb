@@ -1,5 +1,6 @@
 module Deepspace
 
+require_relative 'EnemyToUI'
 #Representa una nave enemiga
 	class EnemyStarShip
 
@@ -21,7 +22,7 @@ module Deepspace
 			EnemyToUI.new(self)
 		end
 
-		def protection 
+		def protection
 			shieldPower
 		end
 
@@ -30,7 +31,7 @@ module Deepspace
 		end
 
 		# Devuelve el resultado que se produce al recibir un disparo de una determinada potencia
-		def receiveShot(shot)	
+		def receiveShot(shot)
 			if shieldPower < shot
 				return ShotResult::DONOTRESIST
 			else

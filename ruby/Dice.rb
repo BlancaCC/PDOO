@@ -23,22 +23,22 @@ module Deepspace
           @brief Función aleatorio determinar número de hagares
           @return función que varía entre 0 o 1
 =end
-    def initWithNHangar
+    def initWithNHangars
 
       if rand <= @NHANGARPROB # supongo que rand va [0,1]
-        nhagar = 0
+        nhangar = 0
       else
-        nhagar = 1
+        nhangar = 1
       end #if random
 
-      return nhagar
+      return nhangar
     end # initWithNHangar
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 =begin
       @brief Determinará númer de armas que recibirá una estación esàcial al ser creada
       @return 0,1,2
 =end
-    def initWithWeapons
+    def initWithNWeapons
       aleatorio = rand
 
       if aleatorio <= @NWEAPONSPROB
@@ -59,7 +59,7 @@ module Deepspace
 
           @return 0 o 1
 =end
-    def initWithNshields
+    def initWithNShields
 
       if rand <= @NSHIELDSPROB
         nshields = 0
@@ -107,7 +107,7 @@ module Deepspace
   @return true si la esquiva, false en caso contrario
 =end
 
-    def spaceStationMoves( speed)
+    def spaceStationMoves(speed)
       if rand(1.0) <= speed
         esquiva = true
       else

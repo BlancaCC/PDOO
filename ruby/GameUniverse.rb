@@ -1,6 +1,15 @@
 # coding: utf-8
 
-# SIN ACABAR 
+require_relative "GameUniverseToUI"
+require_relative "GameStateController"
+require_relative "Dice"
+require_relative "CombatResult"
+require_relative "GameCharacter"
+require_relative "ShotResult"
+require_relative "SpaceStation"
+require_relative "CardDealer"
+require_relative "EnemyStarShip"
+
 
 module Deepspace
   class GameUniverse
@@ -12,17 +21,19 @@ module Deepspace
       # (supongo que deberá estar a INIT)
       ## (No necesitaríamso saber antes el número de jugadores )
 
-      @currentStationIndex #int 
+      @currentStationIndex = -1 #int
       @turns = 0 #int
-      @currentStation # referencia a un objeto SpaceStation
-      @currentEnemy # objeto de la clase EnemyStartShip, sólo una instancia
-      @spaceStations # objeto de la clase SpaceStation
+      @currentStation = nil# referencia a un objeto SpaceStation
+      @currentEnemy = nil# objeto de la clase EnemyStartShip, sólo una instancia
+      @spaceStations = Array.new # objeto de la clase SpaceStation
       # puedo tener entre 1..*
     end # initialize
 
     ### ______ métodos _____
 
-		attr_reader :gameState
+		def state
+      @gameState.state
+    end
 
     # Devuelve true si algún jugador ha llegado al númerdo de medallas necesarias para ganar
     def haveAWinner
@@ -40,7 +51,7 @@ module Deepspace
 		end
 
 		def mountWeapon(i)
-			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT 
+			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
 				return @currentStation.mountWeapon(i)
 			end
 		end
@@ -49,7 +60,7 @@ module Deepspace
 			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
 				return @currentStation.discardHangar
 			end
-		end			
+		end
 
 		def discardShieldBooster(i)
 			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
@@ -63,7 +74,13 @@ module Deepspace
 			end
 		end
 
-		def discardWeaponInHangar(i)		
+    def discardShieldBoosterInHangar(i)
+      if @gameState==GameState::INIT || @gameState==GameState::AFTERCOMBAT
+        return @currentStation.discardShieldBoosterInHangar(i)
+      end
+    end
+
+		def discardWeaponInHangar(i)
 			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
 				return @currentStation.discardWeaponInHangar(i)
 			end
@@ -72,20 +89,118 @@ module Deepspace
     ## Los métodos mount* discard* delegan en el método homoínimo de la estación espacial que tenga el turno, siempre que se cumpla que el juego se INIT o AFTERCOMBAt. En caso contrario no tiene ningún efecto
     ### _________ MÉTODOS DE LA PRÁCTICA 3 ________
 
+=begin
+Este método inicia una partida. Recibe una colección con los
+nombres de los jugadores. Para cada jugador, se crea una estación espacial y se equipa con
+suministros, hangares, armas y potenciadores de escudos tomados de los mazos de cartas
+correspondientes. Se sortea qué jugador comienza la partida, se establece el primer enemigo y
+comienza el primer turno.
+=end
     def init names
-      
+      state = @gameState.state
+      if(state == GameState::CANNOTPLAY)
+        @spaceStations = Array.new
+        dealer = CardDealer.instance
+        names.each { |name|
+          supplies = dealer.nextSuppliesPackage
+          station = SpaceStation.new(name,supplies)
+          @spaceStations << station
+          nh = @dice.initWithNHangars #int
+          nw = @dice.initWithNWeapons
+          ns = @dice.initWithNShields
+          lo = Loot.new(0,nw,ns,nh,0) # Loot
+          station.setLoot(lo)
+        }
+        @currentStationIndex = @dice.whoStarts(names.size)
+        @currentStation = @spaceStations[@currentStationIndex]
+        @currentEnemy = dealer.nextEnemy # EnemyStartShip
+        @gameState.next(@turns,@spaceStations.size)
+      end # if
     end #init
 
-    def nextTurn
-    end
 
+=begin
+Se comprueba que el jugador actual no tiene ningún daño pendiente de cumplir,
+en cuyo caso se realiza un cambio de turno al siguiente jugador con un nuevo enemigo con quien
+combatir, devolviendo true. Se devuelve false en otro caso.
+=end
+    def nextTurn
+      state = @gameState.state
+      if(state == GameState::AFTERCOMBAT)
+        stationState = @currentStation.validState
+
+        if(stationState)
+          @currentStationIndex = (@currentStationIndex+1)%@spaceStations.size
+          @turns += 1
+          @currentStation = @spaceStations[@currentStationIndex]
+          @currentStation.cleanUpMountedItems
+          dealer = CardDealer.instance
+          @currentEnemy = dealer.nextEnemy
+          @gameState.next(@turns,@spaceStations.size)
+          return true
+        end #if
+
+      end #if
+
+      return false
+    end #nextTurn
+
+=begin
+Si la aplicación se encuentra en un estado en donde el combatir está
+permitido, se realiza un combate entre la estación espacial que tiene el turno y el enemigo actual. Se
+devuelve el resultado del combate.
+=end
     def combat
+      state = @gameState.state
+      if(state == GameState::BEFORECOMBAT || state == GameState::INIT)
+        return combatGo(@currentStation,@currentEnemy)
+      else
+        return CombatResult::NOCOMBAT
+      end
     end
 
     def combatGo station,enemy
-    end 
+      ch = @dice.firstShot
 
-		
+      if(ch == GameCharacter::ENEMYSTARSHIP)
+        fire = @currentEnemy.fire
+        result = @currentStation.receiveShot(fire) #ShotResult
+        if(result == ShotResult::RESIST)
+          fire = @currentStation.fire
+          result = @currentEnemy.receiveShot(fire) #ShotResult
+          enemyWins=(result==ShotResult::RESIST)
+        else
+          enemyWins=true
+        end
+      else
+        fire = @currentStation.fire
+        result = @currentEnemy.receiveShot(fire)
+        enemyWins=(result==ShotResult::RESIST)
+      end #if
+
+      if(enemyWins)
+        s = @currentStation.getSpeed
+        moves = @dice.spaceStationMoves(s) #bool
+        if(!moves)
+          damage = @currentEnemy.damage
+          @currentStation.setPendingDamage(damage)
+          combatResult=CombatResult::ENEMYWINS
+        else
+          @currentStation.move
+          combatResult=CombatResult::STATIONESCAPES
+        end
+      else
+        aLoot = @currentEnemy.loot
+        @currentStation.setLoot(aLoot)
+        combatResult=CombatResult::STATIONWINS
+      end
+      @gameState.next(@turns,@spaceStations.size)
+
+      return combatResult
+
+  end #combatGo
+
+
 		def getUIversion
 			GameUniverseToUI.new(@currentStation,@currentEnemy)
 		end
@@ -98,6 +213,6 @@ module Deepspace
 			s += "@spaceStations: #{@spaceStations}"
 			return s
 		end
- 
-  end # GameUniverse 
-end # Deepspace 
+
+  end # GameUniverse
+end # Deepspace
