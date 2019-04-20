@@ -96,9 +96,20 @@ public class SpaceStation {
             hangar.removeWeapon(i);
         }
     }
-    
+
+    /**
+       realiza un disparo y devuelve la energía o potencia del mismo
+     */
     public float fire() {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+	float factor = 1;
+
+	if (weapons != null)
+	    for( Weapon weapon : weapons ){
+		factor *= weapon.useIt(); 
+	    }
+	
+	return ammoPower*factor;
     }
 
     public float getAmmoPower() {
