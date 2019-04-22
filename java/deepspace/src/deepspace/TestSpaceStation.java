@@ -13,8 +13,35 @@ public class TestSpaceStation{
 	SuppliesPackage paquete = new SuppliesPackage(10.0f, 110.3f, 2f ); 
 	SpaceStation ss = new SpaceStation( "Mi-ss", paquete);
 
+	//creacion hangar, armas y ShieldBooster
+	Hangar hangar = new Hangar (7);
+	hangar.addWeapon( new Weapon( "mi-laser", WeaponType.LASER, 3));
+
+        hangar.addShieldBooster( new ShieldBooster( "Escudo", 10, 10) );
+
+	ss.receiveHangar(hangar);
+	ss.mountWeapon(0);
+	ss.mountShieldBooster(0); 
+	
+	
+
 	//--- fire() -
 	float fire = ss.fire();
-	System.out.println("El fuego es " + fire); 
+	System.out.println("El fuego es " + fire);
+
+	// --- protección
+	System.out.println("Protección es " + ss.protection());
+
+	//--- resultado
+	System.out.println("Resultado tiro 1 es " + ss.receiveShot(1));
+	System.out.println("Resultado tiro 100 es " + ss.receiveShot(100));
+	System.out.println(""); //espacio intencionadamente en blanca
+
+	// ====== pruebas loot ======
+
+        ss.setLoot( new Loot( 2, 1, 10,2, 2));
+	System.out.println("SpaceStation tras recibir botín \n" + ss.toString()); 
+	
+	
     }
 }

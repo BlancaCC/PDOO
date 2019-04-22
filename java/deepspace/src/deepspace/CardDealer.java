@@ -26,13 +26,13 @@ class CardDealer {
         shieldBoosters=new CardDeck<>();
         weapons=new CardDeck<>();
         hangars=new CardDeck<>();
-        enemies=new CardDeck<>();
+        //enemies=new CardDeck<>();
 
         
         initCards();
     };
            
-    
+
     public static CardDealer getInstance() {
         return instance;
     }

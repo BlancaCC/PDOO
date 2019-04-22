@@ -160,6 +160,8 @@ public class SpaceStation {
         if(hangar!=null) {
             ShieldBooster s = hangar.removeShieldBooster(i);
             if(s != null) {
+		if (shieldBoosters == null)
+		    shieldBoosters = new ArrayList<>(); 
                 shieldBoosters.add(s);
             }
             
@@ -167,9 +169,13 @@ public class SpaceStation {
     }
     
     public void mountWeapon(int i) {
+	
         if(hangar != null) {
+	    
             Weapon w = hangar.removeWeapon(i);
             if(w != null) {
+		if (weapons == null)
+		    weapons = new ArrayList<>(); 
                 weapons.add(w);
             }
         }
@@ -178,9 +184,17 @@ public class SpaceStation {
     public void move() {
         fuelUnits = Math.max(fuelUnits*(1-getSpeed()), 0f);
     }
-    
+
+    //Una el escudo de protección y devuelve la energía del mismo
     public float protection() {
-        throw new UnsupportedOperationException();
+
+	float factor = 1.0f;
+	if (shieldBoosters != null)
+	    for(ShieldBooster shieldBooster :  shieldBoosters) {
+	    
+		factor *= shieldBooster.useIt(); 
+	    }
+	return shieldPower*factor; 
     }
     
     public void receiveHangar(Hangar h) {
@@ -206,9 +220,25 @@ public class SpaceStation {
             return hangar.addWeapon(w);
         }
     }
-    
+
+    //operaciones receptión impacto enemigo
     public ShotResult receiveShot(float shot) {
-        throw new UnsupportedOperationException();
+
+	ShotResult resultado = ShotResult.DONOTRESIST;
+	
+	if( protection() >= shot){
+	    shieldPower -= SHIELDLOSSPERUNITSHOT*shot;
+	    shieldPower = Math.max( shieldPower, 0.0f);
+
+	    resultado = ShotResult.RESIST; 
+	}
+	else{
+	    shieldPower = 0.0f;
+	    
+	    resultado = ShotResult.DONOTRESIST;    
+	}
+
+	return resultado; 
     }
     
     public void receiveSupplies(SuppliesPackage s) {
@@ -216,10 +246,37 @@ public class SpaceStation {
       fuelUnits += s.getFuelUnits();
       shieldPower += s.getShieldPower();
     }
-    
+
+    //recepción de un botín 
     public void setLoot(Loot loot) {
-        throw new UnsupportedOperationException();
-    }
+
+	CardDealer dealer = CardDealer.getInstance();
+
+	// hangar
+	for( int i=0; i<loot.getNHangars(); i++ ) {
+	    receiveHangar( dealer.nextHangar());  
+	}
+	
+	// supplies
+	for( int i=0; i<loot.getNSupplies(); i++){
+	    receiveSupplies( dealer.nextSuppliesPackage());
+	}
+
+	// weapons
+	for( int i=0; i<loot.getNWeapons(); i++){
+
+	    receiveWeapon( dealer.nextWeapon()); 
+	}
+
+	// shield
+	for(int i=0; i<loot.getNMedals(); i++){
+	    receiveShieldBooster( dealer.nextShieldBooster()); 
+	}
+
+	//medals
+	nMedals += getNMedals(); 	
+	
+    } //setLoot
     
     // Se calcula el parámetro ajustado (adjust) a la lista de armas y
     // potenciadores de escudo de la estación y se almacena el resultado en el atributo correspondiente.

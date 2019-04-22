@@ -18,6 +18,8 @@ public class Hangar {
     
     Hangar(int capacity) {
         maxElements = capacity;
+	weapons = new ArrayList<>();
+	shieldBoosters = new ArrayList<>(); 
     }
     
     Hangar(Hangar h) {
@@ -31,7 +33,7 @@ public class Hangar {
     }
     
     private boolean spaceAvailable() {
-        return weapons.size()+shieldBoosters.size()<maxElements;
+        return weapons.size()+shieldBoosters.size() < maxElements;
     }
     
     public boolean addShieldBooster(ShieldBooster w) {
