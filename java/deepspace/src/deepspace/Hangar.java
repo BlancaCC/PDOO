@@ -77,6 +77,22 @@ public class Hangar {
         }
         return null;
     }
+    public String toString (){
+
+	String representacion = "\n__Hangar__" +
+	    "\nCapacidad: " + maxElements +
+	    "\nweapons:\n";
+	
+	if (weapons != null) for( Weapon weapon :weapons)
+	    representacion += weapon.toString();
+	representacion +="\nshieldBoster: \n";
+	
+	if(shieldBoosters != null) for(ShieldBooster shield : shieldBoosters)
+	    representacion += shield.toString();
+	
+	representacion += "\n"; 
+	return representacion; 
+    }
     
     
 }
