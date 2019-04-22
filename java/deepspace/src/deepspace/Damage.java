@@ -138,6 +138,22 @@ public class Damage {
     public ArrayList<WeaponType> getWeapons() {
         return weapons;
     }
+
+    public String toString(){
+	
+	String representacion = "\n__ damage__\n";
+	representacion += "\nShields: " + nShields +
+	    "\nnWeapons: " + nWeapons +
+	    "\nweapons:\n";
+	
+	if(weapons != null) for(WeaponType weapon : weapons)
+	    representacion += weapon;
+	representacion += "\n";
+
+	return representacion; 
+	       
+
+    }
     
     
 }

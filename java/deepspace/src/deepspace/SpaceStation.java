@@ -41,7 +41,7 @@ public class SpaceStation {
     }
     
     private void cleanPendingDamage() {
-        if(pendingDamage.hasNoEffect())
+        if(pendingDamage != null && pendingDamage.hasNoEffect())
             pendingDamage = null;
     }
     
@@ -87,8 +87,17 @@ public class SpaceStation {
             hangar.removeShieldBooster(i);
         }
     }
-    
+    //se intenta descartar arma con ese índice
     public void discardWeapon(int i) {
+	
+	if( i >= 0 && i< weapons.size()){
+	    Weapon weapon = weapons.get(i);
+	    weapons.remove(i);
+	    System.out.println("comprobación arma" + weapon.toString());
+	    if(pendingDamage != null)
+		pendingDamage.discardWeapon(weapon);
+	    cleanPendingDamage(); 
+	}
     }
     
     public void discardWeaponInHangar(int i) {
@@ -286,6 +295,32 @@ public class SpaceStation {
     
     public boolean validState() {
         return (pendingDamage == null || pendingDamage.hasNoEffect());
+    }
+    public String toString(){
+	
+	String representacion = "Spacece Station \n"+
+	    "ammoPower: " + ammoPower +
+	    "\nfuelUnits: " + fuelUnits +
+	    "\nname: " + name + 
+	    "\nshieldPower :" + shieldPower;
+	
+	if (pendingDamage != null)
+	    representacion += "\npendingDamage :" + pendingDamage.toString();
+	representacion += "\n__mounted__\n"; 
+	if(hangar != null)
+	    representacion += "\nhangar :" + hangar.toString(); 
+	representacion += "\nweapons :\n";
+
+	if(weapons != null)for( Weapon weapon :weapons)
+	    representacion += weapon.toString();
+	representacion +="\nshieldBoster: \n";
+	
+	if(shieldBoosters != null) for(ShieldBooster shield : shieldBoosters)
+	    representacion += shield.toString();
+	
+	representacion += "\n"; 
+
+	return representacion; 
     }
 }
 

@@ -16,13 +16,17 @@ public class TestSpaceStation{
 	//creacion hangar, armas y ShieldBooster
 	Hangar hangar = new Hangar (7);
 	hangar.addWeapon( new Weapon( "mi-laser", WeaponType.LASER, 3));
+	hangar.addWeapon( new Weapon( "mi-laser2", WeaponType.LASER, 8));
 
         hangar.addShieldBooster( new ShieldBooster( "Escudo", 10, 10) );
 
 	ss.receiveHangar(hangar);
+	System.out.println(ss); 
 	ss.mountWeapon(0);
-	ss.mountShieldBooster(0); 
-	
+	ss.mountShieldBooster(0);
+
+	System.out.println(ss); 
+	ss.setPendingDamage( new Damage(3,8));
 	
 
 	//--- fire() -
@@ -41,7 +45,12 @@ public class TestSpaceStation{
 
         ss.setLoot( new Loot( 2, 1, 10,2, 2));
 	System.out.println("SpaceStation tras recibir botín \n" + ss.toString()); 
+
+	// discarWEapon
 	
+	//	ss.setPendingDamage( new Damage(2,1));
+	ss.discardWeapon(0);
+	System.out.println("SpaceStation tras descartararma \n" + ss.toString()); 
 	
     }
 }
