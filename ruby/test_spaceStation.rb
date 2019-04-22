@@ -57,10 +57,16 @@ module Pruebas
       ss.move
 
       puts "¿Es mi estado válido? #{ss.validState}"
+
+			puts ss.hangar.inspect
+			puts ss.name
+			puts ss.shieldPower.inspect
+			puts "a:#{ss.ammoPower} fu:#{ss.fuelUnits} h:#{ss.hangar} n:#{ss.name} nM:#{ss.nMedals}"
+			puts "pD:#{ss.pendingDamage} sB:#{ss.shieldBoosters} sP:#{ss.shieldPower} w:#{ss.weapons}"
       
       ss.cleanUpMountedItems
 
-     
+     	
       
       
       
