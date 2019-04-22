@@ -9,6 +9,7 @@ require_relative "ShotResult"
 require_relative "SpaceStation"
 require_relative "CardDealer"
 require_relative "EnemyStarShip"
+require_relative "GameState"
 
 
 module Deepspace
@@ -45,43 +46,45 @@ module Deepspace
     end # haveAWinner
 
 		def mountShieldBooster(i)
-			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
+			if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
 				return @currentStation.mountShieldBooster(i)
 			end
 		end
 
 		def mountWeapon(i)
-			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
+      puts "Estoy en mountWeapon de GU"
+			if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
+        puts "He pasado el if"
 				return @currentStation.mountWeapon(i)
 			end
 		end
 
 		def discardHangar
-			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
+			if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
 				return @currentStation.discardHangar
 			end
 		end
 
 		def discardShieldBooster(i)
-			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
+			if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
 				return @currentStation.discardShieldBooster(i)
 			end
 		end
 
 		def discardWeapon(i)
-			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
-				return @currentStation.discarWeapon(i)
+			if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
+				return @currentStation.discardWeapon(i)
 			end
 		end
 
     def discardShieldBoosterInHangar(i)
-      if @gameState==GameState::INIT || @gameState==GameState::AFTERCOMBAT
+      if @gameState.state==GameState::INIT || @gameState.state==GameState::AFTERCOMBAT
         return @currentStation.discardShieldBoosterInHangar(i)
       end
     end
 
 		def discardWeaponInHangar(i)
-			if @gameState==GameState::INIT ||@gameState==GameState::AFTERCOMBAT
+			if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
 				return @currentStation.discardWeaponInHangar(i)
 			end
 		end
@@ -97,19 +100,18 @@ correspondientes. Se sortea qué jugador comienza la partida, se establece el pr
 comienza el primer turno.
 =end
     def init names
-      state = @gameState.state
-      if(state == GameState::CANNOTPLAY)
-        @spaceStations = Array.new
+      st = @gameState.state
+      if(st == GameState::CANNOTPLAY)
         dealer = CardDealer.instance
         names.each { |name|
           supplies = dealer.nextSuppliesPackage
           station = SpaceStation.new(name,supplies)
-          @spaceStations << station
           nh = @dice.initWithNHangars #int
           nw = @dice.initWithNWeapons
           ns = @dice.initWithNShields
           lo = Loot.new(0,nw,ns,nh,0) # Loot
           station.setLoot(lo)
+          @spaceStations << station
         }
         @currentStationIndex = @dice.whoStarts(names.size)
         @currentStation = @spaceStations[@currentStationIndex]
@@ -125,8 +127,8 @@ en cuyo caso se realiza un cambio de turno al siguiente jugador con un nuevo ene
 combatir, devolviendo true. Se devuelve false en otro caso.
 =end
     def nextTurn
-      state = @gameState.state
-      if(state == GameState::AFTERCOMBAT)
+      st = @gameState.state
+      if(st == GameState::AFTERCOMBAT)
         stationState = @currentStation.validState
 
         if(stationState)
@@ -151,8 +153,8 @@ permitido, se realiza un combate entre la estación espacial que tiene el turno 
 devuelve el resultado del combate.
 =end
     def combat
-      state = @gameState.state
-      if(state == GameState::BEFORECOMBAT || state == GameState::INIT)
+      st = @gameState.state
+      if(st == GameState::BEFORECOMBAT || st == GameState::INIT)
         return combatGo(@currentStation,@currentEnemy)
       else
         return CombatResult::NOCOMBAT

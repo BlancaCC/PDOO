@@ -1,3 +1,5 @@
+require_relative 'WeaponToUI'
+
 module Deepspace
 
   # @brief representa a las armas de las que puede disponer una estación
@@ -31,7 +33,7 @@ module Deepspace
 
     def to_s
       s = "Atributos de la instancia de Weapon: \n"
-      s += "  name: #{name}\n" 
+      s += "  name: #{name}\n"
 			s += "  type: "
 			if type == WeaponType::LASER
 				s += "LASER\n"

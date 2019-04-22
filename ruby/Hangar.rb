@@ -3,13 +3,14 @@
 require_relative "WeaponType"
 require_relative "Weapon"
 require_relative "ShieldBooster"
+require_relative "HangarToUI"
 
 module Deepspace
 
   class Hangar
 
     def initialize(capacity)
-      @maxElements = capacity #capacidad máxima del hangar
+      @maxElements = capacity #capacidad mï¿½xima del hangar
       @weapons = Array.new # contenedor con las armas del hangar
       @shieldBoosters = Array.new # contenedor con los escudos del hangar
     end
@@ -24,13 +25,13 @@ module Deepspace
       h.shieldBoosters.each{ |s|
 	cpy.shieldBoosters.push(s)
       }
-      return cpy 
+      return cpy
     end
 
     def getUIversion
       HangarToUI.new(self)
     end
-    
+
     private
     def spaceAvailable
       if weapons.size + shieldBoosters.size == maxElements
@@ -48,7 +49,7 @@ module Deepspace
 	return true
       end
     end
-    
+
     def addShieldBooster(w)
       if weapons.size + shieldBoosters.size == maxElements
 	return false
@@ -85,7 +86,7 @@ module Deepspace
       }
       return s
     end
-    
+
 
   end #class Hangar
 

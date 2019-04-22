@@ -108,13 +108,13 @@ module Deepspace
 =end
 
     def spaceStationMoves(speed)
-      if rand(1.0) <= speed
+      if rand <= speed
         esquiva = true
       else
         esquiva = false
       end # rando si esquiva
-      return esquiva
 
+      return esquiva
     end #  spaceStationMoves( speed)
 
      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

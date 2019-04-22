@@ -63,7 +63,6 @@ module Deepspace
       if @hangar
         #la hangar.addWeapon  devuelve si ha podido añadirla o no
         conseguido = @hangar.addWeapon w
-
       end # if
       conseguido
     end #receiveWeapn
@@ -74,8 +73,6 @@ module Deepspace
       if @hangar
         # addShieldBooster  devuelve si ha podido añadirla o no
         conseguido = @hangar.addShieldBooster s
-
-
       end # if
       conseguido
     end #receiveShieldBooster s
@@ -114,12 +111,42 @@ module Deepspace
 
     #Se calcula el parámetro adjust a la list ade armas y pontenciadores de al estaciín y se almacena el resutado en el al atributo correspondiente
     def setPendingDamage d
-      @pendingDamage = d.adjust @weapons, @shieldPower
+      @pendingDamage = d.adjust @weapons, @shieldBoosters
 
     end
 
 		def setLoot loot
-		end
+      dealer = CardDealer.instance
+
+      h = loot.nHangars
+      if(h>0)
+        hangar = dealer.nextHangar
+        receiveHangar(hangar)
+      end
+
+      elements = loot.nSupplies
+      elements.times do
+        sup = dealer.nextSuppliesPackage
+        receiveSupplies(sup)
+      end
+
+      elements = loot.nWeapons
+      elements.times do
+        weap = dealer.nextWeapon
+        receiveWeapon(weap)
+      end
+
+      elements = loot.nShields
+      elements.times do
+        sh = dealer.nextShieldBooster
+        receiveShieldBooster(sh)
+      end
+
+      medals = loot.nMedals
+      @nMedals += medals
+
+		end #setLoot
+
 
     # __ suministrar métdos desde hangar __
     def mountWeapon i
@@ -158,9 +185,26 @@ module Deepspace
     end
 
 		def discardWeapon i
-		end
+      size = weapons.size
+      if(i>=0 && i<size)
+        w = weapons.delete_at(i)
+        if(pendingDamage != nil)
+          pendingDamage.discardWeapon(w)
+          cleanPendingDamage
+        end
+      end
+    end #discardWeapon
 
-		def discardShieldBooster s
+
+		def discardShieldBooster i
+      size = shieldBoosters.size
+      if(i>=0 && i<size)
+        s = shieldBoosters.delete_at(i)
+        if(pendingDamage != nil)
+          pendingDamage.discardShieldBooster(s)
+          cleanPendingDamage
+        end
+      end
 		end
 
     # velocida estación espacial
