@@ -113,19 +113,15 @@ Cada intacia indicca la pérdida:
       newWeapons = Array.new
       @weapons.each { |weapon|
         ind = arrayContainsType(auxWeap,weapon)
-        puts "ind: #{ind}"
         if(ind != -1)
           newWeapons << weapon
           auxWeap.delete_at(ind)
         end
       }
-      puts "weapons: #{newWeapons}"
-      puts "s: #{newNShields}"
       return self.class.newSpecificWeapons(newWeapons,newNShields)
     else
       newNWeapons = [@nWeapons,w.size].min
-      puts "s: #{newNShields}"
-      puts "w: #{newNWeapons}"
+    
       return self.class.newNumericWeapons(newNShields,newNWeapons)
     end
 
