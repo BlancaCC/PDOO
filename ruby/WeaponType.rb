@@ -12,6 +12,16 @@ module Deepspace
         @power= _power
       end # initialize
 
+      def to_s
+          if @power==2.0
+            return "LASER"
+          elsif @power==3.0
+            return "MISSILE"
+          else
+            return "PLASMA"
+          end
+end
+
     end # class Type
 
     LASER= Type.new(2.0)

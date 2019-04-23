@@ -52,9 +52,7 @@ module Deepspace
 		end
 
 		def mountWeapon(i)
-      puts "Estoy en mountWeapon de GU"
 			if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
-        puts "He pasado el if"
 				return @currentStation.mountWeapon(i)
 			end
 		end

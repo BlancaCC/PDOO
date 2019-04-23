@@ -21,7 +21,7 @@ Cada intacia indicca la pérdida:
       @weapons = wl # list tipos de armas concretos que se pierde
     end # initialize
 
-    attr_reader :nShield, :nWeapons, :weapons
+    attr_reader :nShields, :nWeapons, :weapons
     private_class_method :new
 
     # por número de escudos y armas indeterminada
@@ -46,7 +46,7 @@ Cada intacia indicca la pérdida:
 
     # método de copia de
     def  getUIversion
-      Deepspace::DamageToUI.new self
+      DamageToUI.new self
     end
 
     ## ArrayList<weapons>, WeaponType
@@ -72,7 +72,7 @@ Cada intacia indicca la pérdida:
    # weapons s ShieldBooster -> Damage
    # le quitamos las armas y el número de escudos que esté en el paquete
    def adjust w, s
-
+=begin
      # ajustamos escudos
      len = s.length()
      if @nShields > len
@@ -103,7 +103,32 @@ Cada intacia indicca la pérdida:
        end # if
      end #if cantidad vs tipo
      # devuelvo el propio objeto damage
+     puts "nShields: #{nShields}"
+     puts "nWeapons: #{nWeapons}"
      return Damage.newCopy self
+=end
+    newNShields = [s.size,@nShields].min
+    if(@nWeapons == -1)
+      auxWeap = w.clone
+      newWeapons = Array.new
+      @weapons.each { |weapon|
+        ind = arrayContainsType(auxWeap,weapon)
+        puts "ind: #{ind}"
+        if(ind != -1)
+          newWeapons << weapon
+          auxWeap.delete_at(ind)
+        end
+      }
+      puts "weapons: #{newWeapons}"
+      puts "s: #{newNShields}"
+      return self.class.newSpecificWeapons(newWeapons,newNShields)
+    else
+      newNWeapons = [@nWeapons,w.size].min
+      puts "s: #{newNShields}"
+      puts "w: #{newNWeapons}"
+      return self.class.newNumericWeapons(newNShields,newNWeapons)
+    end
+
    end #adjust
 
 
@@ -135,13 +160,14 @@ Cada intacia indicca la pérdida:
 
     # duevuelve true si el daño representado tiene algún efecto
     def hasNoEffect
-      @nShields <= 0 and not (@nWeapons > 0 or @weapons != nil )
+      if(@nWeapons == -1)
+        return @weapons.size==0 && @nShields==0
+      else
+        return @nWeapons == 0 && @nShields == 0
+      end
     end
 
 
-    ## _________ consultores ______
-
-    attr_reader :nWeapons, :weapons, :nShields
 
 
 

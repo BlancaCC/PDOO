@@ -49,7 +49,9 @@ module Deepspace
 
     def cleanPendingDamage
       # si PendingGame no tiene efecto fija la referecia a null
-      @pendingDamage = nil# algúm metodo habrá para ajustarlo
+      if(@pendingDamage.hasNoEffect)
+        @pendingDamage = nil# algúm metodo habrá para ajustarlo
+      end
     end #cleanPendingDamage
 
     private :assignFuelValue
@@ -201,7 +203,7 @@ module Deepspace
       if(i>=0 && i<size)
         s = shieldBoosters.delete_at(i)
         if(pendingDamage != nil)
-          pendingDamage.discardShieldBooster(s)
+          pendingDamage.discardShieldBooster
           cleanPendingDamage
         end
       end
