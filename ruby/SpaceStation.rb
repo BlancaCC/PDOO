@@ -221,7 +221,7 @@ module Deepspace
       # de todas formas lo mantengo por si acaba modificándose en algún momento
       speed = getSpeed
       if @fuelUnits >= speed
-        @fuelUnits -= speed
+        @fuelUnits -= speed*@fuelUnits
       else
         @fuelUnits = 0
       end
