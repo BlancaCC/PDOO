@@ -1,6 +1,8 @@
 # coding: utf-8
 
 require_relative 'DamageToUI'
+require_relative 'WeaponType'
+require_relative 'Weapon'
 
 module Deepspace
 =begin
@@ -15,7 +17,7 @@ Cada intacia indicca la pérdida:
 
     #### _____ constructores _____
 
-    def initialize s, w, wl
+    def initialize  w,s, wl
       @nShields = s # pontenciades de escudo perdio
       @nWeapons = w # perdida armas tipo indeterminado
       @weapons = wl # list tipos de armas concretos que se pierde
@@ -26,20 +28,18 @@ Cada intacia indicca la pérdida:
 
     # por número de escudos y armas indeterminada
     # array con el tipo de armas indeterminado vacío
-    def self.newNumericWeapons s, w
-      new s,w,nil
+    def self.newNumericWeapons w,s
+      new w,s,nil
     end
 
     #constructor armas concretas a eliminar y cantidad de escudos a eliminar
     def self.newSpecificWeapons wl, s
-      #eliminamos tipos repetidos repetidos
-      wl = wl.uniq
-      new s,-1,wl
+      new -1,s,wl
     end
 
     # constructor por copia
     def self.newCopy d
-      new d.nShields, d.nWeapons, d.weapons
+      new  d.nWeapons, d.nShields, d.weapons
     end
 
      ### ________ métodos de la clase ______
@@ -121,8 +121,8 @@ Cada intacia indicca la pérdida:
       return self.class.newSpecificWeapons(newWeapons,newNShields)
     else
       newNWeapons = [@nWeapons,w.size].min
-    
-      return self.class.newNumericWeapons(newNShields,newNWeapons)
+
+      return self.class.newNumericWeapons(newNWeapons,newNShields)
     end
 
    end #adjust
@@ -134,13 +134,20 @@ Cada intacia indicca la pérdida:
     def discardWeapon w
       # si hay armas disponibles
       if @weapons != nil
-
+=begin
         @weapons.each do |weapon|
-          if weapon == w then
+          if weapon == w.type then
             @weapons.delete(weapon)
             #reducimos contador
           end #if
         end #do
+=end
+        @weapons.size.times do |i|
+          if(@weapons[i]==w.type)
+            puts @weapons.delete_at(i)
+            return
+          end
+        end
       elsif @nWeapons > 0
         @nWeapons -= 1
       end #elsif
@@ -173,10 +180,11 @@ Cada intacia indicca la pérdida:
       if @weapons == nil
         s1 += ": nil\n"
       else
-        s1 += " power: "
-        @weapons.each do |w|
-          s1 += "#{w.power} "
-        end
+      #  s1 += " power: "
+      #  @weapons.each do |w|
+      #    s1 += "#{w.power} "
+        s1+="#{weapons}"
+      #  end
         s1+= "\n"
       end
 
@@ -185,4 +193,15 @@ Cada intacia indicca la pérdida:
 
 
   end # class
+
+=begin
+  d = Damage.newSpecificWeapons([WeaponType::PLASMA,WeaponType::PLASMA,WeaponType::LASER],3)
+  puts d.weapons
+  puts "-----"
+  d.discardWeapon(Weapon.new("hola",WeaponType::PLASMA,2.4))
+  e = Damage.newCopy(d)
+  puts d.to_s
+  puts d.weapons.size
+=end
+
 end # module Deespace
