@@ -75,6 +75,8 @@ class CardDealer
         @suppliesPackages.add(SuppliesPackage.new(3,50,3))  
         @suppliesPackages.add(SuppliesPackage.new(40,100,40))
         @suppliesPackages.add(SuppliesPackage.new(100,100,100))
+        # cartas añadidas
+        @suppliesPackages.add(SuppliesPackage.new(100,10,1))
     end
     
     def createWeapons() 
@@ -102,8 +104,9 @@ class CardDealer
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
-       @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))       
-       
+       @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))
+       # cartas añadidas
+       @weapons.add(Weapon.new("Cañón más mejorado aún",WeaponType::PLASMA,3))
     end
     
     def createShieldBoosters() 
@@ -118,6 +121,9 @@ class CardDealer
        @shieldBoosters.add(ShieldBooster.new("Escudo ACME",1.5,2))
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",3.0,2))
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",4.0,2))
+
+       # carta añadida
+       @shieldBoosters.add(ShieldBooster.new("Escudo súper normal",5.0,3))
     end
                                
     def createHangars() 
@@ -130,6 +136,9 @@ class CardDealer
         @hangars.add(Hangar.new(2))
         @hangars.add(Hangar.new(1))
         @hangars.add(Hangar.new(1))
+
+        #carta añadida
+        @hangars.add(Hangar.new(4))
     end
     
     def createEnemies() 
@@ -180,7 +189,15 @@ class CardDealer
         @enemies.add(EnemyStarShip.new("Enemigo difícil 0",200,100,goodLoot,hardSpecificDamage0));          
         @enemies.add(EnemyStarShip.new("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
-        @enemies.add(EnemyStarShip.new("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));              
+        @enemies.add(EnemyStarShip.new("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));
+
+        #carta añadida
+
+        veryGoodLoot=Loot.new(2,2,2,2,2)
+        regularDamage3=Damage.newNumericWeapons(2,2)
+        @enemies.add(EnemyStarShip.new("Enemigo regulero 1.5 ",80,80,veryGoodLoot,regularDamage3));
+        
+        
     end
 end # class
 
