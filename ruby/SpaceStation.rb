@@ -197,7 +197,7 @@ module Deepspace
       end
     end #discardWeapon
 
-                
+
     def discardShieldBooster i
       size = shieldBoosters.size
       if(i>=0 && i<size)
@@ -219,12 +219,7 @@ module Deepspace
       ## realizo aquí la comprobación de que no puede ser 0
       #aunque lo que define la velocidad es una serie geométrica que converge a 0 por valores mayores,
       # de todas formas lo mantengo por si acaba modificándose en algún momento
-      speed = getSpeed
-      if @fuelUnits >= speed
-        @fuelUnits -= speed
-      else
-        @fuelUnits = 0
-      end
+      @fuelUnits = [0,(1-getSpeed)*@fuelUnits].max
     end
 
     # estado valido: no daño o daño sin efecto
@@ -299,7 +294,7 @@ Información de la estacion espacial:  #{@name}
 Información general de todas las estaciones espaciales:
      MAXFUEL:  #{@@MAXFUEL}
      SHIELDLOSSPERUNITSHOT: #{@@SHIELDLOSSPERUNITSHOT}
-  
+
 """
         s
 
