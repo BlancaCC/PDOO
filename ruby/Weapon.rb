@@ -1,3 +1,4 @@
+# coding: utf-8
 require_relative 'WeaponToUI'
 
 module Deepspace
@@ -32,18 +33,18 @@ module Deepspace
     end
 
     def to_s
-      s = "Atributos de la instancia de Weapon: \n"
+      s = "Weapon: \n"
       s += "  name: #{name}\n"
-			s += "  type: "
-			if type == WeaponType::LASER
-				s += "LASER\n"
+      s += "  type: "
+      if type == WeaponType::LASER
+	s += "LASER\n"
       elsif type == WeaponType::MISSILE
-				s += "MISIL\n"
-			else
-				s += "PLASMA\n"
-			end
+	s += "MISIL\n"
+      else
+	s += "PLASMA\n"
+      end
       s += "  uses: #{uses}\n"
-			return s
+      return s
     end
 
     def getUIversion

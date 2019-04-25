@@ -72,41 +72,7 @@ Cada intacia indicca la pérdida:
    # weapons s ShieldBooster -> Damage
    # le quitamos las armas y el número de escudos que esté en el paquete
    def adjust w, s
-=begin
-     # ajustamos escudos
-     len = s.length()
-     if @nShields > len
-       s = Array.new
-       @nShields = len # ajustamos el tamaño que quitamos
-     else
-       s = s.drop @nShields
-     end # ajuste de escudos
 
-     # ajustamos armas
-     # si se especifica tipo
-     if @nWeapons == -1
-       @weapons.each  do |t|
-         # si no está lo eliminamos del daño
-         if arrayContainsType(w,t) == -1
-           @weapons.delete t
-         else
-           w = w.reject { |weapon| weapon.type == t}
-         end #if
-       end #do weapons
-     else # si se va a eliminar por número
-       len = w.length()
-       if @nWeapons > len
-         @nWeapons = len
-         w = Array.new
-       else
-         w = w.drop @nWeapons
-       end # if
-     end #if cantidad vs tipo
-     # devuelvo el propio objeto damage
-     puts "nShields: #{nShields}"
-     puts "nWeapons: #{nWeapons}"
-     return Damage.newCopy self
-=end
     newNShields = [s.size,@nShields].min
     if(@nWeapons == -1)
       auxWeap = w.clone
@@ -134,14 +100,6 @@ Cada intacia indicca la pérdida:
     def discardWeapon w
       # si hay armas disponibles
       if @weapons != nil
-=begin
-        @weapons.each do |weapon|
-          if weapon == w.type then
-            @weapons.delete(weapon)
-            #reducimos contador
-          end #if
-        end #do
-=end
         @weapons.size.times do |i|
           if(@weapons[i]==w.type)
             puts @weapons.delete_at(i)
@@ -174,17 +132,15 @@ Cada intacia indicca la pérdida:
 
 
 
-    # _____ método de prueba
+    # _____ método de visualización
     def to_s
       s1 = "nShields: #{@nShields} \nnWeapons:#{@nWeapons}\nWeapons"
       if @weapons == nil
         s1 += ": nil\n"
       else
-      #  s1 += " power: "
-      #  @weapons.each do |w|
-      #    s1 += "#{w.power} "
-        s1+="#{weapons}"
-      #  end
+        
+        weapons.each do |w| s1 += w.to_s end
+
         s1+= "\n"
       end
 
@@ -193,15 +149,5 @@ Cada intacia indicca la pérdida:
 
 
   end # class
-
-=begin
-  d = Damage.newSpecificWeapons([WeaponType::PLASMA,WeaponType::PLASMA,WeaponType::LASER],3)
-  puts d.weapons
-  puts "-----"
-  d.discardWeapon(Weapon.new("hola",WeaponType::PLASMA,2.4))
-  e = Damage.newCopy(d)
-  puts d.to_s
-  puts d.weapons.size
-=end
 
 end # module Deespace

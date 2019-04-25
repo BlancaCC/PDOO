@@ -55,14 +55,16 @@ module Pruebas
 
       puts ss.to_s
       ss.move
+puts "¿Es mi estado válido? #{ss.validState}"
+
 
       puts "¿Es mi estado válido? #{ss.validState}"
 
-			puts ss.hangar.inspect
-			puts ss.name
-			puts ss.shieldPower.inspect
-			puts "a:#{ss.ammoPower} fu:#{ss.fuelUnits} h:#{ss.hangar} n:#{ss.name} nM:#{ss.nMedals}"
-			puts "pD:#{ss.pendingDamage} sB:#{ss.shieldBoosters} sP:#{ss.shieldPower} w:#{ss.weapons}"
+      puts ss.hangar.inspect
+      puts ss.name
+      puts ss.shieldPower.inspect
+      puts "a:#{ss.ammoPower.to_s} fu:#{ss.fuelUnits.to_s} h:#{ss.hangar.to_s} n:#{ss.name} nM:#{ss.nMedals.to_s}"
+      puts "pD:#{ss.pendingDamage.to_s} sB:#{ss.shieldBoosters} sP:#{ss.shieldPower} w:#{ss.weapons}"
       
       ss.cleanUpMountedItems
 
@@ -76,3 +78,5 @@ module Pruebas
 end # module 
 
 Pruebas::SpaceStation.test
+
+

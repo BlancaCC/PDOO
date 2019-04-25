@@ -186,7 +186,7 @@ module Deepspace
       end
     end
 
-		def discardWeapon i
+    def discardWeapon i
       size = weapons.size
       if(i>=0 && i<size)
         w = weapons.delete_at(i)
@@ -197,8 +197,8 @@ module Deepspace
       end
     end #discardWeapon
 
-
-		def discardShieldBooster i
+                
+    def discardShieldBooster i
       size = shieldBoosters.size
       if(i>=0 && i<size)
         s = shieldBoosters.delete_at(i)
@@ -207,9 +207,9 @@ module Deepspace
           cleanPendingDamage
         end
       end
-		end
+    end
 
-    # velocida estación espacial
+    # velocidad estación espacial
     def getSpeed
       @fuelUnits.to_f/@@MAXFUEL
     end
@@ -221,7 +221,7 @@ module Deepspace
       # de todas formas lo mantengo por si acaba modificándose en algún momento
       speed = getSpeed
       if @fuelUnits >= speed
-        @fuelUnits -= speed*@fuelUnits
+        @fuelUnits -= speed
       else
         @fuelUnits = 0
       end
@@ -275,7 +275,7 @@ module Deepspace
 
       def to_s
 
-        """
+        s = """
 Información de la estacion espacial:  #{@name}
  -- Recursos actuales montados --
         ammoPower #{@ammoPower}
@@ -285,16 +285,24 @@ Información de la estacion espacial:  #{@name}
  -- otros --
    --- peding damage ---
        #{@pendingDamage.to_s}
-   ---weapons---
-     #{@weapons.each do |w|;w.to_s; end }
-	 ---shieldBoosters---
-		#{@shieldBoosters.each do |s|;s.to_s;end}
-	---hangar---
-#{@hangar}---
+   ---weapons---\n"""
+        @weapons.each{ |w|
+          s += w.to_s
+        }
+        s+=   "---shieldBoosters--- \n"
+        @shieldBoosters.each{ |shield|
+          s += shield.to_s
+        }
+        s+= """ 	---hangar---
+   #{@hangar}
+---
 Información general de todas las estaciones espaciales:
      MAXFUEL:  #{@@MAXFUEL}
      SHIELDLOSSPERUNITSHOT: #{@@SHIELDLOSSPERUNITSHOT}
-        """
+  
+"""
+        s
+
 
       end # to stirng method
 
