@@ -26,4 +26,8 @@ class Loot {
     public int getNShields() { return nShields; }
     public int getNHangars() { return nHangars; }
     public int getNMedals() { return nMedals; }
+    
+    LootToUI getUIversion() {
+        return new LootToUI(this);
+    }
 }

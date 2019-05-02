@@ -1,7 +1,7 @@
 all:
-	javac deepspace/TestP2.java	
+	javac deepspace/TestSpaceStation.java	
 	@echo " ========== resultado ejecución ============= "
-	java deepspace/TestP2
+	java deepspace/TestSpaceStation
 test1:
 	javac deepspace/TestP1.java
 	@echo " ========== resultado ejecución ============= "
