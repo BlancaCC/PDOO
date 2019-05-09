@@ -55,8 +55,8 @@ public class SpaceStation {
         nMedals = 0;
         pendingDamage = null;
         hangar = null;
-        weapons = null;
-        shieldBoosters = null;
+        weapons = new ArrayList<Weapon>();
+        shieldBoosters = new ArrayList<ShieldBooster>();
     }
     
     public void cleanUpMountedItems() {
@@ -110,7 +110,6 @@ public class SpaceStation {
        realiza un disparo y devuelve la energía o potencia del mismo
      */
     public float fire() {
-        //throw new UnsupportedOperationException();
 	float factor = 1;
 
 	if (weapons != null)
