@@ -22,7 +22,6 @@ class EnemyToUI
         "\tLoot..: #{@loot}\n" + \
         "\tDamage: #{@damage}"
   end
-
     
 end # class
 
