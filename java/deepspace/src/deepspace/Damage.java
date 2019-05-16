@@ -10,29 +10,18 @@ import java.util.ArrayList;
  *
  * @author usuario
  */
-public class Damage {
+abstract class Damage {
     private int nShields;
-    private int nWeapons;
-    private ArrayList<WeaponType> weapons;
-    
-    Damage(int w,int s) {
-        nShields = s;
-        nWeapons = w;
-        weapons = null;
+
+    //El númeor de escudeos es el invariante de varios daños
+    //por tanto es lo único que pantiene de la copia
+    //HAYT QUE SOBRECARGAR LOS OTROS 
+    Damage(int s) {
+	nShield=s; 
     }
-    
-    Damage(ArrayList<WeaponType> wl, int s) {
-        nShields = s;
-        nWeapons = -1;
-        weapons = wl;
-    }
-    
-    Damage(Damage d) {
-        nShields = d.nShields;
-        nWeapons = d.nWeapons;
-        weapons = d.weapons;
-    }
-    
+
+   
+
     DamageToUI getUIversion() {
         return new DamageToUI(this);
     }
@@ -45,72 +34,15 @@ public class Damage {
         }
         return -1;
     }
-    
-    public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
-        int newNShields, newNWeapons;
-        ArrayList<WeaponType> newWeapons = new ArrayList<>();
-        
-        newNShields = Math.min(nShields,s.size());
-        
-        if(nWeapons == -1) {
-            
-            int nLaser=0, nMissile=0, nPlasma=0;
-            for(WeaponType wi : weapons) {
-                if(wi == WeaponType.LASER)
-                    nLaser++;
-                else if(wi == WeaponType.MISSILE)
-                    nMissile++;
-                else if(wi == WeaponType.PLASMA)
-                    nPlasma++;
-            }
-            
-            int wnLaser=0, wnMissile=0, wnPlasma=0;
-            for(Weapon wi : w) {
-                if(wi.getType() == WeaponType.LASER)
-                    wnLaser++;
-                else if(wi.getType() == WeaponType.MISSILE)
-                    wnMissile++;
-                else if(wi.getType() == WeaponType.PLASMA)
-                    wnPlasma++;
-            }
-            
-            for(int i=0;i<Math.min(nLaser, wnLaser);i++) {
-                newWeapons.add(WeaponType.LASER);
-            }
-            for(int i=0;i<Math.min(nMissile, wnMissile);i++) {
-                newWeapons.add(WeaponType.MISSILE);
-            }
-            for(int i=0;i<Math.min(nPlasma, wnPlasma);i++) {
-                newWeapons.add(WeaponType.PLASMA);
-            }
-            
-            
-            return new Damage(newWeapons,newNShields);                        
-        }
-        else {
-            newNWeapons = Math.min(nWeapons,w.size());
-            
-            return new Damage(newNWeapons,newNShields);
-        }
+
+    //ajuts el número de escudos
+    private int adjustShields(ArrayList<ShieldBooster> s) {
+	int newNShields = Math.min(nShields,s.size());
+	return newNShields; 
     }
     
-    public void discardWeapon(Weapon w) {
-        if(nWeapons == -1) {
-          int i=0;
-          while(i<weapons.size()){
-              if(weapons.get(i) == w.getType()) {
-                  weapons.remove(i);
-              }
-              else {
-                  i++;
-              }
-          }
-        }
-        else {
-            if(nWeapons > 0)
-                nWeapons--;
-        }
-    }
+    
+    public abstract void discardWeapon(Weapon w);
     
     public void discardShieldBooster(){
         if(nShields>0) {
@@ -118,14 +50,10 @@ public class Damage {
         }
     }
     
-    public boolean hasNoEffect() {
-        if(nWeapons == -1) {
-            return nShields == 0 && weapons.isEmpty();            
-        }
-        else {
-            return nShields==0 && nWeapons==0;
-        }
+    public boolean hasNoEffect() { //¿se podría poner como abstracta?
+	return nShields==0;    
     }
+
 
     public int getNShields() {
         return nShields;
