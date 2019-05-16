@@ -50,7 +50,7 @@ abstract class Damage {
         }
     }
     
-    public boolean hasNoEffect() { //¿se podría poner como abstracta?
+    public boolean hasNoEffect() { 
 	return nShields==0;    
     }
 
@@ -59,25 +59,11 @@ abstract class Damage {
         return nShields;
     }
 
-    public int getNWeapons() {
-        return nWeapons;
-    }
 
-    public ArrayList<WeaponType> getWeapons() {
-        return weapons;
-    }
 
     public String toString(){
 	
-	String representacion = "\n__ damage__\n";
-	representacion += "\nShields: " + nShields +
-	    "\nnWeapons: " + nWeapons +
-	    "\nweapons:\n";
-	
-	if(weapons != null) for(WeaponType weapon : weapons)
-	    representacion += weapon;
-	representacion += "\n";
-
+	String representacion =  "Shields: " + nShields +"\n";
 	return representacion; 
 	       
 

@@ -25,4 +25,16 @@ class NumericDamage extends Damage {
     public boolean hasNoEffect() {
 	return super.hasNoEffect() && nWeapons==0; 
     }
+
+    public getNWeapons() {
+	return nWeapons; 
+    }
+
+    @Override
+    public String toString() {
+	String representacion = "\n__Numeric Damage__\n"+
+	    super.toString()+"nWeapons= "+nWeapons+"\n";
+
+	return representacion; 
+    }
 }

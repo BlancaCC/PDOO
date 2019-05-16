@@ -47,4 +47,22 @@ class SpecificDamage extends Damage{
     public boolean hasNoEffect() {
 	return super.hasNoEffect && weapons.isEmpty(); 
     }
+
+    public getWeapons() {
+	return weapons; 
+    }
+
+    @Override
+    public toString() {
+	String repr="\n__Specific Damage__\n"
+	    + super.toString()
+	    + "Weapons: \n";
+
+	if(weapons != null) for(WeaponType weapon : weapons)
+	    repr += weapon;
+	repr += "\n";
+
+	return repr; 
+	
+    }
 }
