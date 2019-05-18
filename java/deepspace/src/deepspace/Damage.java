@@ -17,14 +17,12 @@ abstract class Damage {
     //por tanto es lo único que pantiene de la copia
     //HAYT QUE SOBRECARGAR LOS OTROS 
     Damage(int s) {
-	nShield=s; 
+	nShields=s; 
     }
 
    
-
-    DamageToUI getUIversion() {
-        return new DamageToUI(this);
-    }
+    //OJO QUE HE COMENTADO DamageToUI
+    // abstract DamageToUI getUIversion(); 
     
     private int arrayContainsType(ArrayList<Weapon> w, WeaponType t) {
         for(int i=0;i<w.size();i++) {
@@ -36,7 +34,7 @@ abstract class Damage {
     }
 
     //ajuts el número de escudos
-    private int adjustShields(ArrayList<ShieldBooster> s) {
+     int adjustShields(ArrayList<ShieldBooster> s) {
 	int newNShields = Math.min(nShields,s.size());
 	return newNShields; 
     }

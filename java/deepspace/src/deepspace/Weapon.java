@@ -24,6 +24,10 @@ class Weapon {
 	this.uses = w.uses; 
     } //constructor por copia
 
+    Weapon(String a, WeaponType weaponType) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     ///consultores
     public WeaponType getType(){
 	return type; 

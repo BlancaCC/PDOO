@@ -1,18 +1,20 @@
 package deepspace;
+import java.util.ArrayList;
 
 class NumericDamage extends Damage {
     private int nWeapons;
 
     //w número de weapons, s: número de shields
     NumericDamage(int w, int s) {
-	super.Damage(s);
+	super(s);
 	nWeapons=w; 
     }
-    @Override
-    public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
-	int newWeapons=Math.min(nWeapons, newNShields);
+    
+    
+    public NumericDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
+	int newWeapons=Math.min(nWeapons, w.size());
 	
-	return new this( newWeapons, adjustShields(s)); 
+	return new NumericDamage( newWeapons, super.adjustShields(s)); 
     }
 
     //Descarta un arma de esta clase
@@ -26,7 +28,7 @@ class NumericDamage extends Damage {
 	return super.hasNoEffect() && nWeapons==0; 
     }
 
-    public getNWeapons() {
+    public int getNWeapons() {
 	return nWeapons; 
     }
 
@@ -37,4 +39,5 @@ class NumericDamage extends Damage {
 
 	return representacion; 
     }
+
 }
