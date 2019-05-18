@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author usuario
  */
-abstract class Damage {
+public abstract class Damage {
     private int nShields;
 
     //El númeor de escudeos es el invariante de varios daños
@@ -41,6 +41,8 @@ abstract class Damage {
     
     
     public abstract void discardWeapon(Weapon w);
+    
+    public abstract Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s);
     
     public void discardShieldBooster(){
         if(nShields>0) {

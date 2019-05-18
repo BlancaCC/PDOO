@@ -1,2 +1,0 @@
-atributos_metodos.OsoAmoroso
-atributos_metodos.Test1
