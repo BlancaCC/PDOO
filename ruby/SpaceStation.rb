@@ -147,6 +147,14 @@ module Deepspace
       medals = loot.nMedals
       @nMedals += medals
 
+      if(loot.getEfficient == true)
+         return Transformation::GETEFFICIENT
+       end
+      if(loot.spaceCity == true)
+        return Transformation::SPACECITY
+      end
+      return Transformation::NOTRANSFORM
+
 		end #setLoot
 
 
