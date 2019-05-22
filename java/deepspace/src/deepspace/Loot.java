@@ -12,12 +12,20 @@ class Loot {
     private int nHangars;
     private int nMedals;
     
-    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals) {
+    private boolean getEfficent; 
+    private boolean spaceCity; 
+    
+    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals, 
+            boolean ef, boolean city) {
         nSupplies = Supplies;
         nWeapons = Weapons;
         nShields = Shields;
         nHangars = Hangars;
         nMedals = Medals;
+        
+        getEfficent=ef; 
+        spaceCity=city; 
+        
     }
     
     // consultores 
@@ -26,6 +34,9 @@ class Loot {
     public int getNShields() { return nShields; }
     public int getNHangars() { return nHangars; }
     public int getNMedals() { return nMedals; }
+    
+    public boolean getEfficient() {return getEfficent;}
+    public boolean spaceCity() {return spaceCity;}
     
     LootToUI getUIversion() {
         return new LootToUI(this);

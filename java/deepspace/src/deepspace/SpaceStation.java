@@ -59,6 +59,20 @@ public class SpaceStation {
         shieldBoosters = new ArrayList<ShieldBooster>();
     }
     
+    SpaceStation (SpaceStation station) {
+        name=station.getName();
+        ammoPower=station.getAmmoPower();
+        fuelUnits=station.getFuelUnits();
+        
+        nMedals=station.getNMedals();
+        pendingDamage=station.getPendingDamage();
+        hangar=station.getHangar();
+        weapons=station.getWeapons();
+        shieldBoosters=station.getShieldBoosters(); 
+        
+    }
+    
+    
     public void cleanUpMountedItems() {
         Iterator itr = weapons.iterator();
         while(itr.hasNext()) {
@@ -256,7 +270,8 @@ public class SpaceStation {
     }
 
     //recepción de un botín 
-    public void setLoot(Loot loot) {
+    //¿UTILIZAR UNA CLASE PLANTILLA??
+    public Transformation setLoot(Loot loot) {
 
 	CardDealer dealer = CardDealer.getInstance();
 
@@ -282,7 +297,16 @@ public class SpaceStation {
 	}
 
 	//medals
-	nMedals += getNMedals(); 	
+	nMedals += getNMedals(); 
+        
+        
+        //HAY QUE VER QUÉ SE HACE AHORA CON ESTO
+        Transformation transformation = Transformation.NOTRANSFORM;
+        if( loot.getEfficient() ) 
+            transformation=Transformation.GETEFFICIENT; 
+        else if (loot.spaceCity())
+            transformation=Transformation.SPACECITY;
+             return transformation; 
 	
     } //setLoot
     
@@ -295,6 +319,10 @@ public class SpaceStation {
     public boolean validState() {
         return (pendingDamage == null || pendingDamage.hasNoEffect());
     }
+    
+    
+    //COSAS QUE SE HAN MODIFICADO EN LA ÚLTIMA VERSIÓN 
+    
     public String toString(){
 	
 	String representacion = "Spacece Station \n"+
@@ -321,5 +349,6 @@ public class SpaceStation {
 
 	return representacion; 
     }
+
 }
 

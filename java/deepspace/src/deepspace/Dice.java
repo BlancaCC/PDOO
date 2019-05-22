@@ -9,7 +9,8 @@ class Dice {
     private final float FIRSTSHOTPROB;
     
     private Random generator;
-
+    
+    private final float EXTRAEFFICIENCYPROB;
     
     Dice() {
         NHANGARSPROB = 0.25f;
@@ -18,8 +19,17 @@ class Dice {
         FIRSTSHOTPROB = 0.5f;
         
         generator = new Random();
+        
+        EXTRAEFFICIENCYPROB=0.8f;
     }
     
+    public boolean extraEfficiency() {
+        boolean extra=false;
+        //generator.nextFloat \in [0.0,1.0]
+        if (generator.nextFloat() <= EXTRAEFFICIENCYPROB)
+            extra=true;
+        return extra;
+    }
     public int initWithNHangars() {
         float p = generator.nextFloat();
         if(p < NHANGARSPROB) {
