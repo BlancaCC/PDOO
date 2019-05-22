@@ -23,14 +23,16 @@ public class SpecificDamage extends Damage{
         return salida;
     }
 
-    //Incompatibilidad de tipos
+    
     @Override
-    public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
-	ArrayList<Weapon> newWeapons=(ArrayList<Weapon>)w.clone(); // Preguntar si esto esta bien 
-	for(Weapon wtype : w) {
-	    int indice=arrayContainsType(w,wtype.getType());
+    public SpecificDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
+	ArrayList<WeaponType> newWeapons=new ArrayList<>(); 
+        ArrayList<Weapon> auxWeapons = (ArrayList<Weapon>)w.clone();
+	for(WeaponType wtype : weapons) {
+	    int indice=arrayContainsType(auxWeapons,wtype);
 	    if(indice > 0) {
-		newWeapons.remove(indice); 
+                newWeapons.add(wtype);
+		auxWeapons.remove(indice); 
 	    }
 	}
 
@@ -39,9 +41,14 @@ public class SpecificDamage extends Damage{
 
     //Se quiere descartar un tipo de nuestro daño pendiente
     //Incompatibilidad de tipos
+    @Override
     public void discardWeapon(Weapon w) {
-	int indice=arrayContainsType(weapons, w.getType());
-	if(indice>0) weapons.remove(indice); 
+	for(WeaponType wt:weapons) {
+            if(wt == w.getType()) {
+                weapons.remove(wt);
+                return;
+            }
+        }
     }
 
     @Override
@@ -65,5 +72,10 @@ public class SpecificDamage extends Damage{
 
 	return repr; 
 	
+    }
+    
+    @Override
+    public SpecificDamageToUI getUIversion(){
+        return new SpecificDamageToUI(this);
     }
 }

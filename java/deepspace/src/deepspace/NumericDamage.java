@@ -11,6 +11,7 @@ class NumericDamage extends Damage {
     }
     
     
+    @Override
     public NumericDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
 	int newWeapons=Math.min(nWeapons, w.size());
 	
@@ -38,6 +39,11 @@ class NumericDamage extends Damage {
 	    super.toString()+"nWeapons= "+nWeapons+"\n";
 
 	return representacion; 
+    }
+    
+    @Override
+    public NumericDamageToUI getUIversion(){
+        return new NumericDamageToUI(this);
     }
 
 }

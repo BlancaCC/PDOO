@@ -20,7 +20,7 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
     
     public float fire() {
         float normalFire=super.fire(); 
-        if(dice.extraEffiency()) { //ni idea de cual es este fallo
+        if(dice.extraEfficiency()) { //ni idea de cual es este fallo
             normalFire *= EXTRAEFFICIENCY;
                          
         }

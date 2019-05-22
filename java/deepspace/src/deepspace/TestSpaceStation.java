@@ -26,7 +26,7 @@ public class TestSpaceStation{
 	ss.mountShieldBooster(0);
 
 	System.out.println(ss); 
-	ss.setPendingDamage( new Damage(3,8));
+	//ss.setPendingDamage( new Damage(3,8));
 	
 
 	//--- fire() -
