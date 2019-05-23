@@ -73,6 +73,9 @@ public class Controller {
                   System.exit (0);
               }
               break;
+            case STATIONWINSANDCONVERTS :
+                view.conversionMessage();
+                break; 
             case NOCOMBAT :
               view.noCombatMessage();
               break;

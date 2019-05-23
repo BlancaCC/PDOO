@@ -18,7 +18,8 @@ class Loot {
     
     
     
-    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals, boolean ef, boolean city) {
+    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals,
+            boolean ef, boolean city) {
         nSupplies = Supplies;
         nWeapons = Weapons;
         nShields = Shields;

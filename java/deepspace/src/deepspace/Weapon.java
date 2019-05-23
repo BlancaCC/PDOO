@@ -3,7 +3,7 @@ package deepspace;
 /**
    @brief Armas que se pueden dispones en una estación espacial 
  */
-class Weapon {
+class Weapon implements CombatElement{
 
     // atributos de instancia
     private String name;

@@ -3,7 +3,7 @@ package deepspace;
 /**
  * @brief Representa a los potenciadores de escudo que pueden tener las estaciones espaciales.
  */
-class ShieldBooster {
+class ShieldBooster implements CombatElement{
     
     private String name;
     private float boost;

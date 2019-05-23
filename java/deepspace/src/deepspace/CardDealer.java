@@ -173,10 +173,11 @@ class CardDealer {
         softSpecificDamage1=new SpecificDamage(new ArrayList<>(Arrays.asList(WeaponType.MISSILE)),1);  
         Damage softSpecificDamage2;
         softSpecificDamage2=new SpecificDamage(new ArrayList<>(Arrays.asList(WeaponType.PLASMA)),1);  
+        
         Damage mediumSpecificDamage0;
         mediumSpecificDamage0=new SpecificDamage(new ArrayList<>(Arrays.asList(WeaponType.LASER,
                                                                         WeaponType.MISSILE)),2);  
-        
+        /*
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,10,badLoot,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",10,0,badLoot,lowDamage0));
@@ -205,15 +206,16 @@ class CardDealer {
         enemies.add(new EnemyStarShip("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
         enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));    
-        
+        */
         
         //Enemigos que transforman
         
         Loot transformLoot0=new Loot(1,1,1,0,1,true,false);
         Loot transformLoot1=new Loot(1,1,1,0,1,false,true);
         
-        enemies.add(new EnemyStarShip("Enemigo transforma 0",200,100,transformLoot0,regularDamage0));  
-        enemies.add(new EnemyStarShip("Enemigo transforma 1",100,200,transformLoot1,regularDamage1));           
+        enemies.add(new EnemyStarShip("Enemigo transforma 0",0,0,transformLoot0,regularDamage0));  
+        //enemies.add(new EnemyStarShip("Enemigo transforma 0",200,100,transformLoot0,regularDamage0));  
+        //enemies.add(new EnemyStarShip("Enemigo transforma 1",100,200,transformLoot1,regularDamage1));           
     }
 }
 

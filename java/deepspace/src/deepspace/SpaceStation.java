@@ -12,7 +12,7 @@ import java.util.Iterator;
  *
  * @author usuario
  */
-public class SpaceStation {
+public class SpaceStation implements SpaceFighter {
     
     private static int MAXFUEL = 100; // Máxima cantidad de unidades de combustible que puede tener una estación
                                       // espacial.
