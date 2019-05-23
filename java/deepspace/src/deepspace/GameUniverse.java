@@ -22,6 +22,7 @@ public class GameUniverse {
     private EnemyStarShip currentEnemy;
     private GameStateController gameState;
     private Dice dice;
+    private boolean haveSpaceCity;
     
     
     public GameUniverse() {
@@ -84,8 +85,18 @@ public class GameUniverse {
         }
         else {
             Loot aLoot = enemy.getLoot();
-            station.setLoot(aLoot);
-            combatResult = CombatResult.STATIONWINS;
+            Transformation t = station.setLoot(aLoot);
+            if(t==Transformation.GETEFFICIENT) {
+                makeStationEfficient();
+                combatResult = CombatResult.STATIONWINSANDCONVERTS;
+            }
+            else if(aLoot.spaceCity()==true){
+                createSpaceCity();
+                combatResult = CombatResult.STATIONWINSANDCONVERTS;
+            }
+            else {
+                combatResult = CombatResult.STATIONWINS;
+            }
         }
         
         gameState.next(turns, spaceStations.size());
@@ -202,5 +213,26 @@ public class GameUniverse {
         return false;
     }
 
-
+    public void makeStationEfficient() {
+        if(dice.extraEfficiency()) {
+            currentStation = new BetaPowerEfficientSpaceStation(currentStation);
+        }
+        else {
+            currentStation = new PowerEfficientSpaceStation(currentStation);
+        }
+    }
+    
+    public void createSpaceCity(){
+        if(haveSpaceCity == false){
+            haveSpaceCity = true;
+            ArrayList<SpaceStation> colaboradoras = new ArrayList<>();
+            for(SpaceStation s: spaceStations) {
+                if(s != currentStation) {
+                    colaboradoras.add(s);
+                }
+            }
+            currentStation = new SpaceCity(currentStation,colaboradoras);
+            spaceStations.set(currentStationIndex,currentStation);
+        }
+    }
 }

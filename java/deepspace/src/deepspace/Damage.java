@@ -64,10 +64,8 @@ public abstract class Damage {
     public String toString(){
 	
 	String representacion =  "Shields: " + nShields +"\n";
-	return representacion; 
-	       
-
+	return representacion;
     }
-    
-    
+ 
+    public abstract  DamageToUI getUIversion();
 }

@@ -15,8 +15,10 @@ class Loot {
     private boolean getEfficent; 
     private boolean spaceCity; 
     
-    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals, 
-            boolean ef, boolean city) {
+    
+    
+    
+    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals, boolean ef, boolean city) {
         nSupplies = Supplies;
         nWeapons = Weapons;
         nShields = Shields;
@@ -25,6 +27,11 @@ class Loot {
         
         getEfficent=ef; 
         spaceCity=city; 
+        
+    }
+    
+    Loot(int Supplies, int Weapons, int Shields, int Hangars, int Medals) {
+        this(Supplies, Weapons, Shields, Hangars, Medals, false, false); 
         
     }
     
