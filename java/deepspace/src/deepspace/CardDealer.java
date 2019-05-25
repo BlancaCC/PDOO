@@ -213,7 +213,15 @@ class CardDealer {
         Loot transformLoot0=new Loot(1,1,1,0,1,true,false);
         Loot transformLoot1=new Loot(1,1,1,0,1,false,true);
         
+        
+        //ESTO LO BORRAS, VA EN SERIO, DE VERDAD, NO LO DEJES ASÍ------BORAAAAAAAAAAAAAAAAAAAAAAAAAAAA-------
+        
+       
         enemies.add(new EnemyStarShip("Enemigo transforma 0",0,0,transformLoot0,regularDamage0));  
+        
+        
+        
+        
         //enemies.add(new EnemyStarShip("Enemigo transforma 0",200,100,transformLoot0,regularDamage0));  
         //enemies.add(new EnemyStarShip("Enemigo transforma 1",100,200,transformLoot1,regularDamage1));           
     }
