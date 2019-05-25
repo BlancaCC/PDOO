@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require_relative 'Damage'
+require_relative 'SpecificDamageToUI'
 
 module Deepspace
 
@@ -16,11 +17,11 @@ module Deepspace
     attr_reader :weapons
 
     def self.newCopy(d)
-      new(d.weapons,d.nShields)
+      SpecificDamage.new(d.weapons,d.nShields)
     end
 
     def getUIversion
-      SpecificDamage.new(self)
+      SpecificDamageToUI.new(self)
     end
 
     def arrayContainsType w, t
@@ -54,7 +55,7 @@ module Deepspace
        end
      }
 
-     return new(newWeapons,newNShields)
+     return SpecificDamage.new(newWeapons,newNShields)
    end
 
    def discardWeapon(w)

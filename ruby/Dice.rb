@@ -12,6 +12,7 @@ module Deepspace
       @NSHIELDSPROB = 0.25 # potenciadore escudos
       @NWEAPONSPROB = 0.33 # número armas que recibirá estación espaci
       @FIRSTSHOTPROB = 0.5 # quien empieza la partida
+      @EXTRAEFFICIENCYPROB = 0.8
 
       Random.new_seed # semilla del aleatorio
       # HE DECIDIO PONERLA AQUÍ PREGUNTAR DÓNDE ES MÁS CORRECTO
@@ -116,6 +117,16 @@ module Deepspace
 
       return esquiva
     end #  spaceStationMoves( speed)
+
+
+    def extraEfficiency
+      if rand <= @EXTRAEFFICIENCYPROB
+        return true
+      end
+
+      return false
+    end
+
 
      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   end # clase Dice

@@ -10,17 +10,17 @@ module Deepspace
 
   class Loot
 
-    def initialize ( supplies, weapons, shields, hangars, medals, ef, city)
+    def initialize ( supplies, weapons, shields, hangars, medals, ef=false, city=false)
       @nSupplies = supplies
       @nWeapons = weapons
       @nShields =  shields
       @nHangars = hangars
       @nMedals = medals
-      @getEfficient = ef # boolean
+      @efficient = ef # boolean
       @spaceCity = city # boolean
     end # initialize
 
-    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :getEfficient, :spaceCity
+    attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :efficient, :spaceCity
 
     def to_s
       "Atributos de la instancia de Loot: \n" +

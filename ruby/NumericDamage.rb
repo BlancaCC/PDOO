@@ -1,6 +1,7 @@
 # coding: utf-8
 
 require_relative 'Damage'
+require_relative 'NumericDamageToUI'
 
 module Deepspace
 
@@ -16,7 +17,7 @@ module Deepspace
     attr_reader :nWeapons
 
     def self.newCopy(d)
-      new(d.w,d.s)
+      NumericDamage.new(d.w,d.s)
     end
 
     def getUIversion
@@ -26,7 +27,7 @@ module Deepspace
     def adjust(w,s)
       newNShields = adjustShields(s)
       newNWeapons = [@nWeapons,w.size].min
-      return new(newNWeapons,newNShields)
+      return NumericDamage.new(newNWeapons,newNShields)
     end
 
 

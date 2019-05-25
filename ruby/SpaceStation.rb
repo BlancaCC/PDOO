@@ -1,6 +1,7 @@
 #coding: utf-8
 
 require_relative "SpaceStationToUI"
+require_relative "Transformation"
 
 module Deepspace
   require_relative 'ShotResult'
@@ -36,6 +37,18 @@ module Deepspace
 
 		attr_reader :ammoPower, :fuelUnits, :hangar, :name, :nMedals
 		attr_reader :pendingDamage, :shieldBoosters, :shieldPower, :weapons
+
+
+    def self.newCopy(station)
+      @name = station.name
+      @ammoPower = station.ammoPower
+      assignFuelValue(station.fuelUnits)
+      @shieldPower = station.shieldPower
+      @nMedals = station.nMedals
+      @pendingDamage = station.pendingDamage
+      @weapons = station.weapons
+      @hangar = station.hangar
+    end
 
     #___ métodos privado ___
     def assignFuelValue f
@@ -147,7 +160,7 @@ module Deepspace
       medals = loot.nMedals
       @nMedals += medals
 
-      if(loot.getEfficient == true)
+      if(loot.efficient == true)
          return Transformation::GETEFFICIENT
        end
       if(loot.spaceCity == true)

@@ -22,7 +22,7 @@ Cada intacia indicca la pérdida:
     end # initialize
 
     attr_reader :nShields
-    private_class_method :new
+    private_class_method :new 
 
 
      ### ________ métodos de la clase ______
