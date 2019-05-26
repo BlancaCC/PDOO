@@ -13,11 +13,23 @@ import deepspace.SpaceStationToUI;
  */
 public class SpaceStationView extends javax.swing.JPanel {
 
+    
+    private DamageView damageView;
+    private HangarView hangarView;
     /**
      * Creates new form SpaceStationView
      */
     public SpaceStationView() {
         initComponents();
+        
+        damageView = new DamageView();
+        damage.add(damageView);
+        
+        hangarView = new HangarView();
+        hangar.add(hangarView);
+        
+        repaint();
+        revalidate();
     }
 
     void setSpaceStation( SpaceStationToUI s) {
@@ -26,6 +38,16 @@ public class SpaceStationView extends javax.swing.JPanel {
         medals.setText(Integer.toString(s.getnMedals()));
         name.setText(s.getName());
         shieldsPower.setText(Float.toString(s.getShieldPower()));
+        if(s.getPendingDamage()!=null){
+            damageView.setDamage(s.getPendingDamage());
+        }
+        if(s.getHangar()!=null)
+        {
+            hangarView.setHangar(s.getHangar());
+            hangar.setVisible(true);
+        }
+    
+
         
         //falta mostrar el hangar, escudos, armas...
         repaint();
@@ -51,6 +73,8 @@ public class SpaceStationView extends javax.swing.JPanel {
         fuelsUnits = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         shieldsPower = new javax.swing.JLabel();
+        damage = new javax.swing.JPanel();
+        hangar = new javax.swing.JPanel();
 
         jLabel1.setText("SpaceStation");
 
@@ -74,6 +98,28 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         shieldsPower.setText("jLabel11");
 
+        javax.swing.GroupLayout damageLayout = new javax.swing.GroupLayout(damage);
+        damage.setLayout(damageLayout);
+        damageLayout.setHorizontalGroup(
+            damageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        damageLayout.setVerticalGroup(
+            damageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout hangarLayout = new javax.swing.GroupLayout(hangar);
+        hangar.setLayout(hangarLayout);
+        hangarLayout.setHorizontalGroup(
+            hangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        hangarLayout.setVerticalGroup(
+            hangarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,12 +139,17 @@ public class SpaceStationView extends javax.swing.JPanel {
                             .addComponent(jLabel10))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fuelsUnits)
-                            .addComponent(name)
-                            .addComponent(medals)
-                            .addComponent(ammoPower)
-                            .addComponent(shieldsPower))))
-                .addContainerGap(234, Short.MAX_VALUE))
+                            .addComponent(shieldsPower)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fuelsUnits)
+                                    .addComponent(name)
+                                    .addComponent(medals)
+                                    .addComponent(ammoPower))
+                                .addGap(63, 63, 63)
+                                .addComponent(hangar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(damage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,33 +157,40 @@ public class SpaceStationView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(name)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(medals))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(ammoPower))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(fuelsUnits))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(medals))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(ammoPower))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(fuelsUnits)))
+                    .addComponent(hangar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(shieldsPower))
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(damage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ammoPower;
+    private javax.swing.JPanel damage;
     private javax.swing.JLabel fuelsUnits;
+    private javax.swing.JPanel hangar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

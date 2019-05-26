@@ -64,7 +64,7 @@ public class PlayersNames extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jsNumeroJugadores.setModel(new javax.swing.SpinnerNumberModel(1, 1, 4, 1));
+        jsNumeroJugadores.setModel(new javax.swing.SpinnerNumberModel(2, 2, 4, 1));
 
         jLabel1.setText("Número de jugadores: ");
 
@@ -97,6 +97,11 @@ public class PlayersNames extends javax.swing.JDialog {
         jtJugador3.setText("Pato mareado");
 
         jtJugador4.setText("Culebrilla rampante");
+        jtJugador4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtJugador4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,6 +207,10 @@ public class PlayersNames extends javax.swing.JDialog {
     private void jtJugador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtJugador1ActionPerformed
         // TODO add your haandling code here:
     }//GEN-LAST:event_jtJugador1ActionPerformed
+
+    private void jtJugador4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtJugador4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtJugador4ActionPerformed
 
     
 
