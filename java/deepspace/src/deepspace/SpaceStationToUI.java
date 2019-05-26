@@ -97,4 +97,31 @@ public class SpaceStationToUI {
     public DamageToUI getPendingDamage() {
         return pendingDamage;
     }
+    
+    public String toString(){
+	
+	String representacion = "Spacece Station \n"+
+	    "ammoPower: " + ammoPower +
+	    "\nfuelUnits: " + fuelUnits +
+	    "\nname: " + name + 
+	    "\nshieldPower :" + shieldPower;
+	
+	if (pendingDamage != null)
+	    representacion += "\npendingDamage :" + pendingDamage.toString();
+	representacion += "\n__mounted__\n"; 
+	if(hangar != null)
+	    representacion += "\nhangar :" + hangar.toString(); 
+	representacion += "\nweapons :\n";
+
+	if(weapons != null)for( WeaponToUI weapon :weapons)
+	    representacion += weapon.toString();
+	representacion +="\nshieldBoster: \n";
+	
+	if(shieldBoosters != null) for(ShieldToUI shield : shieldBoosters)
+	    representacion += shield.toString();
+	
+	representacion += "\n"; 
+
+	return representacion; 
+    }
 }

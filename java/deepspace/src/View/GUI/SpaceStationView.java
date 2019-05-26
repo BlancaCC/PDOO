@@ -98,7 +98,7 @@ public class SpaceStationView extends javax.swing.JPanel {
                             .addComponent(medals)
                             .addComponent(ammoPower)
                             .addComponent(shieldsPower))))
-                .addContainerGap(796, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +125,7 @@ public class SpaceStationView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(shieldsPower))
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
