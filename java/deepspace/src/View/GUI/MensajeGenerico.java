@@ -45,8 +45,10 @@ public class MensajeGenerico extends javax.swing.JDialog {
 
         jLabel1.setText("Nuevo mensaje recibido: ");
 
+        jtMensaje.setEditable(false);
         jtMensaje.setColumns(20);
         jtMensaje.setRows(5);
+        jtMensaje.setEnabled(false);
         jScrollPane1.setViewportView(jtMensaje);
 
         jButton1.setText("OK");
@@ -71,7 +73,7 @@ public class MensajeGenerico extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
