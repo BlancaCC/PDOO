@@ -75,4 +75,19 @@ public class EnemyStarShip implements SpaceFighter {
         }
     }
     
+    public String toString(){
+	
+	String representacion = "EnemyStartShip \n"+
+	    "ammoPower: " + ammoPower +
+	    "\nname: " + name + 
+	    "\nshieldPower :" + shieldPower;
+	
+	if (damage != null)
+	    representacion += "\nDamage :" + damage.toString();
+	
+	representacion += "\n"; 
+
+	return representacion; 
+    }
+    
 }

@@ -44,9 +44,11 @@ public class MainWindow extends JFrame implements DeepSpaceView {
         
         spaceStationView=new SpaceStationView();
         enemyView = new EnemyView();
+        enemyView.setVisible(false);
         //falta añadirle la estación
         jpSpaceStationView.add(spaceStationView);
         jpEnemyView.add(enemyView);
+        jPruebas.add(enemyView);
 
         
         //cosas por defecto pa que no se cierre, pinte...
@@ -80,6 +82,7 @@ public class MainWindow extends JFrame implements DeepSpaceView {
         jpSpaceStationView = new javax.swing.JPanel();
         jPruebas = new javax.swing.JPanel();
         jpEnemyView = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(" deepspace");
@@ -106,41 +109,34 @@ public class MainWindow extends JFrame implements DeepSpaceView {
             }
         });
 
-        javax.swing.GroupLayout jpEnemyViewLayout = new javax.swing.GroupLayout(jpEnemyView);
-        jpEnemyView.setLayout(jpEnemyViewLayout);
-        jpEnemyViewLayout.setHorizontalGroup(
-            jpEnemyViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
-        );
-        jpEnemyViewLayout.setVerticalGroup(
-            jpEnemyViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 149, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jpSpaceStationView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(130, 130, 130))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(530, Short.MAX_VALUE)
+                .addGap(0, 441, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbSiguienteTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbCombat, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbSiguienteTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbCombat, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32))
+                        .addComponent(jpEnemyView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))
+                        .addGap(89, 89, 89))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jpEnemyView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,16 +147,18 @@ public class MainWindow extends JFrame implements DeepSpaceView {
                         .addComponent(jPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jpEnemyView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbCombat, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbSiguienteTurno)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbSalir)
-                        .addGap(46, 46, 46))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jpSpaceStationView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(511, Short.MAX_VALUE))))
+                        .addGap(0, 478, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -170,14 +168,16 @@ public class MainWindow extends JFrame implements DeepSpaceView {
     private void jbCombatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCombatActionPerformed
         // TODO add your handling code here:
         Controller.getInstance().combat();
+        enemyView.setEnemy(Controller.getInstance().getUIversion().getCurrentEnemy()); 
+        enemyView.setVisible(true);
         revalidate();
         repaint();
     }//GEN-LAST:event_jbCombatActionPerformed
 
     private void jbSiguienteTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSiguienteTurnoActionPerformed
         Controller.getInstance().nextTurn();
+        enemyView.setVisible(false);
         spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
-        enemyView.setEnemy(Controller.getInstance().getUIversion().getCurrentEnemy());
         revalidate();
         repaint();  
     }//GEN-LAST:event_jbSiguienteTurnoActionPerformed
@@ -191,8 +191,7 @@ public class MainWindow extends JFrame implements DeepSpaceView {
     
     @Override 
     public void updateView() {
-        System.out.println("Debería de pintar la estación espacial");
-        //System.out.println(Controller.getInstance().getUIversion().getCurrentStation().toString());
+        System.out.println(Controller.getInstance().getUIversion().getCurrentEnemy().toString());
         spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
         enemyView.setEnemy(Controller.getInstance().getUIversion().getCurrentEnemy());
     }
@@ -226,11 +225,11 @@ public class MainWindow extends JFrame implements DeepSpaceView {
   }
     @Override
   public void escapeMessage() {
-      (new MensajeGenerico(this,"Has logrado escapar. \tEres una Gallina Espacial.")).showMessage();
+      (new MensajeGenerico(this,"Has logrado escapar. \nEres una Gallina Espacial.")).showMessage();
   }
     @Override
   public void wonCombatMessage() {
-      String ms="Has GANADO el combate. \tDisfruta de tu botín.";
+      String ms="Has GANADO el combate. \nDisfruta de tu botín.";
       (new MensajeGenerico(this,ms)).showMessage();
   }
     @Override
@@ -255,6 +254,7 @@ public class MainWindow extends JFrame implements DeepSpaceView {
     
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPruebas;
     private javax.swing.JButton jbCombat;
     private javax.swing.JButton jbSalir;

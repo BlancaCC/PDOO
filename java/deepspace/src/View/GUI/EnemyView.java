@@ -12,17 +12,34 @@ import deepspace.EnemyToUI;
  */
 public class EnemyView extends javax.swing.JPanel {
 
+    private LootView lootView;
+    
     /**
      * Creates new form EnemyView
      */
     public EnemyView() {
+        lootView=new LootView();
         initComponents();
+        
+        
+        revalidate();
+        repaint();
+        
     }
     
     void setEnemy(EnemyToUI e){
+        //.out.println("Debería pintar un enemigo");
         nombre.setText(e.getName());
+        jLpotenciaDefensa.setText(Float.toString(e.getShieldPower()) );
+        jLpotenciaFuego.setText(Float.toString(e.getAmmoPower()));
+        lootView.setLoot(e.getLoot());
+        jPLoot.add(lootView);
+        jPLoot.setVisible(true);
+        revalidate();
+        repaint();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,10 +51,27 @@ public class EnemyView extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLpotenciaFuego = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLpotenciaDefensa = new javax.swing.JLabel();
+        jPLoot = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setText("Enemigo:");
 
         nombre.setText("jLabel2");
+
+        jLabel2.setText("Potencia de Fuego:");
+
+        jLpotenciaFuego.setText("jLabel3");
+
+        jLabel3.setText("Potencia de defensa: ");
+
+        jLpotenciaDefensa.setText("jLabel4");
+
+        jLabel4.setText("Loot");
+        jPLoot.add(jLabel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -45,10 +79,21 @@ public class EnemyView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(nombre)
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(nombre))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLpotenciaDefensa)
+                            .addComponent(jLpotenciaFuego)))
+                    .addComponent(jPLoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,13 +102,29 @@ public class EnemyView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(nombre))
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLpotenciaFuego))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLpotenciaDefensa))
+                .addGap(18, 18, 18)
+                .addComponent(jPLoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(214, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLpotenciaDefensa;
+    private javax.swing.JLabel jLpotenciaFuego;
+    private javax.swing.JPanel jPLoot;
     private javax.swing.JLabel nombre;
     // End of variables declaration//GEN-END:variables
 }

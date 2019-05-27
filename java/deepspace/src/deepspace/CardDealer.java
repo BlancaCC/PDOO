@@ -217,10 +217,10 @@ class CardDealer {
         //ESTO LO BORRAS, VA EN SERIO, DE VERDAD, NO LO DEJES ASÍ------BORAAAAAAAAAAAAAAAAAAAAAAAAAAAA-------
         
        
-        enemies.add(new EnemyStarShip("Enemigo transforma 0",1110,1110,transformLoot0,regularDamage0));  
+        enemies.add(new EnemyStarShip("Enemigo transforma 2",1,10,transformLoot0,regularDamage0));  
+        enemies.add(new EnemyStarShip("Enemigo transforma 3",12,10,transformLoot0,regularDamage0));  
         
-        
-        
+        // borrar hasta aquí
         
         //enemies.add(new EnemyStarShip("Enemigo transforma 0",200,100,transformLoot0,regularDamage0));  
         //enemies.add(new EnemyStarShip("Enemigo transforma 1",100,200,transformLoot1,regularDamage1));           

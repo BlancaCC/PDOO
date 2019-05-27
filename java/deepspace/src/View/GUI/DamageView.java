@@ -18,12 +18,16 @@ public class DamageView extends javax.swing.JPanel {
      */
     public DamageView() {
         initComponents();
+        
+        repaint();
+        revalidate();
     }
     
     void setDamage(DamageToUI d){
         nShields.setText(Integer.toString(d.getNShields()));
-        
+        armas.setText("En proceso de añadir armas");
         repaint();
+        revalidate();
    
     }
 
@@ -40,7 +44,7 @@ public class DamageView extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         nShields = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        armas = new javax.swing.JLabel();
 
         jLabel1.setText("Daño pendiente:");
 
@@ -50,7 +54,7 @@ public class DamageView extends javax.swing.JPanel {
 
         jLabel4.setText("Armas: ");
 
-        jLabel5.setText("jLabel5");
+        armas.setText("jLabel5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,7 +72,7 @@ public class DamageView extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(armas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nShields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(218, Short.MAX_VALUE))
         );
@@ -84,17 +88,17 @@ public class DamageView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(armas))
                 .addContainerGap(222, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel armas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel nShields;
     // End of variables declaration//GEN-END:variables
 }
