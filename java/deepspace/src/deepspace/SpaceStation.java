@@ -306,7 +306,8 @@ public class SpaceStation implements SpaceFighter {
             transformation=Transformation.GETEFFICIENT; 
         else if (loot.spaceCity())
             transformation=Transformation.SPACECITY;
-             return transformation; 
+        
+        return transformation; 
 	
     } //setLoot
     
@@ -320,10 +321,7 @@ public class SpaceStation implements SpaceFighter {
         return (pendingDamage == null || pendingDamage.hasNoEffect());
     }
     
-    
-    //COSAS QUE SE HAN MODIFICADO EN LA ÚLTIMA VERSIÓN 
-    
-    public String toString(){
+   public String toString(){
 	
 	String representacion = "Spacece Station \n"+
 	    "ammoPower: " + ammoPower +

@@ -48,7 +48,7 @@ public class SpaceCity extends SpaceStation {
         for(SpaceStation resto : collaborators ) 
             proteccion += resto.protection();
         
-        return proteccion; 
+            return proteccion; 
     }
     
     
@@ -57,9 +57,10 @@ public class SpaceCity extends SpaceStation {
     @Override 
     public Transformation setLoot(Loot loot)  {
         super.setLoot(loot);
-        
-        //como nos encontramos en una estación espacial siempre devuelve que lo es :D
-        return Transformation.SPACECITY; 
+        System.out.println("No debería de dar le mensaje de que se transforma");
+        //como nos encontramos en una estación espacial 
+        //ya no puede transformarse
+        return Transformation.NOTRANSFORM; 
     }
       
    

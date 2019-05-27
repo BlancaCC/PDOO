@@ -30,7 +30,8 @@ module Deepspace
 
     def setLoot(loot)
       super
-     # return Transformation::NOTRANSFORM
+       return Transformation::NOTRANSFORM
+      
     end
 
   end #SpaceCity

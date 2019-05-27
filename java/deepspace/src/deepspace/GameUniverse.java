@@ -58,7 +58,7 @@ public class GameUniverse {
             if(result == ShotResult.RESIST) {
                 fire = station.fire();
                 result = enemy.receiveShot(fire);
-                enemyWins = (result == ShotResult.RESIST);
+                enemyWins = (result == ShotResult.RESIST); 
             }
             else {
                 enemyWins = true;
@@ -90,7 +90,7 @@ public class GameUniverse {
                 makeStationEfficient();
                 combatResult = CombatResult.STATIONWINSANDCONVERTS;
             }
-            else if(aLoot.spaceCity()==true){
+            else if(t==Transformation.SPACECITY ) {//(aLoot.spaceCity()==true){
                 createSpaceCity();
                 combatResult = CombatResult.STATIONWINSANDCONVERTS;
             }
