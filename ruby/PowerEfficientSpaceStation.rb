@@ -19,12 +19,17 @@ module Deepspace
       super*@@EFFICIENCYFACTOR
     end
 
-    def setLoot
-      t = super
+    def setLoot loot
+      t = super loot
       if(t == Transformation::SPACECITY)
         return Transformation::NOTRANSFORM
       end
       return t
+    end
+
+    def setLoot loot
+      super
+      return Transformation::NOTRANSFORM
     end
 
     def getUIversion
