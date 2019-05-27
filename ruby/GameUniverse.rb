@@ -227,13 +227,12 @@ module Deepspace
         if t==Transformation::GETEFFICIENT
           makeStationEfficient()
           combatResult=CombatResult::STATIONWINANDCONVERTS
-        else if t==Transformation::SPACECITY
+        elsif t==Transformation::SPACECITY
           createSpaceCity()
           combatResult = CombatResult::STATIONWINSANDCONVERTS
         else 
           combatResult=CombatResult::STATIONWINS
         end
-        
       end
       @gameState.next(@turns,@spaceStations.size)
 
