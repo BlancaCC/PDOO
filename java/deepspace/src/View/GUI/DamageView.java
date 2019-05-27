@@ -25,7 +25,7 @@ public class DamageView extends javax.swing.JPanel {
     
     void setDamage(DamageToUI d){
         nShields.setText(Integer.toString(d.getNShields()));
-        armas.setText("En proceso de añadir armas");
+        armas.setText(d.getWeaponInfo());
         repaint();
         revalidate();
    
@@ -45,6 +45,8 @@ public class DamageView extends javax.swing.JPanel {
         nShields = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         armas = new javax.swing.JLabel();
+
+        setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Daño pendiente:");
 
@@ -74,7 +76,7 @@ public class DamageView extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(armas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nShields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +91,7 @@ public class DamageView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(armas))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

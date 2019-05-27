@@ -13,6 +13,7 @@ class Dice {
     private final float EXTRAEFFICIENCYPROB;
     
     Dice() {
+        
         NHANGARSPROB = 0.25f;
         NSHIELDSPROB = 0.25f;
         NWEAPONSPROB = 0.33f;

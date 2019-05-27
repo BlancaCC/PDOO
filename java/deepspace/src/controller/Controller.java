@@ -54,6 +54,9 @@ public class Controller {
       if (!nextTurnAllowed) {
         view.nextTurnNotAllowedMessage();
       }
+      else{
+        view.updateView();
+      }
       return nextTurnAllowed;
     }
     
@@ -134,5 +137,6 @@ public class Controller {
     
     public void discardHangar () {
         game.discardHangar();
+        view.updateView();
     }
 }
