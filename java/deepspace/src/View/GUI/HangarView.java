@@ -6,6 +6,9 @@
 package View.GUI;
 
 import deepspace.HangarToUI;
+import deepspace.WeaponToUI;
+import deepspace.ShieldToUI;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,7 +24,26 @@ public class HangarView extends javax.swing.JPanel {
     }
     
     void setHangar(HangarToUI h){
-        nombre.setText("Hángar con " + h.getMaxElements() + "lugares");
+        jPanel.removeAll();
+        String title = "Hángar con " + Integer.toString(h.getMaxElements()) + "lugares";
+        titulo.setText(title);
+        ArrayList<WeaponToUI> wl = h.getWeapons();
+        ArrayList<ShieldToUI> sl = h.getShieldBoosters();
+        WeaponView weaponView;
+        ShieldBoosterView shieldView;
+        
+        for(WeaponToUI w: wl){
+            weaponView = new WeaponView();
+            weaponView.setWeapon(w);
+            jPanel.add(weaponView);
+        }
+        
+        for(ShieldToUI s : sl) {
+            shieldView = new ShieldBoosterView();
+            shieldView.setShieldBooster(s);
+            jPanel.add(shieldView);
+        }
+        
     }
 
     /**
@@ -34,35 +56,47 @@ public class HangarView extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        nombre = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        jPanel = new javax.swing.JPanel();
 
-        nombre.setText("jLabel2");
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setToolTipText("Hángar");
+
+        titulo.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(0, 61, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombre)
-                    .addComponent(jLabel1))
-                .addContainerGap(270, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(titulo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel nombre;
+    private javax.swing.JPanel jPanel;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
