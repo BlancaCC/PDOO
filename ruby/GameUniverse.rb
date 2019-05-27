@@ -10,6 +10,9 @@ require_relative "SpaceStation"
 require_relative "CardDealer"
 require_relative "EnemyStarShip"
 require_relative "GameState"
+require_relative "SpaceCity"
+require_relative "PowerEfficientSpaceStation"
+require_relative "BetaPowerEfficientSpaceStation"
 
 
 module Deepspace
@@ -88,15 +91,8 @@ module Deepspace
       end
     end
 
-    ## Los métodos mount* discard* delegan en el método homoínimo de la estación espacial que tenga el turno, siempre que se cumpla que el juego se INIT o AFTERCOMBAt. En caso contrario no tiene ningún efecto
-    ### _________ MÉTODOS DE LA PRÁCTICA
-
-    #Este método inicia una partida. Recibe una colección con los
-    #nombres de los jugadores. Para cada jugador, se crea una estación espacial y se equipa con
-    #suministros, hangares, armas y potenciadores de escudos tomados de los mazos de cartas
-    #correspondientes. Se sortea qué jugador comienza la partida, se establece el primer enemigo y
-    #comienza el primer turno.
-    
+  
+    # inicializa el juego 
     def init names
       st = @gameState.state
       if(st == GameState::CANNOTPLAY)
@@ -123,7 +119,7 @@ module Deepspace
     ## vuelve a la estaciín espacial eficiente
     ## copmuena con el ddado si es beta o no
     def makeStationEfficient
-      if dice.extraEfficiency
+      if @dice.extraEfficiency
         @currentStation=BetaPowerEfficientSpaceStation.new @currentStation
         puts "Se acaba de transformar en una estación espacial de efiencia beta"
       else
@@ -138,13 +134,13 @@ module Deepspace
         @haveSpaceCity=true
         collaborators=[]
 
-        @spaceStation.each do |s| 
+        @spaceStations.each do |s| 
           if s != @currentStation
             collaborators << s
           end
         end
         
-        @currentStation= SpaceCity.new( @currentStation,collaborators)
+        @currentStation= SpaceCity.new(@currentStation ,collaborators)
         @spaceStation[@currentStationIndex]=@currentStation
         puts "____Se acaba de transformar en una estación espacial____"
       end

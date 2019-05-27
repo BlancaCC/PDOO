@@ -9,7 +9,7 @@ module Deepspace
 
   class SuppliesPackage
 
-  def initialize(ammoPower, fuelUnits, shieldPower)
+    def initialize(ammoPower, fuelUnits, shieldPower)
       @ammoPower = ammoPower
       @fuelUnits = fuelUnits
       @shieldPower = shieldPower

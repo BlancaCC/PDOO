@@ -31,7 +31,7 @@ module Deepspace
     end
 
 
-    def discardWeapon
+    def discardWeapon i # arreglo esto chapuceramente pasándelo un argumento que no utiliza, para que así haya compatibilidad con ambos discard weapons
       if @nWeapons > 0
         @nWeapons -= 1
       end

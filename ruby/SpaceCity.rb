@@ -1,12 +1,13 @@
 # coding: utf-8
 require_relative 'SpaceStation'
+require_relative 'SuppliesPackage'
 
 module Deepspace
 
-  class SpaceCiy < SpaceStation
+  class SpaceCity < SpaceStation
 
     def initialize(base, rest)
-      super base
+      super base, SuppliesPackage.new(base.ammoPower, base.fuelUnits, base.shieldPower)
       @base = base
       @collaborators = rest
     end
@@ -15,7 +16,7 @@ module Deepspace
 
     def fire
       res = super
-      @collaboratos.each{ |s|
+      @collaborators.each{ |s|
         res += s.fire
       }
       return res
@@ -23,7 +24,7 @@ module Deepspace
 
     def protection
       res = super
-      @collaboratos.each{ |s|
+      @collaborators.each{ |s|
         res += s.protection
       }
       return res

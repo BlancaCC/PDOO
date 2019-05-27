@@ -35,8 +35,8 @@ module Deepspace
 
     end #initialize
 
-		attr_reader :ammoPower, :fuelUnits, :hangar, :name, :nMedals
-		attr_reader :pendingDamage, :shieldBoosters, :shieldPower, :weapons
+    attr_reader :ammoPower, :fuelUnits, :hangar, :name, :nMedals
+    attr_reader :pendingDamage, :shieldBoosters, :shieldPower, :weapons
 
 
     def self.newCopy(station)
@@ -50,7 +50,7 @@ module Deepspace
       @hangar = station.hangar
     end
 
-    #___ métodos privado ___
+    protected
     def assignFuelValue f
       if f <= @@MAXFUEL
 
@@ -59,7 +59,7 @@ module Deepspace
         @fuelUnits = @@MAXFUEL
       end #if
     end #assignFuelValues
-
+    private
     def cleanPendingDamage
       # si PendingGame no tiene efecto fija la referecia a null
       if(@pendingDamage.hasNoEffect)
@@ -67,12 +67,13 @@ module Deepspace
       end
     end #cleanPendingDamage
 
-    private :assignFuelValue
-    private :cleanPendingDamage
+    #private :assignFuelValue
+    #private :cleanPendingDamage
 
     #___ métodos públicos ___
-
+    
     # si disponemos de Hangars devuelve el resultado de intentar añadir el arma al msimo, si no devuelve true
+    public
     def receiveWeapon w
       conseguido = false
       if @hangar
@@ -82,7 +83,7 @@ module Deepspace
       conseguido
     end #receiveWeapn
 
-
+    
     def receiveShieldBooster s
       conseguido = false
       if @hangar
@@ -130,7 +131,7 @@ module Deepspace
 
     end
 
-		def setLoot loot
+    def setLoot loot
       dealer = CardDealer.instance
 
       h = loot.nHangars
