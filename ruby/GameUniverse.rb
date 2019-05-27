@@ -17,20 +17,21 @@ module Deepspace
 
     @@WIN = 10
     def initialize
-      @dice = Dice.new # creamos el dado
-      @gameState = GameStateController.new  # objeto de la clase GameStateController
-      # (supongo que deberá estar a INIT)
-      ## (No necesitaríamso saber antes el número de jugadores )
+      @dice = Dice.new 
+      @gameState = GameStateController.new  
+
 
       @currentStationIndex = -1 #int
       @turns = 0 #int
       @currentStation = nil# referencia a un objeto SpaceStation
       @currentEnemy = nil# objeto de la clase EnemyStartShip, sólo una instancia
       @spaceStations = Array.new # objeto de la clase SpaceStation
+      @haveSpaceCity=false
       # puedo tener entre 1..*
+      
     end # initialize
 
-    ### ______ métodos _____
+   
 
     def state
       @gameState.state
@@ -46,31 +47,31 @@ module Deepspace
     end # haveAWinner
 
     def mountShieldBooster(i)
-      if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
+      if @gameState.state==GameState::INIT || @gameState.state==GameState::AFTERCOMBAT
 	return @currentStation.mountShieldBooster(i)
       end
     end
 
     def mountWeapon(i)
-      if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
+      if @gameState.state==GameState::INIT || @gameState.state==GameState::AFTERCOMBAT
 	return @currentStation.mountWeapon(i)
       end
     end
 
     def discardHangar
-      if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
+      if @gameState.state==GameState::INIT || @gameState.state==GameState::AFTERCOMBAT
 	return @currentStation.discardHangar
       end
     end
 
     def discardShieldBooster(i)
-      if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
+      if @gameState.state==GameState::INIT || @gameState.state==GameState::AFTERCOMBAT
 	return @currentStation.discardShieldBooster(i)
       end
     end
 
     def discardWeapon(i)
-      if @gameState.state==GameState::INIT ||@gameState.state==GameState::AFTERCOMBAT
+      if @gameState.state==GameState::INIT || @gameState.state==GameState::AFTERCOMBAT
 	return @currentStation.discardWeapon(i)
       end
     end
@@ -95,7 +96,7 @@ module Deepspace
     #suministros, hangares, armas y potenciadores de escudos tomados de los mazos de cartas
     #correspondientes. Se sortea qué jugador comienza la partida, se establece el primer enemigo y
     #comienza el primer turno.
-                        
+    
     def init names
       st = @gameState.state
       if(st == GameState::CANNOTPLAY)
@@ -119,10 +120,41 @@ module Deepspace
 
 
     
-      # Se comprueba que el jugador actual no tiene ningún daño pendiente de cumplir,
-       #                                                                     en cuyo caso se realiza un cambio de turno al siguiente jugador con un nuevo enemigo con quien
-       #combatir, devolviendo true. Se devuelve false en otro caso.
-       
+    ## vuelve a la estaciín espacial eficiente
+    ## copmuena con el ddado si es beta o no
+    def makeStationEfficient
+      if dice.extraEfficiency
+        @currentStation=BetaPowerEfficientSpaceStation.new @currentStation
+        puts "Se acaba de transformar en una estación espacial de efiencia beta"
+      else
+        currentStation = PowerEfficientSpaceStation.new currentStation
+        puts "___Se ha transformado en una PowerEfficientSpaceStation___"
+      end
+    end
+
+    ## creamos una ciudad espacial 
+    def createSpaceCity
+      if @haveSpaceCity == false
+        @haveSpaceCity=true
+        collaborators=[]
+
+        @spaceStation.each do |s| 
+          if s != @currentStation
+            collaborators << s
+          end
+        end
+        
+        @currentStation= SpaceCity.new( @currentStation,collaborators)
+        @spaceStation[@currentStationIndex]=@currentStation
+        puts "____Se acaba de transformar en una estación espacial____"
+      end
+    end
+
+    
+    # Se comprueba que el jugador actual no tiene ningún daño pendiente de cumplir,
+    #  en cuyo caso se realiza un cambio de turno al siguiente jugador con un nuevo enemigo con quien
+    #combatir, devolviendo true. Se devuelve false en otro caso.
+    
     def nextTurn
       st = @gameState.state
       if(st == GameState::AFTERCOMBAT)
@@ -144,11 +176,11 @@ module Deepspace
       return false
     end #nextTurn
 
-=begin
-       Si la aplicación se encuentra en un estado en donde el combatir está
-       permitido, se realiza un combate entre la estación espacial que tiene el turno y el enemigo actual. Se
-       devuelve el resultado del combate.
-=end
+
+    #       Si la aplicación se encuentra en un estado en donde el combatir está
+    #       permitido, se realiza un combate entre la estación espacial que tiene el turno y el enemigo actual. Se
+    #       devuelve el resultado del combate.
+
     def combat
       st = @gameState.state
       if(st == GameState::BEFORECOMBAT || st == GameState::INIT)
@@ -188,10 +220,19 @@ module Deepspace
           station.move
           combatResult=CombatResult::STATIONESCAPES
         end
-      else
+      else # si hemos ganado el combate 
         aLoot = enemy.loot
-        station.setLoot(aLoot)
-        combatResult=CombatResult::STATIONWINS
+        t=station.setLoot(aLoot) # te almacena si el estado de transformación
+        
+        if t==Transformation::GETEFFICIENT
+          makeStationEfficient()
+          combatResult=CombatResult::STATIONWINANDCONVERTS
+        elsif t==Transformation::SPACECITY
+          createSpaceCity()
+          combatResult = CombatResult::STATIONWINSANDCONVERTS
+        else 
+          combatResult=CombatResult::STATIONWINS
+        end
       end
       @gameState.next(@turns,@spaceStations.size)
 
@@ -199,7 +240,7 @@ module Deepspace
 
     end #combatGo
 
-
+    
     def getUIversion
       GameUniverseToUI.new(@currentStation,@currentEnemy)
     end
@@ -212,6 +253,7 @@ module Deepspace
       s += "@spaceStations: #{@spaceStations}"
       return s
     end
-
+    
   end # GameUniverse
+  
 end # Deepspace

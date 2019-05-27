@@ -1,3 +1,4 @@
+# coding: utf-8
 require_relative 'SpaceStation'
 
 module Deepspace
@@ -30,7 +31,9 @@ module Deepspace
 
     def setLoot(loot)
       super
-     # return Transformation::NOTRANSFORM
+      #supuestamente no debería de transformarte por que ya lo es
+       return Transformation::NOTRANSFORM
+      
     end
 
   end #SpaceCity
