@@ -7,7 +7,7 @@ module Deepspace
   class SpaceCity < SpaceStation
 
     def initialize(base, rest)
-      super base, SuppliesPackage.new(base.ammoPower, base.fuelUnits, base.shieldPower)
+      newStation base 
       @base = base
       @collaborators = rest
     end

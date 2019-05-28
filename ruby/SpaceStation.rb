@@ -40,6 +40,11 @@ module Deepspace
 
 
     def self.newCopy(station)
+      newStation station
+    end
+
+    protected
+    def newStation station
       @name = station.name
       @ammoPower = station.ammoPower
       assignFuelValue(station.fuelUnits)
@@ -49,7 +54,7 @@ module Deepspace
       @weapons = station.weapons
       @hangar = station.hangar
     end
-
+    
     protected
     def assignFuelValue f
       if f <= @@MAXFUEL

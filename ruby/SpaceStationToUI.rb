@@ -1,3 +1,4 @@
+# coding: utf-8
 
 module Deepspace
 
@@ -17,9 +18,11 @@ class SpaceStationToUI
       @weapons << w.getUIversion()
     end
     
-    @shieldBoosters=Array.new() 
+    @shieldBoosters=Array.new()
     for sb in station.shieldBoosters do
-      @shieldBoosters << sb.getUIversion()
+      if sb != nil
+        @shieldBoosters << sb.getUIversion()
+      end
     end
     
     @name=station.name

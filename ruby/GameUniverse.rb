@@ -123,7 +123,7 @@ module Deepspace
         @currentStation=BetaPowerEfficientSpaceStation.new @currentStation
         puts "Se acaba de transformar en una estación espacial de efiencia beta"
       else
-        currentStation = PowerEfficientSpaceStation.new currentStation
+        currentStation = PowerEfficientSpaceStation.new @currentStation
         puts "___Se ha transformado en una PowerEfficientSpaceStation___"
       end
     end
@@ -139,9 +139,8 @@ module Deepspace
             collaborators << s
           end
         end
-        
         @currentStation= SpaceCity.new(@currentStation ,collaborators)
-        @spaceStation[@currentStationIndex]=@currentStation
+        @spaceStations[@currentStationIndex]=@currentStation
         puts "____Se acaba de transformar en una estación espacial____"
       end
     end
@@ -222,10 +221,11 @@ module Deepspace
         
         if t==Transformation::GETEFFICIENT
           makeStationEfficient()
-          combatResult=CombatResult::STATIONWINANDCONVERTS
+          combatResult=CombatResult::STATIONWINSANDCONVERTS
         elsif t==Transformation::SPACECITY
           createSpaceCity()
           combatResult = CombatResult::STATIONWINSANDCONVERTS
+
         else 
           combatResult=CombatResult::STATIONWINS
         end

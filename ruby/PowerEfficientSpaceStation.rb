@@ -7,8 +7,8 @@ module Deepspace
     @@EFFICIENCYFACTOR = 1.1
 
     def initialize(station)
-      self.class.newCopy(station)
-      puts self.inspect
+      puts station.to_s
+      newStation station
     end
 
     def fire
