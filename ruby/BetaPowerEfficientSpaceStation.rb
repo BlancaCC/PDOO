@@ -1,5 +1,6 @@
 require_relative 'PowerEfficientSpaceStation'
 require_relative 'Dice'
+require_relative 'BetaPowerEfficientSpaceStationToUI'
 
 module Deepspace
 

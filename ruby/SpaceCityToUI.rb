@@ -5,24 +5,24 @@ module Deepspace
 
 # 24.5.17 - Translation from Java
 # @author Profe
-  
-class SpaceCityToUI < SpaceStationToUI 
-  
+
+class SpaceCityToUI < SpaceStationToUI
+
   attr_reader :collaborators
-  
-  def initialize (city) 
+
+  def initialize (city)
     super(city)
     @collaborators=Array.new
-    for c in city.collaborators do 
+    for c in city.collaborators do
       @collaborators << SpaceStationToUI.new(c)
     end
   end
-  
+
   #Override
-  def name () 
+  def name ()
     return super + " (CIUDAD ESPACIAL)"
   end
-  
+
   #Override
   def to_s
     out = super

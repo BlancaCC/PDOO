@@ -1,13 +1,14 @@
 # coding: utf-8
 require_relative 'SpaceStation'
 require_relative 'SuppliesPackage'
+require_relative 'SpaceCityToUI'
 
 module Deepspace
 
   class SpaceCity < SpaceStation
 
     def initialize(base, rest)
-      newStation base 
+      newStation base
       @base = base
       @collaborators = rest
     end
@@ -34,7 +35,11 @@ module Deepspace
       super
       #supuestamente no debería de transformarte por que ya lo es
        return Transformation::NOTRANSFORM
-      
+
+    end
+
+    def getUIversion
+      SpaceCityToUI.new(self)
     end
 
   end #SpaceCity

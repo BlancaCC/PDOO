@@ -20,8 +20,8 @@ module Deepspace
 
     @@WIN = 10
     def initialize
-      @dice = Dice.new 
-      @gameState = GameStateController.new  
+      @dice = Dice.new
+      @gameState = GameStateController.new
 
 
       @currentStationIndex = -1 #int
@@ -31,10 +31,10 @@ module Deepspace
       @spaceStations = Array.new # objeto de la clase SpaceStation
       @haveSpaceCity=false
       # puedo tener entre 1..*
-      
+
     end # initialize
 
-   
+
 
     def state
       @gameState.state
@@ -91,8 +91,8 @@ module Deepspace
       end
     end
 
-  
-    # inicializa el juego 
+
+    # inicializa el juego
     def init names
       st = @gameState.state
       if(st == GameState::CANNOTPLAY)
@@ -115,7 +115,7 @@ module Deepspace
     end #init
 
 
-    
+
     ## vuelve a la estaciín espacial eficiente
     ## copmuena con el ddado si es beta o no
     def makeStationEfficient
@@ -128,28 +128,28 @@ module Deepspace
       end
     end
 
-    ## creamos una ciudad espacial 
+    ## creamos una ciudad espacial
     def createSpaceCity
       if @haveSpaceCity == false
         @haveSpaceCity=true
         collaborators=[]
 
-        @spaceStations.each do |s| 
+        @spaceStations.each do |s|
           if s != @currentStation
             collaborators << s
           end
         end
         @currentStation= SpaceCity.new(@currentStation ,collaborators)
         @spaceStations[@currentStationIndex]=@currentStation
-        puts "____Se acaba de transformar en una estación espacial____"
+        puts "____Se acaba de transformar en una ciudad espacial____"
       end
     end
 
-    
+
     # Se comprueba que el jugador actual no tiene ningún daño pendiente de cumplir,
     #  en cuyo caso se realiza un cambio de turno al siguiente jugador con un nuevo enemigo con quien
     #combatir, devolviendo true. Se devuelve false en otro caso.
-    
+
     def nextTurn
       st = @gameState.state
       if(st == GameState::AFTERCOMBAT)
@@ -215,18 +215,18 @@ module Deepspace
           station.move
           combatResult=CombatResult::STATIONESCAPES
         end
-      else # si hemos ganado el combate 
+      else # si hemos ganado el combate
         aLoot = enemy.loot
         t=station.setLoot(aLoot) # te almacena si el estado de transformación
-        
+
         if t==Transformation::GETEFFICIENT
           makeStationEfficient()
           combatResult=CombatResult::STATIONWINSANDCONVERTS
-        elsif t==Transformation::SPACECITY
+        elsif (t==Transformation::SPACECITY && @haveSpaceCity==false)
           createSpaceCity()
           combatResult = CombatResult::STATIONWINSANDCONVERTS
 
-        else 
+        else
           combatResult=CombatResult::STATIONWINS
         end
       end
@@ -236,7 +236,7 @@ module Deepspace
 
     end #combatGo
 
-    
+
     def getUIversion
       GameUniverseToUI.new(@currentStation,@currentEnemy)
     end
@@ -249,7 +249,7 @@ module Deepspace
       s += "@spaceStations: #{@spaceStations}"
       return s
     end
-    
+
   end # GameUniverse
-  
+
 end # Deepspace

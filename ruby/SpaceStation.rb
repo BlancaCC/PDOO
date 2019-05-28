@@ -52,9 +52,10 @@ module Deepspace
       @nMedals = station.nMedals
       @pendingDamage = station.pendingDamage
       @weapons = station.weapons
+      @shieldBoosters = station.shieldBoosters
       @hangar = station.hangar
     end
-    
+
     protected
     def assignFuelValue f
       if f <= @@MAXFUEL
@@ -76,7 +77,7 @@ module Deepspace
     #private :cleanPendingDamage
 
     #___ métodos públicos ___
-    
+
     # si disponemos de Hangars devuelve el resultado de intentar añadir el arma al msimo, si no devuelve true
     public
     def receiveWeapon w
@@ -88,7 +89,7 @@ module Deepspace
       conseguido
     end #receiveWeapn
 
-    
+
     def receiveShieldBooster s
       conseguido = false
       if @hangar

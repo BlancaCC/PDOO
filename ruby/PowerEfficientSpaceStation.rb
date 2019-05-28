@@ -1,4 +1,5 @@
 require_relative 'SpaceStation.rb'
+require_relative 'PowerEfficientSpaceStationToUI'
 
 module Deepspace
 
@@ -7,7 +8,6 @@ module Deepspace
     @@EFFICIENCYFACTOR = 1.1
 
     def initialize(station)
-      puts station.to_s
       newStation station
     end
 
@@ -25,11 +25,6 @@ module Deepspace
         return Transformation::NOTRANSFORM
       end
       return t
-    end
-
-    def setLoot loot
-      super
-      return Transformation::NOTRANSFORM
     end
 
     def getUIversion
