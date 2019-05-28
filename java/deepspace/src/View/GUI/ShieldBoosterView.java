@@ -96,13 +96,18 @@ public class ShieldBoosterView extends javax.swing.JPanel {
                     .addComponent(usos))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>             jpShields//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
         selected = !selected;
         setOpaque (selected);
+        if(selected) 
+            System.out.println("ahora esta selecicionad");
+        else
+             System.out.println("ahora NO esta selecicionad (desde shieldbooster)");
         repaint();
+     
     }//GEN-LAST:event_formMouseClicked
 
 
