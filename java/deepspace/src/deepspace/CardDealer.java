@@ -217,9 +217,9 @@ class CardDealer {
         //ESTO LO BORRAS, VA EN SERIO, DE VERDAD, NO LO DEJES ASÍ------BORAAAAAAAAAAAAAAAAAAAAAAAAAAAA-------
         
        
-        enemies.add(new EnemyStarShip("Enemigo transforma 2",1000,1000,transformLoot0,regularDamage0));  
-        enemies.add(new EnemyStarShip("Enemigo transforma 3",1000,1000,transformLoot0,regularDamage0));  
-        
+        enemies.add(new EnemyStarShip("Enemigo transforma 2",1,1,transformLoot0,regularDamage0));  
+        enemies.add(new EnemyStarShip("Enemigo transforma 3",1,1,transformLoot0,regularDamage0));  
+        enemies.add(new EnemyStarShip("Enemigo transforma IMPOSIBLE",1000,1000,transformLoot0,regularDamage0)); 
         // borrar hasta aquí
         
         //enemies.add(new EnemyStarShip("Enemigo transforma 0",200,100,transformLoot0,regularDamage0));  

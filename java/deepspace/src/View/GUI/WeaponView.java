@@ -13,17 +13,24 @@ import deepspace.WeaponToUI;
  */
 public class WeaponView extends javax.swing.JPanel {
 
+    private boolean selected=false;
     /**
      * Creates new form WeaponView
      */
     public WeaponView() {
         initComponents();
+        setOpaque(selected);
     }
     
     public void setWeapon(WeaponToUI w){
         tipo.setText(w.getType().toString());
         potencia.setText(Float.toString(w.getPower()));
         usos.setText(Integer.toString(w.getUses()));
+        
+        repaint();
+    }
+    boolean isSelected() {
+        return selected;
     }
 
     /**
@@ -43,6 +50,11 @@ public class WeaponView extends javax.swing.JPanel {
         usos = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Tipo:");
 
@@ -95,6 +107,12 @@ public class WeaponView extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -12,18 +12,24 @@ import deepspace.ShieldToUI;
  */
 public class ShieldBoosterView extends javax.swing.JPanel {
 
+    private boolean selected = false;
     /**
      * Creates new form ShieldBoosterView
      */
     public ShieldBoosterView() {
         initComponents();
+        setOpaque (selected);
     }
     
     public void setShieldBooster(ShieldToUI s){
         potencia.setText(Float.toString(s.getBoost()));
         usos.setText(Integer.toString(s.getUses()));
+        repaint();
     }
 
+    boolean isSelected () {
+        return selected;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +47,11 @@ public class ShieldBoosterView extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setText("Potencia:");
 
@@ -97,6 +108,15 @@ public class ShieldBoosterView extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+        
+                
+    }//GEN-LAST:event_jPanel1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
