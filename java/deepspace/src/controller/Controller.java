@@ -115,8 +115,8 @@ public class Controller {
     }
     
     public void discard (int places, ArrayList<Integer> weapons, ArrayList<Integer> shields) {
-      //invertArray(weapons);
-      //invertArray(shields);
+      invertArray(weapons);
+      invertArray(shields);
       
       if ((places & WEAPON) == WEAPON) {
         for (int i : weapons) {

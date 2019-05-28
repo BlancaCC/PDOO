@@ -68,6 +68,8 @@ public class HangarView extends javax.swing.JPanel {
         for(Component c : jpShields.getComponents()){
             if(((ShieldBoosterView)c).isSelected()){
                 ss.add(i);
+                //lo entiende como marcado una vez y ya no vuelve
+                System.out.println("Se procede a eliminar el escudo "+i);
             }
             i++;
         }

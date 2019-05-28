@@ -181,7 +181,7 @@ public class MainWindow extends JFrame implements DeepSpaceView {
     private void jbSiguienteTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSiguienteTurnoActionPerformed
         Controller.getInstance().nextTurn();
         enemyView.setVisible(false);
-        //spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
+        spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
         revalidate();
         repaint();  
     }//GEN-LAST:event_jbSiguienteTurnoActionPerformed
@@ -195,7 +195,7 @@ public class MainWindow extends JFrame implements DeepSpaceView {
     
     @Override 
     public void updateView() {
-        System.out.println(Controller.getInstance().getUIversion().getCurrentEnemy().toString());
+        //System.out.println(Controller.getInstance().getUIversion().getCurrentEnemy().toString());
         spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
         enemyView.setEnemy(Controller.getInstance().getUIversion().getCurrentEnemy());
     }
@@ -216,25 +216,31 @@ public class MainWindow extends JFrame implements DeepSpaceView {
       return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", "Deepspace", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
   }
 
-  //¿esto se haría así?
   //no puedes avanzar de turno, no has cumplido tu castigo
     @Override
     public void nextTurnNotAllowedMessage() {
         (new NextTurnNotAllowed(this)).showMessage();
+        enemyView.setVisible(true);
+        
     }
     
     @Override
   public void lostCombatMessage() {
       (new LostCombat(this)).showMessage();
+      spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
+      enemyView.setVisible(true);
+      
   }
     @Override
   public void escapeMessage() {
       (new MensajeGenerico(this,"Has logrado escapar. \nEres una Gallina Espacial.")).showMessage();
+      enemyView.setVisible(true);
   }
     @Override
   public void wonCombatMessage() {
       String ms="Has GANADO el combate. \nDisfruta de tu botín.";
       (new MensajeGenerico(this,ms)).showMessage();
+      spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
   }
     @Override
   public void wonGameMessage() {
@@ -246,6 +252,7 @@ public class MainWindow extends JFrame implements DeepSpaceView {
   public void conversionMessage() {
       String ms ="Has GANADO el combate. \nAdemás te has CONVERTIDO. \nDisfruta de tu botín";
       (new MensajeGenerico(this,ms)).showMessage();
+      spaceStationView.setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
   }
     @Override
   public void noCombatMessage() {

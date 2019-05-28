@@ -73,6 +73,11 @@ public class SpaceStationView extends javax.swing.JPanel {
         
         if(s.getPendingDamage()!=null){
             damageView.setDamage(s.getPendingDamage());
+            jpDamage2.add(damageView);
+            jpDamage2.setVisible(true);
+        }
+        else {
+            jpDamage2.setVisible(false);
         }
         jpHangar.removeAll();
         if(s.getHangar()!=null)
@@ -85,13 +90,7 @@ public class SpaceStationView extends javax.swing.JPanel {
         else{
             medals.setText("s");
         }
- 
-        jpDamage.setVisible(true);
-        
-        jpDamage2.add(damageView);
-        jpDamage2.setVisible(true);
-
-        
+   
         //falta mostrar el hangar, escudos, armas...
         repaint();
         revalidate();
@@ -306,6 +305,9 @@ public class SpaceStationView extends javax.swing.JPanel {
         
         //hay que pasarle array con posiciones de la arma o escudo a montar
         Controller.getInstance().mount(hangarView.getSelectedWeapons(),hangarView.getSelectedShields());
+        setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
+        revalidate();
+        repaint();
     }//GEN-LAST:event_jbMontarActionPerformed
 
     private void jbDescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDescartarActionPerformed
@@ -313,6 +315,10 @@ public class SpaceStationView extends javax.swing.JPanel {
         Controller.getInstance().discard(1, getSelectedWeapons(), null);
         Controller.getInstance().discard(2, null, getSelectedShields() );
         Controller.getInstance().discard(4, hangarView.getSelectedWeapons(), hangarView.getSelectedShields());
+        setSpaceStation(Controller.getInstance().getUIversion().getCurrentStation());
+       
+        revalidate();
+        repaint();
     }//GEN-LAST:event_jbDescartarActionPerformed
 
 
