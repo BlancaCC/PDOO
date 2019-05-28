@@ -38,15 +38,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jpSpaceStationView" min="-2" pref="752" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="435" max="-2" attributes="0"/>
-                      <Component id="jPruebas" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jpEnemyView" min="-2" pref="252" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="435" max="-2" attributes="0"/>
+                              <Component id="jPruebas" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jbSalir" min="-2" pref="105" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jbSiguienteTurno" min="-2" max="-2" attributes="0"/>
@@ -54,11 +53,16 @@
                               <Component id="jbCombat" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jpEnemyView" min="-2" pref="252" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -66,20 +70,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jpSpaceStationView" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jpSpaceStationView" alignment="0" pref="563" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jPruebas" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="jpEnemyView" min="-2" pref="207" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="284" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="jpEnemyView" min="-2" pref="207" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jbCombat" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbSiguienteTurno" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,11 +114,11 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPruebas">
+    <Container class="javax.swing.JPanel" name="jpEnemyView">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>
-    <Container class="javax.swing.JPanel" name="jpEnemyView">
+    <Container class="javax.swing.JPanel" name="jPruebas">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>

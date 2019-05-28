@@ -292,7 +292,7 @@ public class SpaceStation implements SpaceFighter {
 	}
 
 	// shield
-	for(int i=0; i<loot.getNMedals(); i++){
+	for(int i=0; i<loot.getNShields(); i++){
 	    receiveShieldBooster( dealer.nextShieldBooster()); 
 	}
 

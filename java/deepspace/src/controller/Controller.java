@@ -111,11 +111,12 @@ public class Controller {
       for (int i : shields) {
         game.mountShieldBooster(i);
       }
+      view.updateView();
     }
     
     public void discard (int places, ArrayList<Integer> weapons, ArrayList<Integer> shields) {
-      invertArray(weapons);
-      invertArray(shields);
+      //invertArray(weapons);
+      //invertArray(shields);
       
       if ((places & WEAPON) == WEAPON) {
         for (int i : weapons) {
@@ -133,6 +134,8 @@ public class Controller {
           game.discardShieldBoosterInHangar(i);
         }
       }
+      
+      view.updateView();
     }
     
     public void discardHangar () {

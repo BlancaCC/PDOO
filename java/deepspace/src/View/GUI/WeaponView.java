@@ -49,6 +49,7 @@ public class WeaponView extends javax.swing.JPanel {
         potencia = new javax.swing.JLabel();
         usos = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(245, 213, 182));
         setBorder(javax.swing.BorderFactory.createEtchedBorder());
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
