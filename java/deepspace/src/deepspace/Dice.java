@@ -15,7 +15,8 @@ class Dice {
     Dice() {
         
         NHANGARSPROB = 0.25f;
-        NSHIELDSPROB = 0.25f;
+        //NSHIELDSPROB = 0.25f;
+        NSHIELDSPROB=0;
         NWEAPONSPROB = 0.33f;
         FIRSTSHOTPROB = 0.5f;
         

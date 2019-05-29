@@ -27,7 +27,7 @@ public class SpecificDamage extends Damage{
     @Override
     public SpecificDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s) {
 	ArrayList<WeaponType> newWeapons=new ArrayList<>(); 
-        ArrayList<Weapon> auxWeapons = (ArrayList<Weapon>)w.clone();
+        ArrayList<Weapon> auxWeapons = new ArrayList<>(w);
 	for(WeaponType wtype : weapons) {
 	    int indice=arrayContainsType(auxWeapons,wtype);
 	    if(indice > 0) {

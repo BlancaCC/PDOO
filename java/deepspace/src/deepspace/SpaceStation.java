@@ -94,6 +94,14 @@ public class SpaceStation implements SpaceFighter {
     }
     
     public void discardShieldBooster(int i) {
+        if( i >= 0 && i< shieldBoosters.size()){
+	    //ShieldBooster shield = shieldBoosters.get(i);
+	    shieldBoosters.remove(i);
+	   
+	    if(pendingDamage != null)
+		pendingDamage.discardShieldBooster();
+	    cleanPendingDamage(); 
+	}
     }
     
     public void discardShieldBoosterinHangar(int i) {
@@ -107,7 +115,6 @@ public class SpaceStation implements SpaceFighter {
 	if( i >= 0 && i< weapons.size()){
 	    Weapon weapon = weapons.get(i);
 	    weapons.remove(i);
-	    System.out.println("comprobación arma" + weapon.toString());
 	    if(pendingDamage != null)
 		pendingDamage.discardWeapon(weapon);
 	    cleanPendingDamage(); 

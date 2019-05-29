@@ -29,7 +29,7 @@ public class SpaceStationView extends javax.swing.JPanel {
         initComponents();
         
         damageView = new DamageView();
-        jpDamage2.add(damageView);
+        jpDamage.add(damageView);
         
         hangarView = new HangarView();
         jpHangar.add(hangarView);
@@ -73,11 +73,11 @@ public class SpaceStationView extends javax.swing.JPanel {
         
         if(s.getPendingDamage()!=null){
             damageView.setDamage(s.getPendingDamage());
-            jpDamage2.add(damageView);
-            jpDamage2.setVisible(true);
+            jpDamage.add(damageView);
+            jpDamage.setVisible(true);
         }
         else {
-            jpDamage2.setVisible(false);
+            jpDamage.setVisible(false);
         }
         jpHangar.removeAll();
         if(s.getHangar()!=null)
@@ -105,15 +105,12 @@ public class SpaceStationView extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPWeapons = new javax.swing.JPanel();
-        jbEscudos = new javax.swing.JButton();
         shieldsPower = new javax.swing.JLabel();
-        jbArmas = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jpShields = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
         name = new javax.swing.JLabel();
-        jbDescartarDelHangar = new javax.swing.JButton();
-        jbMontar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jpHangar = new javax.swing.JPanel();
@@ -122,11 +119,15 @@ public class SpaceStationView extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         ammoPower = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jbHangar = new javax.swing.JButton();
         fuelsUnits = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jpDamage = new javax.swing.JPanel();
         jLSpaceStation = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jbHangar = new javax.swing.JButton();
+        jbMontar = new javax.swing.JButton();
+        jbEscudos = new javax.swing.JButton();
+        jbDescartarDelHangar = new javax.swing.JButton();
+        jbArmas = new javax.swing.JButton();
+        jpDamage = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,54 +146,17 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(jPWeapons);
 
-        jbEscudos.setText("D. escudos");
-        jbEscudos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEscudosActionPerformed(evt);
-            }
-        });
-
         shieldsPower.setText("jLabel3");
 
-        jbArmas.setText("D.armas");
-        jbArmas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbArmasActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Name: ");
+
+        jpShields.add(jScrollPane4);
 
         jScrollPane2.setViewportView(jpShields);
 
         name.setText("jLabel3");
 
-        jbDescartarDelHangar.setText("D. del Hangar");
-        jbDescartarDelHangar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbDescartarDelHangarActionPerformed(evt);
-            }
-        });
-
-        jbMontar.setText("Montar");
-        jbMontar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbMontarActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Medals: ");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         jpHangar.add(jPanel2);
 
@@ -206,18 +170,83 @@ public class SpaceStationView extends javax.swing.JPanel {
 
         jLabel8.setText("fuels units: ");
 
-        jbHangar.setText("D. Hangar");
+        fuelsUnits.setText("jLabel9");
+
+        jLSpaceStation.setText("SpaceStation");
+
+        jbHangar.setText("Descartar Hángar Completo");
         jbHangar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbHangarActionPerformed(evt);
             }
         });
 
-        fuelsUnits.setText("jLabel9");
+        jbMontar.setText("Montar");
+        jbMontar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMontarActionPerformed(evt);
+            }
+        });
 
-        jScrollPane4.setViewportView(jpDamage);
+        jbEscudos.setText("Descartar escudos");
+        jbEscudos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEscudosActionPerformed(evt);
+            }
+        });
 
-        jLSpaceStation.setText("SpaceStation");
+        jbDescartarDelHangar.setText("Descartar del Hángar");
+        jbDescartarDelHangar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDescartarDelHangarActionPerformed(evt);
+            }
+        });
+
+        jbArmas.setText("Descartar armas");
+        jbArmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbArmasActionPerformed(evt);
+            }
+        });
+
+        jpDamage.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jbHangar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbMontar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbArmas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbEscudos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbDescartarDelHangar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(80, 80, 80)
+                .addComponent(jpDamage, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbMontar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbArmas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbEscudos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbDescartarDelHangar))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jpDamage, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbHangar)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -226,58 +255,43 @@ public class SpaceStationView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 494, Short.MAX_VALUE)
-                        .addComponent(jpDamage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLSpaceStation)
+                            .addComponent(jpDamage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
+                                .addGap(16, 16, 16)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jbHangar)
-                                                    .addComponent(jbMontar))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jbEscudos)
-                                                    .addComponent(jbArmas)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jbDescartarDelHangar)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel8))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel10)
-                                                        .addComponent(jLabel8))
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(fuelsUnits)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(shieldsPower)
-                                                            .addGap(18, 18, 18)
-                                                            .addComponent(jLabel6)
-                                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                            .addComponent(ammoPower))))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(jLabel2)
-                                                    .addGap(60, 60, 60)
-                                                    .addComponent(name)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jLabel4)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(medals))
-                                                .addComponent(jScrollPane1)
-                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
-                        .addContainerGap())))
+                                            .addComponent(fuelsUnits)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(shieldsPower)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(ammoPower))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(60, 60, 60)
+                                        .addComponent(name)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(medals)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,7 +310,7 @@ public class SpaceStationView extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(ammoPower))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(fuelsUnits))
                 .addGap(18, 18, 18)
@@ -304,23 +318,11 @@ public class SpaceStationView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107)
-                        .addComponent(jpDamage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbHangar)
-                            .addComponent(jbEscudos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbArmas)
-                            .addComponent(jbMontar))
-                        .addGap(18, 18, 18)
-                        .addComponent(jbDescartarDelHangar))))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jpDamage2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -409,6 +411,7 @@ public class SpaceStationView extends javax.swing.JPanel {
     private javax.swing.JPanel jPWeapons;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

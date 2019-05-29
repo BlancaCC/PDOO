@@ -125,6 +125,8 @@ public class Controller {
       } else if ((places & SHIELD) == SHIELD) {
         for (int i : shields) {
           game.discardShieldBooster(i);
+          System.out.println("descartando escudo "+i);
+          System.out.println(game.getUIversion().getCurrentStation().getShieldBoosters().toString());
         }
       } else if((places & HANGAR) == HANGAR) {
         for (int i : weapons) {

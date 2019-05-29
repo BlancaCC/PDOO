@@ -188,6 +188,11 @@ public class SpaceStationViewV2 extends javax.swing.JPanel {
         });
 
         jbMontar.setText("Montar");
+        jbMontar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMontarActionPerformed(evt);
+            }
+        });
 
         jbDescartarDelHangar.setText("D. del Hangar");
         jbDescartarDelHangar.addActionListener(new java.awt.event.ActionListener() {
@@ -211,17 +216,16 @@ public class SpaceStationViewV2 extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jbDescartarDelHangar)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jbHangar)
                                             .addComponent(jbMontar))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jbEscudos)
-                                            .addComponent(jbArmas)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jbDescartarDelHangar)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(18, 18, 18)
+                                            .addComponent(jbArmas))))
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +275,7 @@ public class SpaceStationViewV2 extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(ammoPower))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(fuelsUnits))
                 .addGap(18, 18, 18)
@@ -362,6 +366,10 @@ public class SpaceStationViewV2 extends javax.swing.JPanel {
         revalidate();
         repaint();
     }//GEN-LAST:event_jbDescartarDelHangarActionPerformed
+
+    private void jbMontarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMontarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbMontarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
