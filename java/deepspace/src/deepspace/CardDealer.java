@@ -177,7 +177,7 @@ class CardDealer {
         Damage mediumSpecificDamage0;
         mediumSpecificDamage0=new SpecificDamage(new ArrayList<>(Arrays.asList(WeaponType.LASER,
                                                                         WeaponType.MISSILE)),2);  
-        /*
+        
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,10,badLoot,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",10,0,badLoot,lowDamage0));
@@ -206,7 +206,7 @@ class CardDealer {
         enemies.add(new EnemyStarShip("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
         enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));    
-        */
+        
         
         //Enemigos que transforman
         
@@ -214,13 +214,6 @@ class CardDealer {
         Loot transformLoot1=new Loot(1,1,1,0,1,false,true);
         
         
-        //ESTO LO BORRAS, VA EN SERIO, DE VERDAD, NO LO DEJES ASÍ------BORAAAAAAAAAAAAAAAAAAAAAAAAAAAA-------
-        
-       
-        enemies.add(new EnemyStarShip("Enemigo transforma 2",1,1,transformLoot0,regularDamage0));  
-        enemies.add(new EnemyStarShip("Enemigo transforma 3",1,1,transformLoot0,regularDamage0));  
-        enemies.add(new EnemyStarShip("Enemigo transforma IMPOSIBLE",1000,1000,transformLoot0,regularDamage0)); 
-        // borrar hasta aquí
         
         //enemies.add(new EnemyStarShip("Enemigo transforma 0",200,100,transformLoot0,regularDamage0));  
         //enemies.add(new EnemyStarShip("Enemigo transforma 1",100,200,transformLoot1,regularDamage1));           
