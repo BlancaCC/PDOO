@@ -21,6 +21,7 @@ public class SpecificDamage extends Damage{
             }
         }
         return salida;
+        
     }
 
     
@@ -30,13 +31,14 @@ public class SpecificDamage extends Damage{
         ArrayList<Weapon> auxWeapons = new ArrayList<>(w);
 	for(WeaponType wtype : weapons) {
 	    int indice=arrayContainsType(auxWeapons,wtype);
-	    if(indice > 0) {
+	    if(indice >= 0) {
                 newWeapons.add(wtype);
 		auxWeapons.remove(indice); 
 	    }
 	}
 
 	return new SpecificDamage(newWeapons, adjustShields(s));
+        
     }
 
     //Se quiere descartar un tipo de nuestro daño pendiente

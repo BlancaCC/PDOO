@@ -71,7 +71,7 @@ public class SpaceStationViewV2 extends javax.swing.JPanel {
         jpHangar.removeAll();
         if(s.getHangar()!=null)
         {
-            System.out.println("El hangar es"+s.getHangar());
+           
             hangarView.setHangar(s.getHangar());
             jpHangar.add(hangarView);
             jpHangar.setVisible(true);

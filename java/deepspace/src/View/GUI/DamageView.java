@@ -26,6 +26,7 @@ public class DamageView extends javax.swing.JPanel {
     void setDamage(DamageToUI d){
         nShields.setText(Integer.toString(d.getNShields()));
         armas.setText(d.getWeaponInfo());
+
         repaint();
         revalidate();
    
