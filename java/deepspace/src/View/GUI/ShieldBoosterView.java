@@ -102,10 +102,6 @@ public class ShieldBoosterView extends javax.swing.JPanel {
         // TODO add your handling code here:
         selected = !selected;
         setOpaque (selected);
-        if(selected) 
-            System.out.println("ahora esta selecicionad");
-        else
-             System.out.println("ahora NO esta selecicionad (desde shieldbooster)");
         repaint();
      
     }//GEN-LAST:event_formMouseClicked
