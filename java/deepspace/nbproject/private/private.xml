@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/View/GUI/DamageView.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/deepspace/SpecificDamage.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/View/GUI/SpaceStationView.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/View/GUI/HangarView.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/controller/Controller.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/deepspace/SpaceStation.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/deepspace/Dice.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/deepspace/CardDealer.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/View/GUI/SpaceStationViewV2.java</file>
-            <file>file:/home/usuario/Documentos/PDOO/PDOO/java/deepspace/src/deepspace/Damage.java</file>
+            <file>file:/home/blanca/PDOO/java/deepspace/src/deepspace/GameUniverse.java</file>
+            <file>file:/home/blanca/PDOO/java/deepspace/src/controller/Controller.java</file>
+            <file>file:/home/blanca/PDOO/java/deepspace/src/main/PlayWithUI.java</file>
+            <file>file:/home/blanca/PDOO/java/deepspace/src/deepspace/SpaceStation.java</file>
         </group>
     </open-files>
 </project-private>

@@ -304,10 +304,9 @@ public class SpaceStation implements SpaceFighter {
 	}
 
 	//medals
-	nMedals += getNMedals(); 
+	nMedals += loot.getNMedals(); 
         
-        
-        //HAY QUE VER QUÉ SE HACE AHORA CON ESTO
+      
         Transformation transformation = Transformation.NOTRANSFORM;
         if( loot.getEfficient() ) 
             transformation=Transformation.GETEFFICIENT; 
