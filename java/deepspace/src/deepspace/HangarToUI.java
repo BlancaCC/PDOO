@@ -43,5 +43,21 @@ public class HangarToUI {
         return shieldBoosters;
     }
     
+    public String toString (){
+
+	String representacion = "\n__Hangar__" +
+	    "\nCapacidad: " + maxElements +
+	    "\nweapons:\n";
+	
+	if (weapons != null) for( WeaponToUI weapon :weapons)
+	    representacion += weapon.toString();
+	representacion +="\nshieldBoster: \n";
+	
+	if(shieldBoosters != null) for(ShieldToUI shield : shieldBoosters)
+	    representacion += shield.toString();
+	
+	representacion += "\n"; 
+	return representacion; 
+    }
     
 }
